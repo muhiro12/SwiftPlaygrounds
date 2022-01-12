@@ -11,23 +11,34 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+    @SectionedFetchRequest(
+        sectionIdentifier: \Item.category!,
+        sortDescriptors: [.init(keyPath: \Item.category, ascending: true),
+                          .init(keyPath: \Item.name, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var sections: SectionedFetchResults<String, Item>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+                ForEach(sections) { section in
+                    Section(content: {
+                        ForEach(section) { item in
+                            HStack {
+                                Text(item.name!)
+                                Spacer()
+                                Text(item.price!.stringValue + " 円")
+                            }
+                        }
+                        .onDelete { offsets in
+                            let items = offsets.map { section[$0] }
+                            self.deleteItems(items)
+                        }
+                    }, header: {
+                        Text(section.id)
+                    })
                 }
-                .onDelete(perform: deleteItems)
-            }
+            }.navigationTitle("商品一覧")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -45,28 +56,28 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+
+            let itemType = ItemType(rawValue: Int.random(in: 0..<5))!
+            newItem.name = itemType.name
+            newItem.category = itemType.category.rawValue
+            newItem.price = itemType.price
 
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteItems(_ items: [Item]) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            items.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
@@ -74,12 +85,53 @@ struct ContentView: View {
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+enum ItemType: Int {
+    case milk
+    case coffee
+    case orange
+    case apple
+
+    init?(rawValue: RawValue) {
+        switch rawValue {
+        case 0:
+            self = .milk
+        case 1:
+            self = .coffee
+        case 2:
+            self = .orange
+        default:
+            self = .apple
+        }
+    }
+
+    var name: String {
+        switch self {
+        case .milk: return "ミルク"
+        case .coffee: return "コーヒー"
+        case .orange: return "みかん"
+        case .apple: return "りんご"
+        }
+    }
+
+    var category: Category {
+        switch self {
+        case .milk: return .drink
+        case .coffee: return .drink
+        case .orange: return .fruit
+        case .apple: return .fruit
+        }
+    }
+
+    var price: NSDecimalNumber {
+        let num = Int.random(in: 1...5)
+        return NSDecimalNumber(value: num * 108)
+    }
+
+    enum Category: String {
+        case drink = "ドリンク"
+        case fruit = "フルーツ"
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
