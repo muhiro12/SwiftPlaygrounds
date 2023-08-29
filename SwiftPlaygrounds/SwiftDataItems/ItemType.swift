@@ -28,10 +28,10 @@ enum ItemType: Int {
 
     var name: String {
         switch self {
-        case .milk: return "ミルク3"
-        case .coffee: return "コーヒー3"
-        case .orange: return "みかん3"
-        case .apple: return "りんご3"
+        case .milk: return "ミルク"
+        case .coffee: return "コーヒー"
+        case .orange: return "みかん"
+        case .apple: return "りんご"
         }
     }
 

@@ -33,10 +33,15 @@ struct SwiftDataItemsView: View {
                             Spacer()
                             Text(item.price.description + " 円")
                         }
+                        .swipeActions(edge: .leading) {
+                            Button("Multiple") {
+                                editItems([item])
+                            }
+                        }
                     }
                     .onDelete { offsets in
                         let items = offsets.map { section.items[$0] }
-                        self.deleteItems(items)
+                        deleteItems(items)
                     }
                 }, header: {
                     Text(section.category)
@@ -66,9 +71,17 @@ struct SwiftDataItemsView: View {
         }
     }
 
+    private func editItems(_ items: [Item]) {
+        withAnimation {
+            items.forEach {
+                $0.price = $0.price * 10
+            }
+        }
+    }
+
     private func deleteItems(_ items: [Item]) {
         withAnimation {
-            items.forEach { context.delete($0) }
+            items.forEach(context.delete)
         }
     }
 }
