@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD7D3AC42A9B44C800DE29A0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7D3AC32A9B44C800DE29A0 /* Item.swift */; };
 		ADD99DC327840A3200D9F2B7 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DC227840A3200D9F2B7 /* SwiftPlaygroundsApp.swift */; };
 		ADD99DC527840A3200D9F2B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DC427840A3200D9F2B7 /* ContentView.swift */; };
 		ADD99DC727840A3400D9F2B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD99DC627840A3400D9F2B7 /* Assets.xcassets */; };
 		ADD99DCA27840A3400D9F2B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD99DC927840A3400D9F2B7 /* Preview Assets.xcassets */; };
-		ADD99DCC27840A3400D9F2B7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DCB27840A3400D9F2B7 /* Persistence.swift */; };
-		ADD99DCF27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DCD27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodeld */; };
 		ADD99DD927840A3400D9F2B7 /* SwiftPlaygroundsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DD827840A3400D9F2B7 /* SwiftPlaygroundsTests.swift */; };
 		ADD99DE327840A3400D9F2B7 /* SwiftPlaygroundsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DE227840A3400D9F2B7 /* SwiftPlaygroundsUITests.swift */; };
 		ADD99DE527840A3400D9F2B7 /* SwiftPlaygroundsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD99DE427840A3400D9F2B7 /* SwiftPlaygroundsUITestsLaunchTests.swift */; };
@@ -36,13 +35,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD7D3AC32A9B44C800DE29A0 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		ADD99DBF27840A3200D9F2B7 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD99DC227840A3200D9F2B7 /* SwiftPlaygroundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsApp.swift; sourceTree = "<group>"; };
 		ADD99DC427840A3200D9F2B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ADD99DC627840A3400D9F2B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADD99DC927840A3400D9F2B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		ADD99DCB27840A3400D9F2B7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		ADD99DCE27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftPlaygrounds.xcdatamodel; sourceTree = "<group>"; };
 		ADD99DD427840A3400D9F2B7 /* SwiftPlaygroundsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlaygroundsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD99DD827840A3400D9F2B7 /* SwiftPlaygroundsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsTests.swift; sourceTree = "<group>"; };
 		ADD99DDE27840A3400D9F2B7 /* SwiftPlaygroundsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlaygroundsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,11 +96,10 @@
 		ADD99DC127840A3200D9F2B7 /* SwiftPlaygrounds */ = {
 			isa = PBXGroup;
 			children = (
-				ADD99DC227840A3200D9F2B7 /* SwiftPlaygroundsApp.swift */,
 				ADD99DC427840A3200D9F2B7 /* ContentView.swift */,
+				AD7D3AC32A9B44C800DE29A0 /* Item.swift */,
+				ADD99DC227840A3200D9F2B7 /* SwiftPlaygroundsApp.swift */,
 				ADD99DC627840A3400D9F2B7 /* Assets.xcassets */,
-				ADD99DCB27840A3400D9F2B7 /* Persistence.swift */,
-				ADD99DCD27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodeld */,
 				ADD99DC827840A3400D9F2B7 /* Preview Content */,
 			);
 			path = SwiftPlaygrounds;
@@ -263,9 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADD99DCC27840A3400D9F2B7 /* Persistence.swift in Sources */,
 				ADD99DC527840A3200D9F2B7 /* ContentView.swift in Sources */,
-				ADD99DCF27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodeld in Sources */,
+				AD7D3AC42A9B44C800DE29A0 /* Item.swift in Sources */,
 				ADD99DC327840A3200D9F2B7 /* SwiftPlaygroundsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -409,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -593,19 +589,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		ADD99DCD27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				ADD99DCE27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodel */,
-			);
-			currentVersion = ADD99DCE27840A3400D9F2B7 /* SwiftPlaygrounds.xcdatamodel */;
-			path = SwiftPlaygrounds.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = ADD99DB727840A3200D9F2B7 /* Project object */;
 }

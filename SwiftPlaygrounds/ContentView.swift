@@ -7,63 +7,68 @@
 
 import SwiftUI
 import CoreData
+import SwiftData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var context
 
-    @SectionedFetchRequest(
-        sectionIdentifier: \Item.category!,
-        sortDescriptors: [.init(keyPath: \Item.category, ascending: true),
-                          .init(keyPath: \Item.name, ascending: true)],
-        animation: .default)
-    private var sections: SectionedFetchResults<String, Item>
+    @Query
+    private var allItems: [Item]
+
+    private var sections: [SectionedItem] {
+        Dictionary(grouping: allItems, by: \Item.category!).map {
+            SectionedItem(category: $0.key,
+                          items: $0.value.sorted(by: { $0.name < $1.name }))
+        }.sorted(by: { $0.category < $1.category })
+    }
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(sections) { section in
                     Section(content: {
-                        ForEach(section) { item in
+                        ForEach(section.items) { item in
                             HStack {
-                                Text(item.name!)
+                                Text(item.name)
                                 Spacer()
-                                Text(item.price!.stringValue + " 円")
+                                Text(item.price.description + " 円")
                             }
                         }
                         .onDelete { offsets in
-                            let items = offsets.map { section[$0] }
+                            let items = offsets.map { section.items[$0] }
                             self.deleteItems(items)
                         }
                     }, header: {
-                        Text(section.id)
+                        Text(section.category)
                     })
                 }
             }.navigationTitle("商品一覧")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
+                    ToolbarItem {
+                        Button(action: addItem) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
                 }
-            }
             Text("Select an item")
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-
             let itemType = ItemType(rawValue: Int.random(in: 0..<5))!
-            newItem.name = itemType.name
-            newItem.category = itemType.category.rawValue
-            newItem.price = itemType.price
+
+            let newItem = Item(name: itemType.name,
+                               category: itemType.category.rawValue,
+                               price: itemType.price)
+
+            context.insert(newItem)
 
             do {
-                try viewContext.save()
+                try context.save()
             } catch {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
@@ -73,16 +78,23 @@ struct ContentView: View {
 
     private func deleteItems(_ items: [Item]) {
         withAnimation {
-            items.forEach(viewContext.delete)
+            items.forEach { context.delete($0) }
 
             do {
-                try viewContext.save()
+                try context.save()
             } catch {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
+}
+
+struct SectionedItem: Identifiable {
+    let id = UUID()
+
+    let category: String
+    let items: [Item]
 }
 
 enum ItemType: Int {
@@ -122,9 +134,9 @@ enum ItemType: Int {
         }
     }
 
-    var price: NSDecimalNumber {
+    var price: Decimal {
         let num = Int.random(in: 1...5)
-        return NSDecimalNumber(value: num * 108)
+        return Decimal(num * 108)
     }
 
     enum Category: String {
@@ -133,8 +145,58 @@ enum ItemType: Int {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+#Preview {
+    ModelContainerPreview(PreviewSampleData.inMemoryContainer) {
+        ContentView()
+    }
+}
+
+
+struct ModelContainerPreview<Content: View>: View {
+    var content: () -> Content
+    let container: ModelContainer
+
+    init(@ViewBuilder content: @escaping () -> Content, modelContainer: @escaping () throws -> ModelContainer) {
+        self.content = content
+        do {
+            self.container = try MainActor.assumeIsolated(modelContainer)
+        } catch {
+            fatalError("Failed to create the model container: \(error.localizedDescription)")
+        }
+    }
+
+    init(_ modelContainer: @escaping () throws -> ModelContainer, @ViewBuilder content: @escaping () -> Content) {
+        self.init(content: content, modelContainer: modelContainer)
+    }
+
+    var body: some View {
+        content()
+            .modelContainer(container)
+    }
+}
+
+actor PreviewSampleData {
+    @MainActor
+    static var container: ModelContainer = {
+        return try! inMemoryContainer()
+    }()
+
+    static var inMemoryContainer: () throws -> ModelContainer = {
+        let schema = Schema([Item.self])
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try! ModelContainer(for: schema, configurations: [configuration])
+        let sampleData: [any PersistentModel] = (0...10).map { _ in
+            let itemType = ItemType(rawValue: Int.random(in: 0..<5))!
+            return Item(name: itemType.name,
+                        category: itemType.category.rawValue,
+                        price: itemType.price)
+
+        }
+        Task { @MainActor in
+            sampleData.forEach {
+                container.mainContext.insert($0)
+            }
+        }
+        return container
     }
 }

@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct SwiftPlaygroundsApp: App {
-    let persistenceController = PersistenceController.shared
+    private let container = {
+        let url = URL.applicationSupportDirectory.appendingPathComponent("SwiftPlaygrounds.sqlite")
+        let configuration = ModelConfiguration(url: url)
+        return try! ModelContainer(for: Item.self, configurations: configuration)
+    }()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        .modelContainer(container)
     }
 }
