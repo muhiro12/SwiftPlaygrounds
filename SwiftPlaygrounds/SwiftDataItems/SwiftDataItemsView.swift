@@ -13,11 +13,11 @@ struct SwiftDataItemsView: View {
     @Environment(\.modelContext)
     private var context
 
-    @Query
+    @Query(filter: #Predicate<Item> { $0.price < 300 })
     private var allItems: [Item]
 
     private var sections: [SectionedItems] {
-        Dictionary(grouping: allItems, by: \Item.category!).map {
+        Dictionary(grouping: allItems, by: \Item.category).map {
             SectionedItems(category: $0.key,
                           items: $0.value.sorted(by: { $0.name < $1.name }))
         }.sorted(by: { $0.category < $1.category })
