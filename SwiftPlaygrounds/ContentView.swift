@@ -23,14 +23,14 @@ enum Sidebar: String, Identifiable, CaseIterable {
         case .sample:
             return [.sampleContent]
         case .api:
-            return [.api]
+            return [.apiRequest]
         }
     }
 }
 
 enum Content: String, Identifiable, CaseIterable {
     case sampleContent
-    case api
+    case apiRequest
 
     var id: Self {
         self
@@ -41,8 +41,8 @@ enum Content: String, Identifiable, CaseIterable {
         switch self {
         case .sampleContent:
             SampleContentView()
-        case .api:
-            Text("TODO: APIClient")
+        case .apiRequest:
+            APIRequestView()
         }
     }
 }

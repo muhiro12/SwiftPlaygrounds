@@ -16,6 +16,12 @@
 		ADE4457C2B87AF9000EF56A3 /* SwiftPlaygroundsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4457B2B87AF9000EF56A3 /* SwiftPlaygroundsUITests.swift */; };
 		ADE4457E2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4457D2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift */; };
 		ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4458B2B87B14C00EF56A3 /* ContentView.swift */; };
+		ADE4458F2B87BFFE00EF56A3 /* APIRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4458E2B87BFFE00EF56A3 /* APIRequestView.swift */; };
+		ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445902B87C0F500EF56A3 /* APIClient.swift */; };
+		ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445922B87C94E00EF56A3 /* UserRequest.swift */; };
+		ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445962B87CEBD00EF56A3 /* APIRequest.swift */; };
+		ADE445992B87CEDE00EF56A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445982B87CEDE00EF56A3 /* User.swift */; };
+		ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4459A2B87CEFD00EF56A3 /* APIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,12 @@
 		ADE4457B2B87AF9000EF56A3 /* SwiftPlaygroundsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsUITests.swift; sourceTree = "<group>"; };
 		ADE4457D2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ADE4458B2B87B14C00EF56A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ADE4458E2B87BFFE00EF56A3 /* APIRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestView.swift; sourceTree = "<group>"; };
+		ADE445902B87C0F500EF56A3 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		ADE445922B87C94E00EF56A3 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		ADE445962B87CEBD00EF56A3 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		ADE445982B87CEDE00EF56A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ADE4459A2B87CEFD00EF56A3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,7 @@
 				ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */,
 				ADE4458B2B87B14C00EF56A3 /* ContentView.swift */,
 				ADE4458A2B87B0E900EF56A3 /* Sample */,
+				ADE4458D2B87BFE900EF56A3 /* API */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
 				ADE445682B87AF9000EF56A3 /* Info.plist */,
@@ -143,6 +156,27 @@
 				ADE445602B87AF8E00EF56A3 /* SampleItem.swift */,
 			);
 			path = Sample;
+			sourceTree = "<group>";
+		};
+		ADE4458D2B87BFE900EF56A3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ADE4458E2B87BFFE00EF56A3 /* APIRequestView.swift */,
+				ADE4459C2B87CF0D00EF56A3 /* Model */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		ADE4459C2B87CF0D00EF56A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADE445902B87C0F500EF56A3 /* APIClient.swift */,
+				ADE4459A2B87CEFD00EF56A3 /* APIError.swift */,
+				ADE445962B87CEBD00EF56A3 /* APIRequest.swift */,
+				ADE445922B87C94E00EF56A3 /* UserRequest.swift */,
+				ADE445982B87CEDE00EF56A3 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +311,14 @@
 			files = (
 				ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */,
 				ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */,
+				ADE4458F2B87BFFE00EF56A3 /* APIRequestView.swift in Sources */,
+				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
+				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
+				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,
+				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
+				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
