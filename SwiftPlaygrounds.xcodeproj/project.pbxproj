@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */; };
-		ADE4455F2B87AF8E00EF56A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455E2B87AF8E00EF56A3 /* ContentView.swift */; };
-		ADE445612B87AF8E00EF56A3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445602B87AF8E00EF56A3 /* Item.swift */; };
+		ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */; };
+		ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445602B87AF8E00EF56A3 /* SampleItem.swift */; };
 		ADE445632B87AF9000EF56A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE445622B87AF9000EF56A3 /* Assets.xcassets */; };
 		ADE445662B87AF9000EF56A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE445652B87AF9000EF56A3 /* Preview Assets.xcassets */; };
 		ADE445722B87AF9000EF56A3 /* SwiftPlaygroundsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445712B87AF9000EF56A3 /* SwiftPlaygroundsTests.swift */; };
 		ADE4457C2B87AF9000EF56A3 /* SwiftPlaygroundsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4457B2B87AF9000EF56A3 /* SwiftPlaygroundsUITests.swift */; };
 		ADE4457E2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4457D2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift */; };
+		ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4458B2B87B14C00EF56A3 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +38,8 @@
 /* Begin PBXFileReference section */
 		ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsApp.swift; sourceTree = "<group>"; };
-		ADE4455E2B87AF8E00EF56A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		ADE445602B87AF8E00EF56A3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
+		ADE445602B87AF8E00EF56A3 /* SampleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleItem.swift; sourceTree = "<group>"; };
 		ADE445622B87AF9000EF56A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADE445652B87AF9000EF56A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftPlaygrounds.entitlements; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		ADE445772B87AF9000EF56A3 /* SwiftPlaygroundsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPlaygroundsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE4457B2B87AF9000EF56A3 /* SwiftPlaygroundsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsUITests.swift; sourceTree = "<group>"; };
 		ADE4457D2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ADE4458B2B87B14C00EF56A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */,
-				ADE4455E2B87AF8E00EF56A3 /* ContentView.swift */,
-				ADE445602B87AF8E00EF56A3 /* Item.swift */,
+				ADE4458B2B87B14C00EF56A3 /* ContentView.swift */,
+				ADE4458A2B87B0E900EF56A3 /* Sample */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
 				ADE445682B87AF9000EF56A3 /* Info.plist */,
@@ -132,6 +134,15 @@
 				ADE4457D2B87AF9000EF56A3 /* SwiftPlaygroundsUITestsLaunchTests.swift */,
 			);
 			path = SwiftPlaygroundsUITests;
+			sourceTree = "<group>";
+		};
+		ADE4458A2B87B0E900EF56A3 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */,
+				ADE445602B87AF8E00EF56A3 /* SampleItem.swift */,
+			);
+			path = Sample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +275,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADE4455F2B87AF8E00EF56A3 /* ContentView.swift in Sources */,
-				ADE445612B87AF8E00EF56A3 /* Item.swift in Sources */,
+				ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */,
+				ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */,
+				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  SampleItem.swift
 //  SwiftPlaygrounds
 //
 //  Created by Hiromu Nakano on 2024/02/23.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Item {
+final class SampleItem {
     var timestamp: Date
     
     init(timestamp: Date) {

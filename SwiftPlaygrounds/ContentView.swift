@@ -6,50 +6,65 @@
 //
 
 import SwiftUI
-import SwiftData
+
+enum Sidebar: String, Identifiable, CaseIterable {
+    case all
+    case sample
+    case api
+
+    var id: Self {
+        self
+    }
+
+    var contents: [Content] {
+        switch self {
+        case .all:
+            return Content.allCases
+        case .sample:
+            return [.sampleContent]
+        case .api:
+            return [.api]
+        }
+    }
+}
+
+enum Content: String, Identifiable, CaseIterable {
+    case sampleContent
+    case api
+
+    var id: Self {
+        self
+    }
+
+    @ViewBuilder
+    var detail: some View {
+        switch self {
+        case .sampleContent:
+            SampleContentView()
+        case .api:
+            Text("TODO: APIClient")
+        }
+    }
+}
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var sidebar: Sidebar?
+    @State private var content: Content?
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+            List(Sidebar.allCases, selection: $sidebar) {
+                Text($0.rawValue)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+        } content: {
+            if let sidebar {
+                List(sidebar.contents, selection: $content) {
+                    Text($0.rawValue)
                 }
             }
         } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            if let content {
+                content.detail
             }
         }
     }
@@ -57,5 +72,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
