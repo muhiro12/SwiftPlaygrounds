@@ -2,7 +2,7 @@
 //  SwiftPlaygroundsApp.swift
 //  SwiftPlaygrounds
 //
-//  Created by Hiromu Nakano on 2022/01/04.
+//  Created by Hiromu Nakano on 2024/02/23.
 //
 
 import SwiftUI
@@ -10,16 +10,23 @@ import SwiftData
 
 @main
 struct SwiftPlaygroundsApp: App {
-    private let container = {
-        let url = URL.applicationSupportDirectory.appendingPathComponent("SwiftPlaygrounds.sqlite")
-        let configuration = ModelConfiguration(url: url)
-        return try! ModelContainer(for: Item.self, configurations: configuration)
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Item.self,
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
     }()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(container)
+        .modelContainer(sharedModelContainer)
     }
 }

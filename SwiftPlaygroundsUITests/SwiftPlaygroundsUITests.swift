@@ -2,12 +2,12 @@
 //  SwiftPlaygroundsUITests.swift
 //  SwiftPlaygroundsUITests
 //
-//  Created by Hiromu Nakano on 2022/01/04.
+//  Created by Hiromu Nakano on 2024/02/23.
 //
 
 import XCTest
 
-class SwiftPlaygroundsUITests: XCTestCase {
+final class SwiftPlaygroundsUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,7 +27,6 @@ class SwiftPlaygroundsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 

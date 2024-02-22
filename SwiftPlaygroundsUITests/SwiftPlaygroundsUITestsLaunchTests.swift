@@ -2,12 +2,12 @@
 //  SwiftPlaygroundsUITestsLaunchTests.swift
 //  SwiftPlaygroundsUITests
 //
-//  Created by Hiromu Nakano on 2022/01/04.
+//  Created by Hiromu Nakano on 2024/02/23.
 //
 
 import XCTest
 
-class SwiftPlaygroundsUITestsLaunchTests: XCTestCase {
+final class SwiftPlaygroundsUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
