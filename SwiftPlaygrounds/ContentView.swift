@@ -48,19 +48,21 @@ enum Content: String, Identifiable, CaseIterable {
 }
 
 struct ContentView: View {
-    @State private var sidebar: Sidebar?
-    @State private var content: Content?
+    @State private var sidebar: Sidebar? = .all
+    @State private var content: Content? = Content.allCases.last
 
     var body: some View {
         NavigationSplitView {
             List(Sidebar.allCases, selection: $sidebar) {
                 Text($0.rawValue)
             }
+            .navigationTitle(String(describing: type(of: self)))
         } content: {
             if let sidebar {
                 List(sidebar.contents, selection: $content) {
                     Text($0.rawValue)
                 }
+                .navigationTitle(sidebar.rawValue)
             }
         } detail: {
             if let content {
