@@ -13,16 +13,21 @@ struct APIRequestView: View {
     var body: some View {
         VStack {
             List(userList) { user in
-                Text(user.name)
-                    .foregroundStyle({ () -> Color in
-                        switch user.gender {
-                        case .male: return .blue
-                        case .female: return .red
-                        case .other: return .green
-                        }
-                    }())
+                HStack {
+                    Text(user.name)
+                    Spacer()
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle({ () -> Color in
+                            switch user.gender {
+                            case .male: return .blue
+                            case .female: return .red
+                            case .other: return .green
+                            }
+                        }())
+                }
             }
-            Button("Execute") {
+            Button("Reload") {
                 Task {
                     do {
                         userList = []
@@ -32,6 +37,8 @@ struct APIRequestView: View {
                     }
                 }
             }
+        }.task {
+            userList = UserListRequest().expected
         }
     }
 }
