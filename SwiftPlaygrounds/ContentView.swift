@@ -65,6 +65,7 @@ struct ContentView: View {
         } detail: {
             if let content {
                 content.detail
+                    .navigationTitle(content.rawValue)
             }
         }
     }

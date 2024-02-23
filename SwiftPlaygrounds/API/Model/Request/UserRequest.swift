@@ -15,6 +15,6 @@ struct UserRequest: APIRequest {
     let apiClient = APIClient()
     
     var expected: User {
-        .init(name: name)
+        UserListRequest().expected.randomElement() ?? .init(name: "", gender: .other)
     }
 }

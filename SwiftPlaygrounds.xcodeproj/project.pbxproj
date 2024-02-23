@@ -22,6 +22,8 @@
 		ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445962B87CEBD00EF56A3 /* APIRequest.swift */; };
 		ADE445992B87CEDE00EF56A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445982B87CEDE00EF56A3 /* User.swift */; };
 		ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4459A2B87CEFD00EF56A3 /* APIError.swift */; };
+		ADE4459F2B8814CC00EF56A3 /* UserListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */; };
+		ADE445A12B8817CE00EF56A3 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A02B8817CE00EF56A3 /* Gender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		ADE445962B87CEBD00EF56A3 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		ADE445982B87CEDE00EF56A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ADE4459A2B87CEFD00EF56A3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRequest.swift; sourceTree = "<group>"; };
+		ADE445A02B8817CE00EF56A3 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,10 +177,20 @@
 				ADE445902B87C0F500EF56A3 /* APIClient.swift */,
 				ADE4459A2B87CEFD00EF56A3 /* APIError.swift */,
 				ADE445962B87CEBD00EF56A3 /* APIRequest.swift */,
-				ADE445922B87C94E00EF56A3 /* UserRequest.swift */,
 				ADE445982B87CEDE00EF56A3 /* User.swift */,
+				ADE445A02B8817CE00EF56A3 /* Gender.swift */,
+				ADE4459D2B8814B000EF56A3 /* Request */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ADE4459D2B8814B000EF56A3 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				ADE445922B87C94E00EF56A3 /* UserRequest.swift */,
+				ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,11 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADE445A12B8817CE00EF56A3 /* Gender.swift in Sources */,
 				ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */,
 				ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */,
 				ADE4458F2B87BFFE00EF56A3 /* APIRequestView.swift in Sources */,
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
+				ADE4459F2B8814CC00EF56A3 /* UserListRequest.swift in Sources */,
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
 				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,

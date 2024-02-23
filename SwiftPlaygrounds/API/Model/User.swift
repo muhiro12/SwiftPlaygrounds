@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable {
     let id: String = UUID().uuidString
     let name: String
+    let gender: Gender
     let followingCount: Int = Int.random(in: 0...10000)
     let followersCount: Int = Int.random(in: 0...10000)
 }

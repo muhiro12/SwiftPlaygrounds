@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct APIRequestView: View {
-    @State private var user: User?
+    @State private var userList: [User] = []
 
     var body: some View {
         VStack {
-            Text(user?.name ?? "")
+            List(userList) { user in
+                Text(user.name)
+                    .foregroundStyle({ () -> Color in
+                        switch user.gender {
+                        case .male: return .blue
+                        case .female: return .red
+                        case .other: return .green
+                        }
+                    }())
+            }
             Button("Execute") {
                 Task {
                     do {
-                        user = nil
-                        user = try await UserRequest(name: "Apple").execute()
+                        userList = []
+                        userList = try await UserListRequest().execute()
                     } catch {
                         print(error)
                     }
