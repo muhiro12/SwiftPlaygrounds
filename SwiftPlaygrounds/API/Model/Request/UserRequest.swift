@@ -8,13 +8,13 @@
 import Foundation
 
 struct UserRequest: APIRequest {
-    typealias Response = User
+    typealias Response = User?
 
-    let name: String
+    let id: String
 
     let apiClient = APIClient()
     
-    var expected: User {
-        UserListRequest().expected.randomElement() ?? .init(name: "", gender: .other)
+    var expected: User? {
+        UserListRequest().expected.first { $0.id == id }
     }
 }

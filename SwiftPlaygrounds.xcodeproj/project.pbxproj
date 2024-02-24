@@ -24,6 +24,8 @@
 		ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4459A2B87CEFD00EF56A3 /* APIError.swift */; };
 		ADE4459F2B8814CC00EF56A3 /* UserListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */; };
 		ADE445A12B8817CE00EF56A3 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A02B8817CE00EF56A3 /* Gender.swift */; };
+		ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */; };
+		ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		ADE4459A2B87CEFD00EF56A3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRequest.swift; sourceTree = "<group>"; };
 		ADE445A02B8817CE00EF56A3 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundsError.swift; sourceTree = "<group>"; };
+		ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 				ADE4458B2B87B14C00EF56A3 /* ContentView.swift */,
 				ADE4458A2B87B0E900EF56A3 /* Sample */,
 				ADE4458D2B87BFE900EF56A3 /* API */,
+				ADE445A52B8A47C900EF56A3 /* Common */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
 				ADE445682B87AF9000EF56A3 /* Info.plist */,
@@ -191,6 +196,15 @@
 				ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		ADE445A52B8A47C900EF56A3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */,
+				ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +346,8 @@
 				ADE4459F2B8814CC00EF56A3 /* UserListRequest.swift in Sources */,
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
+				ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */,
+				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
 				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,
 				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
