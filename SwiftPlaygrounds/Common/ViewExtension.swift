@@ -13,4 +13,14 @@ extension View {
                                  set: { _ in error.wrappedValue = nil }),
               error: error.wrappedValue) {}
     }
+
+    func progress(isLoading: Binding<Bool>) -> some View {
+        ZStack {
+            self
+            if isLoading.wrappedValue {
+                ProgressView()
+                    .scaleEffect(2)
+            }
+        }
+    }
 }

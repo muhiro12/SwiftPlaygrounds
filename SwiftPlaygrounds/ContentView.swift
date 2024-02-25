@@ -9,8 +9,9 @@ import SwiftUI
 
 enum Sidebar: String, Identifiable, CaseIterable {
     case all
-    case sample
+    case modifier
     case api
+    case sample
 
     var id: Self {
         self
@@ -20,17 +21,20 @@ enum Sidebar: String, Identifiable, CaseIterable {
         switch self {
         case .all:
             return Content.allCases
-        case .sample:
-            return [.sampleContent]
+        case .modifier:
+            return [.modifier]
         case .api:
             return [.apiRequest]
+        case .sample:
+            return [.sampleContent]
         }
     }
 }
 
 enum Content: String, Identifiable, CaseIterable {
-    case sampleContent
+    case modifier
     case apiRequest
+    case sampleContent
 
     var id: Self {
         self
@@ -39,17 +43,19 @@ enum Content: String, Identifiable, CaseIterable {
     @ViewBuilder
     var detail: some View {
         switch self {
-        case .sampleContent:
-            SampleContentView()
+        case .modifier:
+            ModifierView()
         case .apiRequest:
             APIRequestView()
+        case .sampleContent:
+            SampleContentView()
         }
     }
 }
 
 struct ContentView: View {
     @State private var sidebar: Sidebar? = .all
-    @State private var content: Content? = Content.allCases.last
+    @State private var content: Content? = Content.allCases.first
 
     var body: some View {
         NavigationSplitView {

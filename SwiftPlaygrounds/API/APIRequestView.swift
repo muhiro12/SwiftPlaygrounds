@@ -13,7 +13,6 @@ struct APIRequestView: View {
     @State private var error: PlaygroundsError?
 
     var body: some View {
-        ZStack {
             VStack {
                 List(userList) { user in
                     HStack {
@@ -31,11 +30,6 @@ struct APIRequestView: View {
                     }
                 }
             }
-            if isLoading {
-                ProgressView()
-                    .scaleEffect(2)
-            }
-        }
         .toolbar {
             ToolbarItem {
                 Button {
@@ -54,6 +48,7 @@ struct APIRequestView: View {
                 }
             }
         }
+        .progress(isLoading: $isLoading)
         .alert(error: $error)
         .task {
             userList = UserListRequest().expected

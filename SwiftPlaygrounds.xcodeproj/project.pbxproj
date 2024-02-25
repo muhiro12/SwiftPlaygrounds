@@ -26,6 +26,7 @@
 		ADE445A12B8817CE00EF56A3 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A02B8817CE00EF56A3 /* Gender.swift */; };
 		ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */; };
 		ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */; };
+		ADE445AE2B8AE0BF00EF56A3 /* ModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		ADE445A02B8817CE00EF56A3 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundsError.swift; sourceTree = "<group>"; };
 		ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +124,9 @@
 			children = (
 				ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */,
 				ADE4458B2B87B14C00EF56A3 /* ContentView.swift */,
-				ADE4458A2B87B0E900EF56A3 /* Sample */,
+				ADE445AA2B8AE08800EF56A3 /* Modifier */,
 				ADE4458D2B87BFE900EF56A3 /* API */,
+				ADE4458A2B87B0E900EF56A3 /* Sample */,
 				ADE445A52B8A47C900EF56A3 /* Common */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
@@ -205,6 +208,14 @@
 				ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		ADE445AA2B8AE08800EF56A3 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */,
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +354,7 @@
 				ADE4458F2B87BFFE00EF56A3 /* APIRequestView.swift in Sources */,
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
+				ADE445AE2B8AE0BF00EF56A3 /* ModifierView.swift in Sources */,
 				ADE4459F2B8814CC00EF56A3 /* UserListRequest.swift in Sources */,
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,

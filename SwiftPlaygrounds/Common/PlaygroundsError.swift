@@ -8,6 +8,10 @@
 import Foundation
 
 struct PlaygroundsError: LocalizedError {
+    init() {
+        self.error = NSError(domain: "", code: -1)
+    }
+
     init(from error: Error) {
         self.error = error
     }
