@@ -27,6 +27,9 @@
 		ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */; };
 		ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */; };
 		ADE445AE2B8AE0BF00EF56A3 /* ModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */; };
+		ADE445B22B8B544C00EF56A3 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B12B8B544C00EF56A3 /* UserView.swift */; };
+		ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B32B8B554A00EF56A3 /* ServerData.swift */; };
+		ADE445B62B8B586D00EF56A3 /* UserFollowRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundsError.swift; sourceTree = "<group>"; };
 		ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierView.swift; sourceTree = "<group>"; };
+		ADE445B12B8B544C00EF56A3 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		ADE445B32B8B554A00EF56A3 /* ServerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
+		ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +130,8 @@
 			children = (
 				ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */,
 				ADE4458B2B87B14C00EF56A3 /* ContentView.swift */,
-				ADE445AA2B8AE08800EF56A3 /* Modifier */,
 				ADE4458D2B87BFE900EF56A3 /* API */,
+				ADE445AA2B8AE08800EF56A3 /* Modifier */,
 				ADE4458A2B87B0E900EF56A3 /* Sample */,
 				ADE445A52B8A47C900EF56A3 /* Common */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
@@ -174,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				ADE4458E2B87BFFE00EF56A3 /* APIRequestView.swift */,
+				ADE445B12B8B544C00EF56A3 /* UserView.swift */,
 				ADE4459C2B87CF0D00EF56A3 /* Model */,
 			);
 			path = API;
@@ -183,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				ADE445902B87C0F500EF56A3 /* APIClient.swift */,
+				ADE445B32B8B554A00EF56A3 /* ServerData.swift */,
 				ADE4459A2B87CEFD00EF56A3 /* APIError.swift */,
 				ADE445962B87CEBD00EF56A3 /* APIRequest.swift */,
 				ADE445982B87CEDE00EF56A3 /* User.swift */,
@@ -197,6 +205,7 @@
 			children = (
 				ADE445922B87C94E00EF56A3 /* UserRequest.swift */,
 				ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */,
+				ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -351,6 +360,7 @@
 				ADE445A12B8817CE00EF56A3 /* Gender.swift in Sources */,
 				ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */,
 				ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */,
+				ADE445B22B8B544C00EF56A3 /* UserView.swift in Sources */,
 				ADE4458F2B87BFFE00EF56A3 /* APIRequestView.swift in Sources */,
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
@@ -359,8 +369,10 @@
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
 				ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */,
+				ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */,
 				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
 				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,
+				ADE445B62B8B586D00EF56A3 /* UserFollowRequest.swift in Sources */,
 				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
 			);

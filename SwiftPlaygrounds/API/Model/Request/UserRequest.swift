@@ -15,6 +15,6 @@ struct UserRequest: APIRequest {
     let apiClient = APIClient()
     
     var expected: User? {
-        UserListRequest().expected.first { $0.id == id }
+        ServerData.userList.first { $0.id == id }
     }
 }

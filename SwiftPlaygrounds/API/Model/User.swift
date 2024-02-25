@@ -8,9 +8,9 @@
 import Foundation
 
 struct User: Identifiable {
-    let id: String = UUID().uuidString
-    let name: String
-    let gender: Gender
-    let followingCount: Int = Int.random(in: 0...10000)
-    let followersCount: Int = Int.random(in: 0...10000)
+    var id: String = UUID().uuidString
+    var name: String
+    var gender: Gender
+    var followingCount: Int = Int.random(in: 0...10000)
+    var followersCount: Int = Int.random(in: 0...10000)
 }
