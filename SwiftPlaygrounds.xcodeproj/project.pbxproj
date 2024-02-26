@@ -29,11 +29,12 @@
 		ADE445AE2B8AE0BF00EF56A3 /* ModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */; };
 		ADE445B22B8B544C00EF56A3 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B12B8B544C00EF56A3 /* UserView.swift */; };
 		ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B32B8B554A00EF56A3 /* ServerData.swift */; };
-		ADE445B62B8B586D00EF56A3 /* UserFollowRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */; };
+		ADE445B62B8B586D00EF56A3 /* UserLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B52B8B586D00EF56A3 /* UserLikeRequest.swift */; };
 		ADE445B82B8BF98F00EF56A3 /* CurrentUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B72B8BF98F00EF56A3 /* CurrentUserRequest.swift */; };
 		ADE445BA2B8BF9D900EF56A3 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B92B8BF9D900EF56A3 /* EmptyResponse.swift */; };
 		ADE445BC2B8C21EB00EF56A3 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */; };
 		ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BD2B8C229200EF56A3 /* StringExtension.swift */; };
+		ADE445C02B8C290600EF56A3 /* UserDislikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BF2B8C290600EF56A3 /* UserDislikeRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,11 +82,12 @@
 		ADE445AD2B8AE0BF00EF56A3 /* ModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierView.swift; sourceTree = "<group>"; };
 		ADE445B12B8B544C00EF56A3 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		ADE445B32B8B554A00EF56A3 /* ServerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
-		ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowRequest.swift; sourceTree = "<group>"; };
+		ADE445B52B8B586D00EF56A3 /* UserLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRequest.swift; sourceTree = "<group>"; };
 		ADE445B72B8BF98F00EF56A3 /* CurrentUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserRequest.swift; sourceTree = "<group>"; };
 		ADE445B92B8BF9D900EF56A3 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		ADE445BD2B8C229200EF56A3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		ADE445BF2B8C290600EF56A3 /* UserDislikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDislikeRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +217,8 @@
 				ADE445B72B8BF98F00EF56A3 /* CurrentUserRequest.swift */,
 				ADE445922B87C94E00EF56A3 /* UserRequest.swift */,
 				ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */,
-				ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */,
+				ADE445B52B8B586D00EF56A3 /* UserLikeRequest.swift */,
+				ADE445BF2B8C290600EF56A3 /* UserDislikeRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -386,7 +389,8 @@
 				ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */,
 				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
 				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,
-				ADE445B62B8B586D00EF56A3 /* UserFollowRequest.swift in Sources */,
+				ADE445B62B8B586D00EF56A3 /* UserLikeRequest.swift in Sources */,
+				ADE445C02B8C290600EF56A3 /* UserDislikeRequest.swift in Sources */,
 				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
 				ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */,

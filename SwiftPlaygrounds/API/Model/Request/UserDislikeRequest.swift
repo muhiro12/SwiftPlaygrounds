@@ -1,13 +1,13 @@
 //
-//  UserFollowRequest.swift
+//  UserDislikeRequest.swift
 //  SwiftPlaygrounds
 //
-//  Created by Hiromu Nakano on 2024/02/25.
+//  Created by Hiromu Nakano on 2024/02/26.
 //
 
 import Foundation
 
-struct UserFollowRequest: APIRequest {
+struct UserDislikeRequest: APIRequest {
     typealias Response = EmptyResponse
 
     let id: String
@@ -22,8 +22,8 @@ struct UserFollowRequest: APIRequest {
         ServerData.userList[index] = User(id: user.id,
                                           name: user.name,
                                           gender: user.gender,
-                                          followingCount: user.followingCount,
-                                          followersCount: user.followersCount + Int.random(in: 10...100))
+                                          likeCount: user.likeCount,
+                                          dislikeCount: user.dislikeCount + Int.random(in: 1...10))
         return .init()
     }
 }

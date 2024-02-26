@@ -23,27 +23,36 @@ struct UserView: View {
             Text(optional: user?.id)
             Text(optional: user?.name)
             Text(optional: user?.gender.rawValue)
-            Text(optional: user?.followingCount.description)
-            Text(optional: user?.followersCount.description)
+            Text(optional: user?.likeCount.description)
+            Text(optional: user?.dislikeCount.description)
         }
         .toolbar {
-            ToolbarItem {
+            if let user {
                 Button {
                     Task {
-                        guard let user else {
-                            return
-                        }
-
                         isLoading = true
                         do {
-                            _ = try await UserFollowRequest(id: user.id).execute()
+                            _ = try await UserLikeRequest(id: user.id).execute()
                         } catch {
                             self.error = .init(from: error)
                         }
                         isLoading = false
                     }
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: "hand.thumbsup")
+                }
+                Button {
+                    Task {
+                        isLoading = true
+                        do {
+                            _ = try await UserDislikeRequest(id: user.id).execute()
+                        } catch {
+                            self.error = .init(from: error)
+                        }
+                        isLoading = false
+                    }
+                } label: {
+                    Image(systemName: "hand.thumbsdown")
                 }
             }
         }

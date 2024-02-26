@@ -28,9 +28,9 @@ struct APIRequestView: View {
                 Text(user.name)
                     .fontWeight(currentUser == user ? .bold : nil)
                 Spacer()
-                Text(user.followingCount.description)
+                Text(user.likeCount.description)
                     .frame(width: 48)
-                Text(user.followersCount.description)
+                Text(user.dislikeCount.description)
                     .frame(width: 48)
             }
         }
