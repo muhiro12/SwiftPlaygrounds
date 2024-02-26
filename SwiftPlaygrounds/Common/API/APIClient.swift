@@ -9,7 +9,7 @@ import Foundation
 
 struct APIClient {
     func execute<Request: APIRequest>(_ request: Request) async throws -> Request.Response {
-        let statusCode = Int.random(in: 200...420)
+        let statusCode = Int.random(in: 200...410)
         let delay = Double.random(in: 0...3)
 
         do {
@@ -18,11 +18,11 @@ struct APIClient {
             throw APIError.undefined
         }
 
-        if delay <= 0.2 {
+        if delay <= 0.1 {
             throw APIError.offline
         }
 
-        if 2.8 <= delay {
+        if 2.9 <= delay {
             throw APIError.timeout
         }
 
