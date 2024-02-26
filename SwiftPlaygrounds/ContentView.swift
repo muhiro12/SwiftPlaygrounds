@@ -99,7 +99,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(Sidebar.allCases, selection: $sidebar) {
+            List((Sidebar.allCases.dropFirst() + [.all]).reversed(), selection: $sidebar) {
                 Text($0.rawValue)
             }
             .navigationTitle(String(describing: type(of: self)))
