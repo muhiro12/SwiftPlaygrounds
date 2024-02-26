@@ -15,12 +15,20 @@ final class CollectionViewController: UIViewController {
         case verticalScroll
     }
 
+    var isParent = true
+    var scrollDirection = UICollectionView.ScrollDirection.vertical
+
     @IBOutlet private weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = scrollDirection
+        }
+
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 }
@@ -42,15 +50,45 @@ extension CollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.backgroundColor = {
-            switch Section(rawValue: indexPath.section) {
-            case .simple: .init(red: 1, green: 0.5, blue: 0.5, alpha: 1)
-            case .pallet: .init(red: 0.5, green: 1, blue: 0.5, alpha: 1)
-            case .horizontalScroll: .init(red: 0.5, green: 0.5, blue: 1, alpha: 1)
-            case .verticalScroll: .init(red: 1, green: 1, blue: 0.5, alpha: 1)
-            case .none: nil
+        let section = Section(rawValue: indexPath.section)
+
+        let addChild: (Bool) -> Void = {
+            let vc = UIStoryboard(name: "Collection", bundle: nil).instantiateInitialViewController()! as CollectionViewController
+            vc.isParent = false
+            vc.scrollDirection = $0 ? .vertical : .horizontal
+
+            self.addChild(vc)
+
+            let view = vc.view!
+            view.translatesAutoresizingMaskIntoConstraints = false
+
+            let cellView = cell.contentView
+
+            cellView.addSubview(view)
+            cellView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            cellView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            cellView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            cellView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+
+        switch section {
+        case .simple:
+            cell.backgroundColor = .init(red: 1, green: 0.5, blue: 0.5, alpha: 1)
+        case .pallet:
+            cell.backgroundColor = .init(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+        case .horizontalScroll:
+            cell.backgroundColor = .init(red: 0.5, green: 0.5, blue: 1, alpha: 1)
+            if isParent {
+                addChild(false)
             }
-        }()
+        case .verticalScroll:
+            cell.backgroundColor = .init(red: 1, green: 1, blue: 0.5, alpha: 1)
+            if isParent {
+                addChild(true)
+            }
+        case .none:
+            break
+        }
         return cell
     }
 }
