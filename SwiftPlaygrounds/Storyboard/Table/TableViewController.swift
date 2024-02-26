@@ -53,6 +53,7 @@ extension TableViewController: UITableViewDelegate {
 struct TableView: View {
     var body: some View {
         ViewControllerRepresentable("Table")
+            .ignoresSafeArea()
     }
 }
 
