@@ -100,20 +100,20 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             List((Sidebar.allCases.dropFirst() + [.all]).reversed(), selection: $sidebar) {
-                Text($0.rawValue)
+                Text($0.rawValue.camelCased())
             }
             .navigationTitle(String(describing: type(of: self)))
         } content: {
             if let sidebar {
                 List(sidebar.contents, selection: $content) {
-                    Text($0.rawValue)
+                    Text($0.rawValue.camelCased())
                 }
-                .navigationTitle(sidebar.rawValue)
+                .navigationTitle(sidebar.rawValue.camelCased())
             }
         } detail: {
             if let content {
                 content.detail
-                    .navigationTitle(content.rawValue)
+                    .navigationTitle(content.rawValue.camelCased())
             }
         }
     }
