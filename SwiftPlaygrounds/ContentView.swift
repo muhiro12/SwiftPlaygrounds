@@ -38,7 +38,8 @@ enum Sidebar: String, Identifiable, CaseIterable {
                     .publishedUserList,
                     .publishedUser]
         case .storyboard:
-            return [.storyboard]
+            return [.storyboard,
+                    .table]
         }
     }
 }
@@ -55,6 +56,7 @@ enum Content: String, Identifiable, CaseIterable {
     case publishedUserList
     case publishedUser
     case storyboard
+    case table
 
     var id: Self {
         self
@@ -85,6 +87,8 @@ enum Content: String, Identifiable, CaseIterable {
             PublishedUserView()
         case .storyboard:
             StoryboardView()
+        case .table:
+            TableView()
         }
     }
 }
