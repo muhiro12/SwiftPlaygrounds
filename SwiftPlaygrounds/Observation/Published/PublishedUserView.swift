@@ -1,5 +1,5 @@
 //
-//  ObservationUserView.swift
+//  PublishedUserView.swift
 //  SwiftPlaygrounds
 //
 //  Created by Hiromu Nakano on 2024/02/26.
@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct ObservationUserView: View {
+struct PublishedUserView: View {
     var userID: User.ID?
 
     @Environment(\.dismiss)
     private var dismiss
 
-    @State private var store = ObservationUserStore.shared
+    private let store = PublishedUserStore.shared
+
     @State private var isLoading = false
     @State private var error: PlaygroundsError?
 
@@ -75,8 +76,7 @@ struct ObservationUserView: View {
 }
 
 #Preview {
-    NavigationStack {
-        ObservationUserView()
+    NavigationView {
+        PublishedUserView()
     }
 }
-

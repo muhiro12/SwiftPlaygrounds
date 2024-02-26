@@ -1,14 +1,16 @@
 //
-//  ObservationUserListView.swift
+//  PublishedUserListView.swift
 //  SwiftPlaygrounds
 //
 //  Created by Hiromu Nakano on 2024/02/26.
 //
 
+
 import SwiftUI
 
-struct ObservationUserListView: View {
-    @State private var store = ObservationUserStore.shared
+struct PublishedUserListView: View {
+    private let store = PublishedUserStore.shared
+
     @State private var selectedUserID: User.ID?
     @State private var isCurrentUserPresented = false
     @State private var isLoading = false
@@ -48,12 +50,12 @@ struct ObservationUserListView: View {
         }
         .sheet(isPresented: $isCurrentUserPresented) {
             NavigationStack {
-                ObservationUserView(userID: store.currentUser?.id)
+                PublishedUserView(userID: store.currentUser?.id)
             }
         }
         .sheet(item: $selectedUserID) { userID in
             NavigationStack {
-                ObservationUserView(userID: userID)
+                PublishedUserView(userID: userID)
             }
         }
         .task {
@@ -78,6 +80,7 @@ struct ObservationUserListView: View {
 
 #Preview {
     NavigationView {
-        ObservationUserListView()
+        PublishedUserListView()
     }
 }
+

@@ -1,5 +1,5 @@
 //
-//  ObservationUserStore.swift
+//  PublishedUserStore.swift
 //  SwiftPlaygrounds
 //
 //  Created by Hiromu Nakano on 2024/02/26.
@@ -7,18 +7,18 @@
 
 import Foundation
 
-@Observable final class ObservationUserStore {
-    static let shared = ObservationUserStore()
+final class PublishedUserStore {
+    static let shared = PublishedUserStore()
 
     private init() {}
 
-    private(set) var userList: [User] = []
-    private(set) var currentUser: User? {
+    @Published private(set) var userList: [User] = []
+    @Published private(set) var currentUser: User? {
         didSet {
             updateList(old: oldValue, new: currentUser)
         }
     }
-    private(set) var user: User? {
+    @Published private(set) var user: User? {
         didSet {
             updateList(old: oldValue, new: user)
         }
@@ -51,4 +51,3 @@ import Foundation
         userList = userList.replacing([old], with: [new])
     }
 }
-

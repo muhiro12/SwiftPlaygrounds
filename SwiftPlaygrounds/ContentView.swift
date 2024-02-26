@@ -31,7 +31,11 @@ enum Sidebar: String, Identifiable, CaseIterable {
                     .user]
         case .observation:
             return [.observationUserList,
-                    .observationUser]
+                    .observationUser,
+                    .observableObjectUserList,
+                    .observableObjectUser,
+                    .publishedUserList,
+                    .publishedUser]
         }
     }
 }
@@ -43,6 +47,10 @@ enum Content: String, Identifiable, CaseIterable {
     case user
     case observationUserList
     case observationUser
+    case observableObjectUserList
+    case observableObjectUser
+    case publishedUserList
+    case publishedUser
 
     var id: Self {
         self
@@ -51,18 +59,26 @@ enum Content: String, Identifiable, CaseIterable {
     @ViewBuilder
     var detail: some View {
         switch self {
-        case .observationUserList:
-            ObservationUserListView()
-        case .observationUser:
-            ObservationUserView()
+        case .sampleContent:
+            SampleContentView()
+        case .modifier:
+            ModifierView()
         case .userList:
             UserListView()
         case .user:
             UserView()
-        case .modifier:
-            ModifierView()
-        case .sampleContent:
-            SampleContentView()
+        case .observationUserList:
+            ObservationUserListView()
+        case .observationUser:
+            ObservationUserView()
+        case .observableObjectUserList:
+            ObservableObjectUserListView()
+        case .observableObjectUser:
+            ObservableObjectUserView()
+        case .publishedUserList:
+            PublishedUserListView()
+        case .publishedUser:
+            PublishedUserView()
         }
     }
 }
