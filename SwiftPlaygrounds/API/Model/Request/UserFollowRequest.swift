@@ -8,13 +8,13 @@
 import Foundation
 
 struct UserFollowRequest: APIRequest {
-    typealias Response = Empty
+    typealias Response = EmptyResponse
 
     let id: String
 
     let apiClient = APIClient()
 
-    var expected: Empty {
+    var expected: Response {
         guard let index = ServerData.userList.firstIndex(where: { $0.id == id }) else {
             return .init()
         }
@@ -23,9 +23,7 @@ struct UserFollowRequest: APIRequest {
                                           name: user.name,
                                           gender: user.gender,
                                           followingCount: user.followingCount,
-                                          followersCount: user.followersCount + Int.random(in: 100...1000))
+                                          followersCount: user.followersCount + Int.random(in: 10...100))
         return .init()
     }
 }
-
-struct Empty {}

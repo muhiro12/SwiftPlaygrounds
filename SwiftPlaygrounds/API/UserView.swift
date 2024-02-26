@@ -8,45 +8,72 @@
 import SwiftUI
 
 struct UserView: View {
-    var user: User?
+    var userID: User.ID?
+    var isPreview = false
 
+    @Environment(\.dismiss)
+    private var dismiss
+
+    @State private var user: User?
     @State private var isLoading = false
     @State private var error: PlaygroundsError?
 
     var body: some View {
-        if let user {
-            VStack(spacing: 40) {
-                Text(user.id)
-                Text(user.name)
-                Text(String(describing: user.gender))
-                Text(user.followingCount.description)
-                Text(user.followersCount.description)
-            }
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        Task {
-                            isLoading = true
-                            do {
-                                _ = try await UserFollowRequest(id: user.id).execute()
-                            } catch {
-                                self.error = .init(from: error)
-                            }
-                            isLoading = false
+        VStack(spacing: 40) {
+            Text(optional: user?.id)
+            Text(optional: user?.name)
+            Text(optional: user?.gender.rawValue)
+            Text(optional: user?.followingCount.description)
+            Text(optional: user?.followersCount.description)
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    Task {
+                        guard let user else {
+                            return
                         }
-                    } label: {
-                        Image(systemName: "heart")
+
+                        isLoading = true
+                        do {
+                            _ = try await UserFollowRequest(id: user.id).execute()
+                        } catch {
+                            self.error = .init(from: error)
+                        }
+                        isLoading = false
                     }
+                } label: {
+                    Image(systemName: "heart")
                 }
             }
-            .progress(isLoading: $isLoading)
-            .alert(error: $error)
+        }
+        .task {
+            if isPreview {
+                user = CurrentUserRequest().expected
+                return
+            }
+
+            guard let userID else {
+                return
+            }
+
+            isLoading = true
+            do {
+                self.user = try await UserRequest(id: userID).execute()
+            } catch {
+                self.error = .init(from: error)
+            }
+            isLoading = false
+        }
+        .progress(isLoading: $isLoading)
+        .alert(error: $error) {
+            dismiss()
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        UserView(user: .init(name: "Name", gender: .other))
+        UserView(isPreview: true)
     }
 }

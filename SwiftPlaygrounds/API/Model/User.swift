@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Hashable {
     var id: String = UUID().uuidString
     var name: String
     var gender: Gender
-    var followingCount: Int = Int.random(in: 0...10000)
-    var followersCount: Int = Int.random(in: 0...10000)
+    var followingCount: Int = Int.random(in: 0...1000)
+    var followersCount: Int = Int.random(in: 0...1000)
 }

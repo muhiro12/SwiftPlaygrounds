@@ -30,6 +30,10 @@
 		ADE445B22B8B544C00EF56A3 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B12B8B544C00EF56A3 /* UserView.swift */; };
 		ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B32B8B554A00EF56A3 /* ServerData.swift */; };
 		ADE445B62B8B586D00EF56A3 /* UserFollowRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */; };
+		ADE445B82B8BF98F00EF56A3 /* CurrentUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B72B8BF98F00EF56A3 /* CurrentUserRequest.swift */; };
+		ADE445BA2B8BF9D900EF56A3 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445B92B8BF9D900EF56A3 /* EmptyResponse.swift */; };
+		ADE445BC2B8C21EB00EF56A3 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */; };
+		ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BD2B8C229200EF56A3 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,10 @@
 		ADE445B12B8B544C00EF56A3 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		ADE445B32B8B554A00EF56A3 /* ServerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
 		ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowRequest.swift; sourceTree = "<group>"; };
+		ADE445B72B8BF98F00EF56A3 /* CurrentUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserRequest.swift; sourceTree = "<group>"; };
+		ADE445B92B8BF9D900EF56A3 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
+		ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
+		ADE445BD2B8C229200EF56A3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,7 @@
 				ADE445962B87CEBD00EF56A3 /* APIRequest.swift */,
 				ADE445982B87CEDE00EF56A3 /* User.swift */,
 				ADE445A02B8817CE00EF56A3 /* Gender.swift */,
+				ADE445B92B8BF9D900EF56A3 /* EmptyResponse.swift */,
 				ADE4459D2B8814B000EF56A3 /* Request */,
 			);
 			path = Model;
@@ -203,6 +212,7 @@
 		ADE4459D2B8814B000EF56A3 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				ADE445B72B8BF98F00EF56A3 /* CurrentUserRequest.swift */,
 				ADE445922B87C94E00EF56A3 /* UserRequest.swift */,
 				ADE4459E2B8814CC00EF56A3 /* UserListRequest.swift */,
 				ADE445B52B8B586D00EF56A3 /* UserFollowRequest.swift */,
@@ -214,7 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				ADE445A62B8A47E600EF56A3 /* PlaygroundsError.swift */,
+				ADE445BD2B8C229200EF56A3 /* StringExtension.swift */,
 				ADE445A82B8A5B4800EF56A3 /* ViewExtension.swift */,
+				ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -365,7 +377,9 @@
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
 				ADE445AE2B8AE0BF00EF56A3 /* ModifierView.swift in Sources */,
+				ADE445BA2B8BF9D900EF56A3 /* EmptyResponse.swift in Sources */,
 				ADE4459F2B8814CC00EF56A3 /* UserListRequest.swift in Sources */,
+				ADE445BC2B8C21EB00EF56A3 /* TextExtension.swift in Sources */,
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
 				ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */,
@@ -375,6 +389,8 @@
 				ADE445B62B8B586D00EF56A3 /* UserFollowRequest.swift in Sources */,
 				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
+				ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */,
+				ADE445B82B8BF98F00EF56A3 /* CurrentUserRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

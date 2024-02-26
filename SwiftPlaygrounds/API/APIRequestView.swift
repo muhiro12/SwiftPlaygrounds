@@ -8,77 +8,87 @@
 import SwiftUI
 
 struct APIRequestView: View {
+    var isPreview = false
+
     @State private var userList: [User] = []
-    @State private var user: User?
+    @State private var currentUser: User?
+    @State private var selectedUserID: User.ID?
+    @State private var isCurrentUserPresented = false
     @State private var isLoading = false
     @State private var error: PlaygroundsError?
 
     var body: some View {
-        VStack {
-            List(userList) { user in
-                HStack {
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(user.gender.color)
-                    Spacer()
-                        .frame(width: 16)
-                    Text(user.name)
-                    Spacer()
-                    Text(user.followingCount.description)
-                        .frame(width: 48)
-                    Text(user.followersCount.description)
-                        .frame(width: 48)
-                }
-                .onTapGesture {
-                    Task {
-                        isLoading = true
-                        do {
-                            self.user = try await UserRequest(id: user.id).execute()
-                        } catch {
-                            self.error = .init(from: error)
-                        }
-                        isLoading = false
-                    }
-                }
+        List(userList, selection: $selectedUserID) { user in
+            HStack {
+                Circle()
+                    .frame(width: 8)
+                    .foregroundStyle(user.gender.color)
+                Spacer()
+                    .frame(width: 16)
+                Text(user.name)
+                    .fontWeight(currentUser == user ? .bold : nil)
+                Spacer()
+                Text(user.followingCount.description)
+                    .frame(width: 48)
+                Text(user.followersCount.description)
+                    .frame(width: 48)
             }
         }
         .toolbar {
-            ToolbarItem {
-                Button {
-                    Task {
-                        await loadUserList()
-                    }
-                } label: {
-                    Image(systemName: "arrow.clockwise")
+            Button {
+                Task {
+                    await load()
                 }
+            } label: {
+                Image(systemName: "arrow.clockwise")
+            }
+            Button {
+                isCurrentUserPresented = true
+            } label: {
+                Image(systemName: "person.circle")
+            }
+            .disabled(currentUser == nil)
+        }
+        .sheet(isPresented: $isCurrentUserPresented) {
+            NavigationStack {
+                UserView(userID: currentUser?.id)
             }
         }
-        .sheet(item: $user) { user in
+        .sheet(item: $selectedUserID) { userID in
             NavigationStack {
-                UserView(user: user)
+                UserView(userID: userID)
             }
         }
         .task {
-            await loadUserList()
+            if isPreview {
+                currentUser = CurrentUserRequest().expected
+                userList = UserListRequest().expected
+                return
+            }
+
+            await load()
         }
         .progress(isLoading: $isLoading)
         .alert(error: $error)
     }
 
-    private func loadUserList() async {
+    private func load() async {
         isLoading = true
         do {
-            userList = try await UserListRequest().execute()
+            async let request0 = CurrentUserRequest().execute()
+            async let request1 = UserListRequest().execute()
+            let result = try await (request0, request1)
+            currentUser = result.0
+            userList = result.1
         } catch {
-            userList = []
-                self.error = .init(from: error)
+            self.error = .init(from: error)
         }
         isLoading = false
     }
 }
 
 #Preview {
-    NavigationStack {
-        APIRequestView()
+    NavigationView {
+        APIRequestView(isPreview: true)
     }
 }

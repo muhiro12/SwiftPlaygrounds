@@ -12,7 +12,7 @@ struct UserListRequest: APIRequest {
 
     let apiClient = APIClient()
 
-    var expected: [User] {
+    var expected: Response {
         ServerData.userList
     }
 }
