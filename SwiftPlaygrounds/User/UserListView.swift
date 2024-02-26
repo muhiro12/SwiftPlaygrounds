@@ -1,5 +1,5 @@
 //
-//  APIRequestView.swift
+//  UserListView.swift
 //  SwiftPlaygrounds
 //
 //  Created by Hiromu Nakano on 2024/02/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct APIRequestView: View {
+struct UserListView: View {
     var isPreview = false
 
     @State private var userList: [User] = []
@@ -89,6 +89,6 @@ struct APIRequestView: View {
 
 #Preview {
     NavigationView {
-        APIRequestView(isPreview: true)
+        UserListView(isPreview: true)
     }
 }
