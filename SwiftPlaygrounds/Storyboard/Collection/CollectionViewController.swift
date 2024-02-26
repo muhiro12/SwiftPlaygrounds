@@ -11,12 +11,9 @@ final class CollectionViewController: UIViewController {
     enum Section: Int, CaseIterable {
         case simple
         case pallet
-        case horizontalScroll
-        case verticalScroll
+        case carousel
+        case paging
     }
-
-    var isParent = true
-    var scrollDirection = UICollectionView.ScrollDirection.vertical
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
@@ -24,12 +21,6 @@ final class CollectionViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = scrollDirection
-        }
-
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 }
 
@@ -39,85 +30,80 @@ extension CollectionViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch Section(rawValue: section) {
-        case .simple: 8
-        case .pallet: 8
-        case .horizontalScroll: 1
-        case .verticalScroll: 1
-        case .none: .zero
+        let section = Section(rawValue: section)
+        switch section {
+        case .simple:
+            return 8
+        case .pallet:
+            return 8
+        case .carousel:
+            return 1
+        case .paging:
+            return 1
+        case .none:
+            return .zero
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         let section = Section(rawValue: indexPath.section)
 
-        let addChild: (Bool) -> Void = {
-            let vc = UIStoryboard(name: "Collection", bundle: nil).instantiateInitialViewController()! as CollectionViewController
-            vc.isParent = false
-            vc.scrollDirection = $0 ? .vertical : .horizontal
-
-            self.addChild(vc)
-
-            let view = vc.view!
-            view.translatesAutoresizingMaskIntoConstraints = false
-
-            let cellView = cell.contentView
-
-            cellView.addSubview(view)
-            cellView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            cellView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            cellView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            cellView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        let cell = {
+            collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
+        }
+        let carouselCell = {
+            collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
+        }
+        let pagingCell = {
+            collectionView.dequeueReusableCell(withReuseIdentifier: "PagingCollectionViewCell", for: indexPath) as! PagingCollectionViewCell
         }
 
         switch section {
         case .simple:
+            let cell = cell()
             cell.backgroundColor = .init(red: 1, green: 0.5, blue: 0.5, alpha: 1)
+            return cell
         case .pallet:
+            let cell = cell()
             cell.backgroundColor = .init(red: 0.5, green: 1, blue: 0.5, alpha: 1)
-        case .horizontalScroll:
-            cell.backgroundColor = .init(red: 0.5, green: 0.5, blue: 1, alpha: 1)
-            if isParent {
-                addChild(false)
-            }
-        case .verticalScroll:
+            return cell
+        case .carousel:
+            let cell = carouselCell()
+            cell.backgroundColor = .init(red: 0.5, green: 1, blue: 1, alpha: 1)
+            cell.configure()
+            return cell
+        case .paging:
+            let cell = pagingCell()
             cell.backgroundColor = .init(red: 1, green: 1, blue: 0.5, alpha: 1)
-            if isParent {
-                addChild(true)
-            }
+            cell.configure()
+            return cell
         case .none:
-            break
+            let cell = cell()
+            return cell
         }
-        return cell
     }
 }
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let parentSize = collectionView.window?.windowScene?.screen.bounds.size ?? .zero
-        switch Section(rawValue: indexPath.section) {
-        case .simple: return .init(width: parentSize.width, height: 40)
-        case .pallet: return .init(width: (parentSize.width / 4) - 3 * 8, height: 40)
-        case .horizontalScroll: return .init(width: parentSize.width, height: 120)
-        case .verticalScroll: return .init(width: parentSize.width, height: 400)
-        case .none: return .zero
+        let section = Section(rawValue: indexPath.section)
+
+        let width: (CGFloat) -> CGFloat = {
+            round((collectionView.bounds.width - ($0 - 1) * 16) / $0)
         }
-    }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        8
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        8
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        guard section != 0 else {
+        switch section {
+        case .simple:
+            return .init(width: width(1), height: 40)
+        case .pallet:
+            return .init(width: width(4), height: 40)
+        case .carousel:
+            return .init(width: width(1), height: 240)
+        case .paging:
+            return .init(width: width(1), height: 240)
+        case .none:
             return .zero
         }
-        return .init(width: .zero, height: 40)
     }
 }
 

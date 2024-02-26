@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0798782B8CFE0A00631472 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798772B8CFE0A00631472 /* CarouselCollectionViewCell.swift */; };
 		ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */; };
 		ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */; };
 		ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445602B87AF8E00EF56A3 /* SampleItem.swift */; };
@@ -51,6 +52,7 @@
 		ADE445E92B8C649200EF56A3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445E82B8C649200EF56A3 /* TableViewController.swift */; };
 		ADE445EC2B8C98A600EF56A3 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE445EB2B8C98A600EF56A3 /* Collection.storyboard */; };
 		ADE445EE2B8C98B400EF56A3 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445ED2B8C98B400EF56A3 /* CollectionViewController.swift */; };
+		ADE445F22B8CD75400EF56A3 /* PagingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445F12B8CD75400EF56A3 /* PagingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD0798772B8CFE0A00631472 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsApp.swift; sourceTree = "<group>"; };
 		ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		ADE445E82B8C649200EF56A3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		ADE445EB2B8C98A600EF56A3 /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
 		ADE445ED2B8C98B400EF56A3 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		ADE445F12B8CD75400EF56A3 /* PagingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +346,8 @@
 			children = (
 				ADE445EB2B8C98A600EF56A3 /* Collection.storyboard */,
 				ADE445ED2B8C98B400EF56A3 /* CollectionViewController.swift */,
+				ADE445F12B8CD75400EF56A3 /* PagingCollectionViewCell.swift */,
+				AD0798772B8CFE0A00631472 /* CarouselCollectionViewCell.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
 				ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */,
+				ADE445F22B8CD75400EF56A3 /* PagingCollectionViewCell.swift in Sources */,
 				ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */,
 				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
 				ADE445CA2B8C307100EF56A3 /* ObservationUserStore.swift in Sources */,
@@ -514,6 +521,7 @@
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
 				ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */,
 				ADE445B82B8BF98F00EF56A3 /* CurrentUserRequest.swift in Sources */,
+				AD0798782B8CFE0A00631472 /* CarouselCollectionViewCell.swift in Sources */,
 				ADE445DA2B8C52F500EF56A3 /* PublishedUserStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
