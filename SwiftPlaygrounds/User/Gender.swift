@@ -16,9 +16,9 @@ enum Gender: String {
 extension Gender {
     var color: Color {
         switch self {
-        case .male: return .blue
-        case .female: return .red
-        case .other: return .green
+        case .male: .blue
+        case .female: .red
+        case .other: .green
         }
     }
 }

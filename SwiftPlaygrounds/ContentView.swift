@@ -22,24 +22,24 @@ enum Sidebar: String, Identifiable, CaseIterable {
     var contents: [Content] {
         switch self {
         case .all:
-            return Content.allCases.reversed()
+            Content.allCases.reversed()
         case .sample:
-            return [.sampleContent]
+            [.sampleContent]
         case .modifier:
-            return [.modifier]
+            [.modifier]
         case .user:
-            return [.userList,
-                    .user]
+            [.userList,
+             .user]
         case .observation:
-            return [.observationUserList,
-                    .observationUser,
-                    .observableObjectUserList,
-                    .observableObjectUser,
-                    .publishedUserList,
-                    .publishedUser]
+            [.observationUserList,
+             .observationUser,
+             .observableObjectUserList,
+             .observableObjectUser,
+             .publishedUserList,
+             .publishedUser]
         case .storyboard:
-            return [.storyboard,
-                    .table]
+            [.storyboard,
+             .table]
         }
     }
 }
@@ -57,6 +57,7 @@ enum Content: String, Identifiable, CaseIterable {
     case publishedUser
     case storyboard
     case table
+    case collection
 
     var id: Self {
         self
@@ -89,6 +90,8 @@ enum Content: String, Identifiable, CaseIterable {
             StoryboardView()
         case .table:
             TableView()
+        case .collection:
+            CollectionView()
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class TableViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     private let userList = UserListRequest().expected
 

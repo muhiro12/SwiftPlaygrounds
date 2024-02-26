@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-final class StoryboardViewController: UIViewController {
-}
+final class StoryboardViewController: UIViewController {}
 
 struct StoryboardView: View {
     var body: some View {
