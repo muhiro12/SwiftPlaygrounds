@@ -35,6 +35,9 @@
 		ADE445BC2B8C21EB00EF56A3 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */; };
 		ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BD2B8C229200EF56A3 /* StringExtension.swift */; };
 		ADE445C02B8C290600EF56A3 /* UserDislikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445BF2B8C290600EF56A3 /* UserDislikeRequest.swift */; };
+		ADE445C62B8C2FC600EF56A3 /* ObservationUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445C52B8C2FC500EF56A3 /* ObservationUserListView.swift */; };
+		ADE445C82B8C2FD400EF56A3 /* ObservationUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445C72B8C2FD400EF56A3 /* ObservationUserView.swift */; };
+		ADE445CA2B8C307100EF56A3 /* ObservationUserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445C92B8C307100EF56A3 /* ObservationUserStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,9 @@
 		ADE445BB2B8C21EB00EF56A3 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		ADE445BD2B8C229200EF56A3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		ADE445BF2B8C290600EF56A3 /* UserDislikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDislikeRequest.swift; sourceTree = "<group>"; };
+		ADE445C52B8C2FC500EF56A3 /* ObservationUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationUserListView.swift; sourceTree = "<group>"; };
+		ADE445C72B8C2FD400EF56A3 /* ObservationUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationUserView.swift; sourceTree = "<group>"; };
+		ADE445C92B8C307100EF56A3 /* ObservationUserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationUserStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,10 +146,11 @@
 			children = (
 				ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */,
 				ADE4458B2B87B14C00EF56A3 /* ContentView.swift */,
-				ADE4458D2B87BFE900EF56A3 /* User */,
-				ADE445AA2B8AE08800EF56A3 /* Modifier */,
-				ADE4458A2B87B0E900EF56A3 /* Sample */,
 				ADE445A52B8A47C900EF56A3 /* Common */,
+				ADE4458A2B87B0E900EF56A3 /* Sample */,
+				ADE445AA2B8AE08800EF56A3 /* Modifier */,
+				ADE4458D2B87BFE900EF56A3 /* User */,
+				ADE445C42B8C2E6900EF56A3 /* Observation */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
 				ADE445682B87AF9000EF56A3 /* Info.plist */,
@@ -248,6 +255,16 @@
 				ADE4459D2B8814B000EF56A3 /* Request */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		ADE445C42B8C2E6900EF56A3 /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				ADE445C52B8C2FC500EF56A3 /* ObservationUserListView.swift */,
+				ADE445C72B8C2FD400EF56A3 /* ObservationUserView.swift */,
+				ADE445C92B8C307100EF56A3 /* ObservationUserStore.swift */,
+			);
+			path = Observation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +401,7 @@
 				ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */,
 				ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */,
 				ADE445B22B8B544C00EF56A3 /* UserView.swift in Sources */,
+				ADE445C82B8C2FD400EF56A3 /* ObservationUserView.swift in Sources */,
 				ADE4458F2B87BFFE00EF56A3 /* UserListView.swift in Sources */,
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
@@ -396,8 +414,10 @@
 				ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */,
 				ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */,
 				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
+				ADE445CA2B8C307100EF56A3 /* ObservationUserStore.swift in Sources */,
 				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,
 				ADE445B62B8B586D00EF56A3 /* UserLikeRequest.swift in Sources */,
+				ADE445C62B8C2FC600EF56A3 /* ObservationUserListView.swift in Sources */,
 				ADE445C02B8C290600EF56A3 /* UserDislikeRequest.swift in Sources */,
 				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,

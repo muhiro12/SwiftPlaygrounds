@@ -8,7 +8,7 @@
 import Foundation
 
 struct UserDislikeRequest: APIRequest {
-    typealias Response = EmptyResponse
+    typealias Response = User?
 
     let id: String
 
@@ -16,7 +16,7 @@ struct UserDislikeRequest: APIRequest {
 
     var expected: Response {
         guard let index = ServerData.userList.firstIndex(where: { $0.id == id }) else {
-            return .init()
+            return nil
         }
         let user = ServerData.userList[index]
         ServerData.userList[index] = User(id: user.id,
@@ -24,6 +24,6 @@ struct UserDislikeRequest: APIRequest {
                                           gender: user.gender,
                                           likeCount: user.likeCount,
                                           dislikeCount: user.dislikeCount + Int.random(in: 1...10))
-        return .init()
+        return ServerData.userList[index]
     }
 }
