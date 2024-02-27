@@ -58,6 +58,7 @@ enum Content: String, Identifiable, CaseIterable {
     case storyboard
     case table
     case collection
+    case compositional
 
     var id: Self {
         self
@@ -92,6 +93,8 @@ enum Content: String, Identifiable, CaseIterable {
             TableView()
         case .collection:
             CollectionView()
+        case .compositional:
+            CompositionalView()
         }
     }
 }

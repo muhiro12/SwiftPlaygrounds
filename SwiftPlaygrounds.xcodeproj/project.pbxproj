@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AD0798782B8CFE0A00631472 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798772B8CFE0A00631472 /* CarouselCollectionViewCell.swift */; };
+		AD07987C2B8D633A00631472 /* Compositional.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD07987B2B8D633A00631472 /* Compositional.storyboard */; };
+		AD07987E2B8D636900631472 /* CompositionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07987D2B8D636900631472 /* CompositionalViewController.swift */; };
 		ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */; };
 		ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */; };
 		ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445602B87AF8E00EF56A3 /* SampleItem.swift */; };
@@ -74,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		AD0798772B8CFE0A00631472 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD07987B2B8D633A00631472 /* Compositional.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Compositional.storyboard; sourceTree = "<group>"; };
+		AD07987D2B8D636900631472 /* CompositionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalViewController.swift; sourceTree = "<group>"; };
 		ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsApp.swift; sourceTree = "<group>"; };
 		ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +155,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD0798792B8D62EC00631472 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				ADE445DE2B8C5FDA00EF56A3 /* Storyboard.storyboard */,
+				ADE445DC2B8C5E6B00EF56A3 /* StoryboardViewController.swift */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		AD07987A2B8D62FE00631472 /* Compositional */ = {
+			isa = PBXGroup;
+			children = (
+				AD07987B2B8D633A00631472 /* Compositional.storyboard */,
+				AD07987D2B8D636900631472 /* CompositionalViewController.swift */,
+			);
+			path = Compositional;
+			sourceTree = "<group>";
+		};
 		ADE445502B87AF8E00EF56A3 = {
 			isa = PBXGroup;
 			children = (
@@ -324,10 +346,10 @@
 			isa = PBXGroup;
 			children = (
 				ADE445E32B8C635B00EF56A3 /* ViewControllerRepresentable.swift */,
-				ADE445DE2B8C5FDA00EF56A3 /* Storyboard.storyboard */,
-				ADE445DC2B8C5E6B00EF56A3 /* StoryboardViewController.swift */,
+				AD0798792B8D62EC00631472 /* Storyboard */,
 				ADE445E52B8C645F00EF56A3 /* Table */,
 				ADE445EA2B8C988B00EF56A3 /* Collection */,
+				AD07987A2B8D62FE00631472 /* Compositional */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -457,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE445662B87AF9000EF56A3 /* Preview Assets.xcassets in Resources */,
+				AD07987C2B8D633A00631472 /* Compositional.storyboard in Resources */,
 				ADE445632B87AF9000EF56A3 /* Assets.xcassets in Resources */,
 				ADE445DF2B8C5FDA00EF56A3 /* Storyboard.storyboard in Resources */,
 				ADE445E72B8C647F00EF56A3 /* Table.storyboard in Resources */,
@@ -511,6 +534,7 @@
 				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
 				ADE445CA2B8C307100EF56A3 /* ObservationUserStore.swift in Sources */,
 				ADE445D02B8C3F6C00EF56A3 /* ObservableObjectUserListView.swift in Sources */,
+				AD07987E2B8D636900631472 /* CompositionalViewController.swift in Sources */,
 				ADE445CC2B8C3F3E00EF56A3 /* ObservableObjectUserView.swift in Sources */,
 				ADE445DD2B8C5E6B00EF56A3 /* StoryboardViewController.swift in Sources */,
 				ADE445912B87C0F500EF56A3 /* APIClient.swift in Sources */,

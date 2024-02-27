@@ -49,32 +49,36 @@ extension CollectionViewController: UICollectionViewDataSource {
         let section = Section(rawValue: indexPath.section)
 
         let cell = {
-            collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
+            collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         }
         let carouselCell = {
-            collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
+            collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCell", for: indexPath) as! CarouselCollectionViewCell
         }
         let pagingCell = {
-            collectionView.dequeueReusableCell(withReuseIdentifier: "PagingCollectionViewCell", for: indexPath) as! PagingCollectionViewCell
+            collectionView.dequeueReusableCell(withReuseIdentifier: "PagingCell", for: indexPath) as! PagingCollectionViewCell
         }
 
         switch section {
         case .simple:
             let cell = cell()
             cell.backgroundColor = .init(red: 1, green: 0.5, blue: 0.5, alpha: 1)
+            cell.layer.cornerRadius = 4
             return cell
         case .pallet:
             let cell = cell()
             cell.backgroundColor = .init(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+            cell.layer.cornerRadius = 4
             return cell
         case .carousel:
             let cell = carouselCell()
             cell.backgroundColor = .init(red: 0.5, green: 1, blue: 1, alpha: 1)
+            cell.layer.cornerRadius = 4
             cell.configure()
             return cell
         case .paging:
             let cell = pagingCell()
             cell.backgroundColor = .init(red: 1, green: 1, blue: 0.5, alpha: 1)
+            cell.layer.cornerRadius = 4
             cell.configure()
             return cell
         case .none:

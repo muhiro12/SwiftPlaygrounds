@@ -46,9 +46,10 @@ extension CarouselCollectionViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         let float = CGFloat((indexPath.row % 3) + 1) * 0.1
         cell.backgroundColor = .init(red: 0.5 + float, green: 1 - float, blue: 1, alpha: 1)
+        cell.layer.cornerRadius = 4
         return cell
     }
 }
