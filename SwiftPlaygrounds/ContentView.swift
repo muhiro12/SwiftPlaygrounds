@@ -14,6 +14,7 @@ enum Sidebar: String, Identifiable, CaseIterable {
     case user
     case observation
     case storyboard
+    case combine
 
     var id: Self {
         self
@@ -40,6 +41,9 @@ enum Sidebar: String, Identifiable, CaseIterable {
         case .storyboard:
             [.storyboard,
              .table]
+        case .combine:
+            [.combine,
+             .combineDetail]
         }
     }
 }
@@ -59,6 +63,8 @@ enum Content: String, Identifiable, CaseIterable {
     case table
     case collection
     case compositional
+    case combine
+    case combineDetail
 
     var id: Self {
         self
@@ -95,6 +101,10 @@ enum Content: String, Identifiable, CaseIterable {
             CollectionView()
         case .compositional:
             CompositionalView()
+        case .combine:
+            CombineView()
+        case .combineDetail:
+            CombineDetailView()
         }
     }
 }
