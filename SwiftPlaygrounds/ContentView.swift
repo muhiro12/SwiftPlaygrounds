@@ -15,6 +15,7 @@ enum Sidebar: String, Identifiable, CaseIterable {
     case observation
     case storyboard
     case combine
+    case concurrency
 
     var id: Self {
         self
@@ -44,6 +45,8 @@ enum Sidebar: String, Identifiable, CaseIterable {
         case .combine:
             [.combine,
              .combineDetail]
+        case .concurrency:
+            [.asyncStream]
         }
     }
 }
@@ -65,6 +68,7 @@ enum Content: String, Identifiable, CaseIterable {
     case compositional
     case combine
     case combineDetail
+    case asyncStream
 
     var id: Self {
         self
@@ -105,6 +109,8 @@ enum Content: String, Identifiable, CaseIterable {
             CombineView()
         case .combineDetail:
             CombineDetailView()
+        case .asyncStream:
+            AsyncStreamView()
         }
     }
 }
