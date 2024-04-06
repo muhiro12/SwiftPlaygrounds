@@ -15,6 +15,8 @@
 		AD0798852B8E173100631472 /* CombineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798842B8E173100631472 /* CombineDetailView.swift */; };
 		AD0798882B90B8C500631472 /* AsyncStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798872B90B8C500631472 /* AsyncStreamView.swift */; };
 		AD07988A2B90B9D200631472 /* AsyncStreamState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798892B90B9D200631472 /* AsyncStreamState.swift */; };
+		AD6528982BBEB15600D46D54 /* ActorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6528972BBEB15600D46D54 /* ActorView.swift */; };
+		AD65289A2BBEB1E000D46D54 /* ActorViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6528992BBEB1E000D46D54 /* ActorViewState.swift */; };
 		ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */; };
 		ADE4455F2B87AF8E00EF56A3 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */; };
 		ADE445612B87AF8E00EF56A3 /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE445602B87AF8E00EF56A3 /* SampleItem.swift */; };
@@ -88,6 +90,8 @@
 		AD0798842B8E173100631472 /* CombineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineDetailView.swift; sourceTree = "<group>"; };
 		AD0798872B90B8C500631472 /* AsyncStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamView.swift; sourceTree = "<group>"; };
 		AD0798892B90B9D200631472 /* AsyncStreamState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamState.swift; sourceTree = "<group>"; };
+		AD6528972BBEB15600D46D54 /* ActorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorView.swift; sourceTree = "<group>"; };
+		AD6528992BBEB1E000D46D54 /* ActorViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewState.swift; sourceTree = "<group>"; };
 		ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundsApp.swift; sourceTree = "<group>"; };
 		ADE4455E2B87AF8E00EF56A3 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 			children = (
 				AD0798872B90B8C500631472 /* AsyncStreamView.swift */,
 				AD0798892B90B9D200631472 /* AsyncStreamState.swift */,
+				AD6528972BBEB15600D46D54 /* ActorView.swift */,
+				AD6528992BBEB1E000D46D54 /* ActorViewState.swift */,
 			);
 			path = Concurrency;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 				ADE445C82B8C2FD400EF56A3 /* ObservationUserView.swift in Sources */,
 				ADE445E92B8C649200EF56A3 /* TableViewController.swift in Sources */,
 				ADE4458F2B87BFFE00EF56A3 /* UserListView.swift in Sources */,
+				AD65289A2BBEB1E000D46D54 /* ActorViewState.swift in Sources */,
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
 				AD0798882B90B8C500631472 /* AsyncStreamView.swift in Sources */,
@@ -563,6 +570,7 @@
 				ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */,
 				ADE445992B87CEDE00EF56A3 /* User.swift in Sources */,
 				ADE445A72B8A47E600EF56A3 /* PlaygroundsError.swift in Sources */,
+				AD6528982BBEB15600D46D54 /* ActorView.swift in Sources */,
 				ADE445F22B8CD75400EF56A3 /* PagingCollectionViewCell.swift in Sources */,
 				ADE445B42B8B554A00EF56A3 /* ServerData.swift in Sources */,
 				ADE445A92B8A5B4800EF56A3 /* ViewExtension.swift in Sources */,
