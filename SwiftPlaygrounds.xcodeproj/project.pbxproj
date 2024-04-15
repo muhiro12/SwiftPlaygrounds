@@ -15,6 +15,8 @@
 		AD0798852B8E173100631472 /* CombineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798842B8E173100631472 /* CombineDetailView.swift */; };
 		AD0798882B90B8C500631472 /* AsyncStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798872B90B8C500631472 /* AsyncStreamView.swift */; };
 		AD07988A2B90B9D200631472 /* AsyncStreamState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798892B90B9D200631472 /* AsyncStreamState.swift */; };
+		AD1338D12BCD9B5700A8BAD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1338D02BCD9B5700A8BAD2 /* Student.swift */; };
+		AD1338D32BCD9D9D00A8BAD2 /* StudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1338D22BCD9D9D00A8BAD2 /* StudentView.swift */; };
 		AD6528982BBEB15600D46D54 /* ActorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6528972BBEB15600D46D54 /* ActorView.swift */; };
 		AD65289A2BBEB1E000D46D54 /* ActorViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6528992BBEB1E000D46D54 /* ActorViewState.swift */; };
 		ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */; };
@@ -90,6 +92,8 @@
 		AD0798842B8E173100631472 /* CombineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineDetailView.swift; sourceTree = "<group>"; };
 		AD0798872B90B8C500631472 /* AsyncStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamView.swift; sourceTree = "<group>"; };
 		AD0798892B90B9D200631472 /* AsyncStreamState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamState.swift; sourceTree = "<group>"; };
+		AD1338D02BCD9B5700A8BAD2 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		AD1338D22BCD9D9D00A8BAD2 /* StudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentView.swift; sourceTree = "<group>"; };
 		AD6528972BBEB15600D46D54 /* ActorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorView.swift; sourceTree = "<group>"; };
 		AD6528992BBEB1E000D46D54 /* ActorViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewState.swift; sourceTree = "<group>"; };
 		ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +212,15 @@
 			path = Concurrency;
 			sourceTree = "<group>";
 		};
+		AD1338CF2BCD9A8700A8BAD2 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				AD1338D02BCD9B5700A8BAD2 /* Student.swift */,
+				AD1338D22BCD9D9D00A8BAD2 /* StudentView.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
 		ADE445502B87AF8E00EF56A3 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +254,7 @@
 				ADE445DB2B8C5D9A00EF56A3 /* Storyboard */,
 				AD07987F2B8E167700631472 /* Combine */,
 				AD0798862B90B8A500631472 /* Concurrency */,
+				AD1338CF2BCD9A8700A8BAD2 /* SwiftData */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
 				ADE445682B87AF9000EF56A3 /* Info.plist */,
@@ -586,10 +600,12 @@
 				AD07988A2B90B9D200631472 /* AsyncStreamState.swift in Sources */,
 				ADE445C02B8C290600EF56A3 /* UserDislikeRequest.swift in Sources */,
 				ADE445972B87CEBD00EF56A3 /* APIRequest.swift in Sources */,
+				AD1338D12BCD9B5700A8BAD2 /* Student.swift in Sources */,
 				ADE445932B87C94E00EF56A3 /* UserRequest.swift in Sources */,
 				ADE445BE2B8C229200EF56A3 /* StringExtension.swift in Sources */,
 				ADE445B82B8BF98F00EF56A3 /* CurrentUserRequest.swift in Sources */,
 				AD0798782B8CFE0A00631472 /* CarouselCollectionViewCell.swift in Sources */,
+				AD1338D32BCD9D9D00A8BAD2 /* StudentView.swift in Sources */,
 				ADE445DA2B8C52F500EF56A3 /* PublishedUserStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

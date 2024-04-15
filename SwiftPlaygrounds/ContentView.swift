@@ -16,6 +16,7 @@ enum Sidebar: String, Identifiable, CaseIterable {
     case storyboard
     case combine
     case concurrency
+    case swiftData
 
     var id: Self {
         self
@@ -48,6 +49,8 @@ enum Sidebar: String, Identifiable, CaseIterable {
         case .concurrency:
             [.asyncStream,
              .actor]
+        case .swiftData:
+            [.student]
         }
     }
 }
@@ -71,6 +74,7 @@ enum Content: String, Identifiable, CaseIterable {
     case combineDetail
     case asyncStream
     case actor
+    case student
 
     var id: Self {
         self
@@ -115,6 +119,8 @@ enum Content: String, Identifiable, CaseIterable {
             AsyncStreamView()
         case .actor:
             ActorView()
+        case .student:
+            StudentView()
         }
     }
 }
