@@ -17,6 +17,8 @@
 		AD07988A2B90B9D200631472 /* AsyncStreamState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0798892B90B9D200631472 /* AsyncStreamState.swift */; };
 		AD1338D12BCD9B5700A8BAD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1338D02BCD9B5700A8BAD2 /* Student.swift */; };
 		AD1338D32BCD9D9D00A8BAD2 /* StudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1338D22BCD9D9D00A8BAD2 /* StudentView.swift */; };
+		AD6343102BE3D49B002ED800 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD63430F2BE3D49B002ED800 /* KeychainAccess */; };
+		AD6343132BE3D4CD002ED800 /* KeychainAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6343122BE3D4CD002ED800 /* KeychainAccessView.swift */; };
 		AD6528982BBEB15600D46D54 /* ActorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6528972BBEB15600D46D54 /* ActorView.swift */; };
 		AD65289A2BBEB1E000D46D54 /* ActorViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6528992BBEB1E000D46D54 /* ActorViewState.swift */; };
 		ADE4455D2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4455C2B87AF8E00EF56A3 /* SwiftPlaygroundsApp.swift */; };
@@ -94,6 +96,7 @@
 		AD0798892B90B9D200631472 /* AsyncStreamState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamState.swift; sourceTree = "<group>"; };
 		AD1338D02BCD9B5700A8BAD2 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		AD1338D22BCD9D9D00A8BAD2 /* StudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentView.swift; sourceTree = "<group>"; };
+		AD6343122BE3D4CD002ED800 /* KeychainAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessView.swift; sourceTree = "<group>"; };
 		AD6528972BBEB15600D46D54 /* ActorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorView.swift; sourceTree = "<group>"; };
 		AD6528992BBEB1E000D46D54 /* ActorViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewState.swift; sourceTree = "<group>"; };
 		ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD6343102BE3D49B002ED800 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +225,14 @@
 			path = SwiftData;
 			sourceTree = "<group>";
 		};
+		AD6343112BE3D4B0002ED800 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				AD6343122BE3D4CD002ED800 /* KeychainAccessView.swift */,
+			);
+			path = Package;
+			sourceTree = "<group>";
+		};
 		ADE445502B87AF8E00EF56A3 = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +267,7 @@
 				AD07987F2B8E167700631472 /* Combine */,
 				AD0798862B90B8A500631472 /* Concurrency */,
 				AD1338CF2BCD9A8700A8BAD2 /* SwiftData */,
+				AD6343112BE3D4B0002ED800 /* Package */,
 				ADE445622B87AF9000EF56A3 /* Assets.xcassets */,
 				ADE445672B87AF9000EF56A3 /* SwiftPlaygrounds.entitlements */,
 				ADE445682B87AF9000EF56A3 /* Info.plist */,
@@ -441,6 +454,9 @@
 			dependencies = (
 			);
 			name = SwiftPlaygrounds;
+			packageProductDependencies = (
+				AD63430F2BE3D49B002ED800 /* KeychainAccess */,
+			);
 			productName = SwiftPlaygrounds;
 			productReference = ADE445592B87AF8E00EF56A3 /* SwiftPlaygrounds.app */;
 			productType = "com.apple.product-type.application";
@@ -513,6 +529,9 @@
 				Base,
 			);
 			mainGroup = ADE445502B87AF8E00EF56A3;
+			packageReferences = (
+				AD63430E2BE3D49B002ED800 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = ADE4455A2B87AF8E00EF56A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -575,6 +594,7 @@
 				ADE4459B2B87CEFD00EF56A3 /* APIError.swift in Sources */,
 				ADE4458C2B87B14C00EF56A3 /* ContentView.swift in Sources */,
 				AD0798882B90B8C500631472 /* AsyncStreamView.swift in Sources */,
+				AD6343132BE3D4CD002ED800 /* KeychainAccessView.swift in Sources */,
 				ADE445CE2B8C3F4A00EF56A3 /* PublishedUserView.swift in Sources */,
 				ADE445AE2B8AE0BF00EF56A3 /* ModifierView.swift in Sources */,
 				ADE445BA2B8BF9D900EF56A3 /* EmptyResponse.swift in Sources */,
@@ -940,6 +960,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD63430E2BE3D49B002ED800 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD63430F2BE3D49B002ED800 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD63430E2BE3D49B002ED800 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADE445512B87AF8E00EF56A3 /* Project object */;
 }
