@@ -18,6 +18,7 @@ enum Sidebar: String, Identifiable, CaseIterable {
     case concurrency
     case swiftData
     case package
+    case transition
 
     var id: Self {
         self
@@ -56,6 +57,8 @@ enum Sidebar: String, Identifiable, CaseIterable {
             [.student]
         case .package:
             [.keychainAccess]
+        case .transition:
+            [.transition]
         }
     }
 }
@@ -81,6 +84,7 @@ enum Content: String, Identifiable, CaseIterable {
     case actor
     case student
     case keychainAccess
+    case transition
 
     var id: Self {
         self
@@ -129,6 +133,8 @@ enum Content: String, Identifiable, CaseIterable {
             StudentView()
         case .keychainAccess:
             KeychainAccessView()
+        case .transition:
+            TransitionView()
         }
     }
 }
