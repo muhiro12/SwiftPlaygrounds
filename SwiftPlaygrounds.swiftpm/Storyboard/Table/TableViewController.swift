@@ -8,12 +8,16 @@
 import SwiftUI
 
 final class TableViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
+    private let tableView = UITableView()
 
     private let userList = UserListRequest().expected
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        tableView.frame = view.frame
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -52,7 +56,7 @@ extension TableViewController: UITableViewDelegate {
 
 struct TableView: View {
     var body: some View {
-        ViewControllerRepresentable("Table")
+        ViewControllerRepresentable(TableViewController())
             .ignoresSafeArea()
     }
 }

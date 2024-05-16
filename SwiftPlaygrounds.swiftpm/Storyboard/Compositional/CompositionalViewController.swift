@@ -8,12 +8,15 @@
 import SwiftUI
 
 final class CompositionalViewController: UIViewController {
-    @IBOutlet private weak var collectionView: UICollectionView!
+    private let collectionView = UICollectionView()
 
     private var dataSource: UICollectionViewDiffableDataSource<Int, Int>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(collectionView)
+        collectionView.frame = view.frame
 
         dataSource = .init(collectionView: collectionView) { collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
@@ -63,7 +66,7 @@ final class CompositionalViewController: UIViewController {
 
 struct CompositionalView: View {
     var body: some View {
-        ViewControllerRepresentable("Compositional")
+        ViewControllerRepresentable(CompositionalViewController())
             .ignoresSafeArea()
     }
 }

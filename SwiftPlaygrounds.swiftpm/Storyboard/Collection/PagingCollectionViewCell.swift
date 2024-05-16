@@ -8,9 +8,11 @@
 import UIKit
 
 final class PagingCollectionViewCell: UICollectionViewCell {
-    @IBOutlet private weak var collectionView: UICollectionView!
+    private let collectionView = UICollectionView()
 
     func configure() {
+        addSubview(collectionView)
+        collectionView.frame = frame
         collectionView.dataSource = self
         collectionView.delegate = self
     }

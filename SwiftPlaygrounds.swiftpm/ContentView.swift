@@ -43,7 +43,9 @@ enum Sidebar: String, Identifiable, CaseIterable {
              .publishedUser]
         case .storyboard:
             [.storyboard,
-             .table]
+             .table,
+             .collection,
+             .compositional]
         case .combine:
             [.combine,
              .combineDetail]

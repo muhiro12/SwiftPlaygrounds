@@ -15,10 +15,12 @@ final class CollectionViewController: UIViewController {
         case paging
     }
 
-    @IBOutlet private weak var collectionView: UICollectionView!
+    private let collectionView = UICollectionView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(collectionView)
+        collectionView.frame = view.frame
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -113,7 +115,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 
 struct CollectionView: View {
     var body: some View {
-        ViewControllerRepresentable("Collection")
+        ViewControllerRepresentable(CollectionViewController())
             .ignoresSafeArea()
     }
 }

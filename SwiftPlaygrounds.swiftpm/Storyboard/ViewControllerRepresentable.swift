@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct ViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = UIViewController
-
-    init(_ name: String) {
-        self.name = name
+    private let viewController: UIViewController
+    
+    init(_ viewController: UIViewController) {
+        self.viewController = viewController
     }
-
-    private let name: String
-
+    
     func makeUIViewController(context: Context) -> UIViewController {
-        UIStoryboard(name: name, bundle: nil).instantiateInitialViewController()!
+        viewController
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

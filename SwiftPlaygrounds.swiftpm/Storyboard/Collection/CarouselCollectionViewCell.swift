@@ -8,9 +8,12 @@
 import UIKit
 
 final class CarouselCollectionViewCell: UICollectionViewCell {
-    @IBOutlet private weak var collectionView: UICollectionView!
+    private let collectionView = UICollectionView()
 
     func configure() {
+        addSubview(collectionView)
+        collectionView.frame = frame
+        
         collectionView.dataSource = self
 
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout { [weak self] _, _ in
