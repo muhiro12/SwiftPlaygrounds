@@ -38,17 +38,25 @@ struct TransitionView: View {
             TransitionView()
         }
         .sheet(isPresented: $isSheetPresented) {
-            TransitionView()
+            NavigationStack {
+                TransitionView()
+            }
         }
         .popover(isPresented: $isPopoverPresented) {
-            TransitionView()
+            NavigationStack {
+                TransitionView()
+            }
         }
         .fullScreenCover(isPresented: $isFullScreenCoverPresented) {
-            TransitionView()
+            NavigationStack {
+                TransitionView()
+            }
         }
-        .fullScreenCover(isPresented: $isFullScreenCoverWithOpacityPresented) {
-            TransitionView()
-                .presentationBackground(.opacity(0.5))
+        .fullScreenCover(isPresented: $isFullScreenCoverWithOpacityPresented) {        
+            NavigationStack {
+                TransitionView()
+            }
+            .presentationBackground(.opacity(0.5))
         }
         .fullScreenCover(isPresented: $isFullScreenCoverWithUIKitPresented) {
             TransitionView()
@@ -58,5 +66,7 @@ struct TransitionView: View {
 }
 
 #Preview {
-    TransitionView()
+    NavigationStack {
+        TransitionView()
+    }
 }
