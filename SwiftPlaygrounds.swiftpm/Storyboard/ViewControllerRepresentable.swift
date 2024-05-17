@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ViewControllerRepresentable: UIViewControllerRepresentable {
-    private let viewController: UIViewController
+    private let viewController: () -> UIViewController
     
-    init(_ viewController: UIViewController) {
+    init(_ viewController: @escaping () -> UIViewController) {
         self.viewController = viewController
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        viewController
+        viewController()
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

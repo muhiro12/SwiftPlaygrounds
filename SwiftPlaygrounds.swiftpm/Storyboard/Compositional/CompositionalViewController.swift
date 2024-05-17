@@ -66,8 +66,10 @@ final class CompositionalViewController: UIViewController {
 
 struct CompositionalView: View {
     var body: some View {
-        ViewControllerRepresentable(CompositionalViewController())
-            .ignoresSafeArea()
+        ViewControllerRepresentable {
+            CompositionalViewController()
+        }
+        .ignoresSafeArea()
     }
 }
 

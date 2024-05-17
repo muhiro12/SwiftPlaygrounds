@@ -115,8 +115,10 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 
 struct CollectionView: View {
     var body: some View {
-        ViewControllerRepresentable(CollectionViewController())
-            .ignoresSafeArea()
+        ViewControllerRepresentable {
+            CollectionViewController()
+        }
+        .ignoresSafeArea()
     }
 }
 

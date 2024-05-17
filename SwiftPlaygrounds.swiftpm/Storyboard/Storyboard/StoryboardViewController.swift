@@ -11,7 +11,9 @@ final class StoryboardViewController: UIViewController {}
 
 struct StoryboardView: View {
     var body: some View {
-        ViewControllerRepresentable(StoryboardViewController())
+        ViewControllerRepresentable { 
+            StoryboardViewController()
+        }
     }
 }
 
