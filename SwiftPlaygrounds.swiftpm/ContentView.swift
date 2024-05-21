@@ -46,7 +46,8 @@ enum Sidebar: String, Identifiable, CaseIterable {
             [.storyboard,
              .table,
              .collection,
-             .compositional]
+             .compositional,
+             .infinitePaging]
         case .combine:
             [.combine,
              .combineDetail]
@@ -85,6 +86,7 @@ enum Content: String, Identifiable, CaseIterable {
     case student
     case keychainAccess
     case transition
+    case infinitePaging
 
     var id: Self {
         self
@@ -135,6 +137,8 @@ enum Content: String, Identifiable, CaseIterable {
             KeychainAccessView()
         case .transition:
             TransitionView()
+        case .infinitePaging:
+            InfinitePagingView()
         }
     }
 }
