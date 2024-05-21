@@ -15,7 +15,10 @@ final class CollectionViewController: UIViewController {
         case paging
     }
 
-    private let collectionView = UICollectionView()
+    private let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout()
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,10 @@ final class CollectionViewController: UIViewController {
         collectionView.frame = view.frame
         collectionView.dataSource = self
         collectionView.delegate = self
+
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(CarouselCollectionViewCell.self, forCellWithReuseIdentifier: "CarouselCell")
+        collectionView.register(PagingCollectionViewCell.self, forCellWithReuseIdentifier: "PagingCell")
     }
 }
 

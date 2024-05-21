@@ -8,7 +8,10 @@
 import SwiftUI
 
 final class CompositionalViewController: UIViewController {
-    private let collectionView = UICollectionView()
+    private let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout()
+    )
 
     private var dataSource: UICollectionViewDiffableDataSource<Int, Int>?
 
@@ -61,6 +64,8 @@ final class CompositionalViewController: UIViewController {
 
             return section
         }
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 }
 

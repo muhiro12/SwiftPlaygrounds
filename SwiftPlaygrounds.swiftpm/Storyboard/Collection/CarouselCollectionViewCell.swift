@@ -8,7 +8,10 @@
 import UIKit
 
 final class CarouselCollectionViewCell: UICollectionViewCell {
-    private let collectionView = UICollectionView()
+    private let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout()
+    )
 
     func configure() {
         addSubview(collectionView)
@@ -40,6 +43,8 @@ final class CarouselCollectionViewCell: UICollectionViewCell {
 
             return section
         }
+
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 }
 
