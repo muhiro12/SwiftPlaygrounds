@@ -21,7 +21,7 @@ struct StudentView: View {
                         Text("Name")
                             .font(.headline)
                             .frame(width: 80)
-                        Text(student.name ?? "")
+                        Text(student.name)
                     }
                     HStack {
                         Text("Score")
