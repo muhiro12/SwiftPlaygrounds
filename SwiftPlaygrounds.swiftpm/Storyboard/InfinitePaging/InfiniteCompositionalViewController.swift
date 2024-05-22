@@ -105,10 +105,10 @@ final class InfiniteCompositionalViewController: UIViewController {
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
         collectionView.scrollToItem(
             at: .init(item: colors.endIndex / count, section: .zero),
             at: [],
