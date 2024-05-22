@@ -6,14 +6,14 @@ final class InfiniteCompositionalViewController: UIViewController {
         collectionViewLayout: UICollectionViewFlowLayout()
     )
     
-    private let colors = [(0..<5).map { _ in
+    private let colors = [(0..<3).map { _ in
         UIColor(red: .random(in: 0...1),
                 green: .random(in: 0...1),
                 blue: .random(in: 0...1),
                 alpha: 1)
-    }].flatMap { $0 + $0 }
-    private let texts = [(0..<5).map { $0.description }].flatMap { $0 + $0 }
-
+    }].flatMap { $0 + $0 + $0 }
+    private let texts = [(0..<3).map { $0.description }].flatMap { $0 + $0 + $0 }
+    
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, Int>?
     
@@ -52,7 +52,7 @@ final class InfiniteCompositionalViewController: UIViewController {
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
         snapshot.appendSections([0])
-        snapshot.appendItems((0..<10).map { $0 }, toSection: 0)
+        snapshot.appendItems(colors.indices.map { $0 }, toSection: 0)
         dataSource?.apply(snapshot)
         
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout { index, _ in
@@ -68,8 +68,8 @@ final class InfiniteCompositionalViewController: UIViewController {
             
             let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: .init(
-                    widthDimension: .absolute(300),
-                    heightDimension: .absolute(200)
+                    widthDimension: .fractionalWidth(0.8),
+                    heightDimension: .fractionalWidth(0.6)
                 ),
                 subitems: [item]
             )
@@ -78,13 +78,21 @@ final class InfiniteCompositionalViewController: UIViewController {
             section.orthogonalScrollingBehavior = .groupPagingCentered
             
             section.visibleItemsInvalidationHandler = { _, point, environment in
-                let point = point.x + 41.5
-                let firstPoint: CGFloat = 300 * 0
-                let endPoint: CGFloat = 300 * 9
-                if point == firstPoint {
-                    self.collectionView.scrollToItem(at: IndexPath(item: 5, section: 0), at: [], animated: false)
-                } else if point == endPoint {
-                    self.collectionView.scrollToItem(at: IndexPath(item: 4, section: 0), at: [], animated: false)
+                let width = self.view.bounds.width * 0.8
+                let point = round(point.x + self.view.bounds.width * 0.1)
+                let centerItem = self.colors.endIndex / 3
+                if point == 0 {
+                    self.collectionView.scrollToItem(
+                        at: .init(item: centerItem, section: 0),
+                        at: [],
+                        animated: false
+                    )
+                } else if point == round(width * CGFloat(self.colors.endIndex - 1)) {
+                    self.collectionView.scrollToItem(
+                        at: .init(item: centerItem - 1, section: 0),
+                        at: [],
+                        animated: false
+                    )
                 }
             }
             
@@ -92,6 +100,16 @@ final class InfiniteCompositionalViewController: UIViewController {
         }
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        collectionView.scrollToItem(
+            at: .init(item: self.colors.endIndex / 3, section: 0),
+            at: [],
+            animated: false
+        )
     }
 }
 
