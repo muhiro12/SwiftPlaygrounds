@@ -19,6 +19,7 @@ enum Sidebar: String, Identifiable, CaseIterable {
     case swiftData
     case package
     case transition
+    case webView
 
     var id: Self {
         self
@@ -61,6 +62,8 @@ enum Sidebar: String, Identifiable, CaseIterable {
             [.keychainAccess]
         case .transition:
             [.transition]
+        case .webView:
+            [.webView]
         }
     }
 }
@@ -89,7 +92,8 @@ enum Content: String, Identifiable, CaseIterable {
     case transition
     case infinitePaging
     case infiniteCompositional
-
+    case webView
+    
     var id: Self {
         self
     }
@@ -143,6 +147,8 @@ enum Content: String, Identifiable, CaseIterable {
             InfinitePagingView()
         case .infiniteCompositional:
             InfiniteCompositionalView()
+        case .webView:
+            WebView()
         }
     }
 }
