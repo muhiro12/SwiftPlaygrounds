@@ -52,8 +52,8 @@ final class InfiniteCompositionalViewController: UIViewController {
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(colors.indices.map { $0 }, toSection: 0)
+        snapshot.appendSections([.zero])
+        snapshot.appendItems(colors.indices.map { $0 }, toSection: .zero)
         dataSource?.apply(snapshot)
         
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout { index, _ in
@@ -85,16 +85,15 @@ final class InfiniteCompositionalViewController: UIViewController {
                 }
                 let itemWidth = view.bounds.width * widthFactor
                 let leadingPoint = round(point.x + (view.bounds.width - itemWidth) / 2)
-                let centerItem = colors.endIndex / count
-                if leadingPoint == 0 {
+                if leadingPoint == .zero {
                     collectionView.scrollToItem(
-                        at: .init(item: centerItem, section: 0),
+                        at: .init(item: colors.endIndex / count * (count - 1), section: .zero),
                         at: [],
                         animated: false
                     )
                 } else if leadingPoint == round(itemWidth * CGFloat(colors.endIndex - 1)) {
                     collectionView.scrollToItem(
-                        at: .init(item: centerItem - 1, section: 0),
+                        at: .init(item: colors.endIndex / count - 1, section: 0),
                         at: [],
                         animated: false
                     )
@@ -111,7 +110,7 @@ final class InfiniteCompositionalViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         collectionView.scrollToItem(
-            at: .init(item: colors.endIndex / count, section: 0),
+            at: .init(item: colors.endIndex / count, section: .zero),
             at: [],
             animated: false
         )
