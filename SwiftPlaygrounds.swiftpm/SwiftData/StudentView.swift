@@ -57,6 +57,10 @@ struct StudentView: View {
                             .frame(width: 80)
                        Text(student.createdAt.description)
                     }
+                } footer: {
+                    Button("Delete") {
+                        modelContext.delete(student)
+                    }
                 }
             }
             .toolbar {
