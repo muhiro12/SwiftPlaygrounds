@@ -27,14 +27,16 @@ struct KeychainAccessView: View {
                 TextField(identifierKey, text: $identifierInput)
                 Button("Add") {
                     keychain[identifierKey] = identifierInput
+                    identifierInput = ""
                 }
                 Button("Fetch") {
                     identifierOutput = keychain[identifierKey] ?? "nil"
                     isIdentifierPresented = true
+                    identifierInput = ""
                 }
                 Button("Delete") {
-                    identifierInput = ""
                     keychain[identifierKey] = nil
+                    identifierInput = ""
                 }
             }
             Section(passwordKey) {
@@ -47,14 +49,20 @@ struct KeychainAccessView: View {
                     } catch {
                         self.error = .init(from: error)
                     }
+                    passwordInput = ""
                 }
                 Button("Fetch") {
-                    passwordOutput = keychain[passwordKey] ?? "nil"
-                    isPasswordPresented = true
+                    do {
+                        passwordOutput = try keychain.get(passwordKey) ?? "nil"
+                        isPasswordPresented = true
+                    } catch {
+                        self.error = .init(from: error)
+                    }
+                    passwordInput = ""
                 }
                 Button("Delete") {
-                    passwordOutput = ""
                     keychain[passwordKey] = nil
+                    passwordInput = ""
                 }
             }
         }
