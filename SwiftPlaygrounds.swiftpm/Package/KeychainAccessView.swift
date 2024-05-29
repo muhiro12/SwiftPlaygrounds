@@ -55,6 +55,7 @@ struct KeychainAccessView: View {
                     do {
                         passwordOutput = try keychain.get(passwordKey) ?? "nil"
                         isPasswordPresented = true
+                    } catch KeychainAccess.Status.userCanceled {
                     } catch {
                         self.error = .init(from: error)
                     }
