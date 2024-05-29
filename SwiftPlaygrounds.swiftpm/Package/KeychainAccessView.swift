@@ -11,8 +11,10 @@ import KeychainAccess
 struct KeychainAccessView: View {
     @State private var identifierInput = ""
     @State private var identifierOutput = ""
+    @State private var isIdentifierPresented = false
     @State private var passwordInput = ""
     @State private var passwordOutput = ""
+    @State private var isPasswordPresented = false
     @State private var error: PlaygroundsError?
 
     private let keychain = Keychain()
@@ -22,63 +24,47 @@ struct KeychainAccessView: View {
     var body: some View {
         List {
             Section(identifierKey) {
-                HStack {
-                    TextField(identifierKey, text: $identifierInput)
-                    Spacer()
-                    Button("", systemImage: "plus") {
-                        keychain[identifierKey] = identifierInput
-                    }
-                    .buttonStyle(.plain)
+                TextField(identifierKey, text: $identifierInput)
+                Button("Add") {
+                    keychain[identifierKey] = identifierInput
                 }
-                HStack {
-                    Text(identifierOutput)
-                    Spacer()
-                    Button("", systemImage: "minus") {
-                        identifierOutput = keychain[identifierKey] ?? ""
-                    }
-                    .buttonStyle(.plain)
+                Button("Fetch") {
+                    identifierOutput = keychain[identifierKey] ?? "nil"
+                    isIdentifierPresented = true
                 }
-                HStack {
-                    Spacer()
-                    Button("", systemImage: "xmark") {
-                        keychain[identifierKey] = nil
-                    }
-                    .buttonStyle(.plain)
+                Button("Delete") {
+                    identifierInput = ""
+                    keychain[identifierKey] = nil
                 }
             }
-            .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
             Section(passwordKey) {
-                HStack {
-                    TextField(passwordKey, text: $passwordInput)
-                    Spacer()
-                    Button("", systemImage: "plus") {
-                        do {
-                            try keychain
-                                .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .biometryAny)
-                                .set(passwordInput, key: passwordKey)
-                        } catch {
-                            self.error = .init(from: error)
-                        }
+                TextField(passwordKey, text: $passwordInput)
+                Button("Add") {
+                    do {
+                        try keychain
+                            .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .biometryAny)
+                            .set(passwordInput, key: passwordKey)
+                    } catch {
+                        self.error = .init(from: error)
                     }
-                    .buttonStyle(.plain)
                 }
-                HStack {
-                    Text(passwordOutput)
-                    Spacer()
-                    Button("", systemImage: "minus") {
-                        passwordOutput = keychain[passwordKey] ?? ""
-                    }
-                    .buttonStyle(.plain)
+                Button("Fetch") {
+                    passwordOutput = keychain[passwordKey] ?? "nil"
+                    isPasswordPresented = true
                 }
-                HStack {
-                    Spacer()
-                    Button("", systemImage: "xmark") {
-                        keychain[passwordKey] = nil
-                    }
-                    .buttonStyle(.plain)
+                Button("Delete") {
+                    passwordOutput = ""
+                    keychain[passwordKey] = nil
                 }
             }
-            .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
+        }
+        .alert(identifierKey, isPresented: $isIdentifierPresented) {
+        } message: {
+            Text(identifierOutput)
+        }
+        .alert(passwordKey, isPresented: $isPasswordPresented) {
+        } message: {
+            Text(passwordOutput)
         }
         .alert(error: $error)
     }
