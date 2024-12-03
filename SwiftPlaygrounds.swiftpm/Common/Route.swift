@@ -25,7 +25,8 @@ enum Route: String, CaseIterable {
     case infinitePaging
     case infiniteCompositional
     case webView
-    
+    case toolbarWebView
+
     var title: String {
         rawValue.camelCased()
     }
@@ -81,6 +82,8 @@ enum Route: String, CaseIterable {
             InfiniteCompositionalView()
         case .webView:
             WebView()
+        case .toolbarWebView:
+            ToolbarWebView()
         }
     }
 }

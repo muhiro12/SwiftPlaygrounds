@@ -22,7 +22,8 @@ enum UIKitSection: String, ContentSection {
         case .table:
             [.table]
         case .webView:
-            [.webView]
+            [.webView,
+             .toolbarWebView]
         }
     }
 }
