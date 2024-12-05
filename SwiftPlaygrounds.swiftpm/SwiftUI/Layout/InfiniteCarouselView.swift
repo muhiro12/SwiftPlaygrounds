@@ -1,29 +1,68 @@
 import SwiftUI
+import SwiftUtilities
 
 struct InfiniteCarouselView: View {
-    @State private var imageURLs = [URL]()
+    @State private var objects = [(index: Int, color: Color)]()
+    @State private var selection = 0
     @State private var isLoading = false
-    
+
+    private let colors: [Color] = [
+        .random(),
+        .random(),
+        .random(),
+        .random(),
+        .random()
+    ]
+
     var body: some View {
-        TabView {
-            ForEach(imageURLs, id: \.self) { imageURL in
-                AsyncImage(url: imageURL)
+        VStack {
+            TabView(selection: $selection) {
+                ForEach(-1..<objects.endIndex + 1, id: \.self) { index in
+                    ZStack {
+                        if let object = {
+                            switch index {
+                            case ..<0:
+                                objects.last
+                            case 0..<objects.endIndex: 
+                                objects[index]
+                            default:
+                                objects.first
+                            }
+                        }() {
+                            object.color
+                            Text(object.index.description)
+                        }
+                    }
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(width: 300, height: 100)
+            HStack {
+                ForEach(objects, id: \.index) { object in
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(object.index == selection ? .primary : .secondary)
+                }
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(width: 300, height: 100)
         .progress(isLoading: $isLoading)
         .task {
             isLoading = true
             try! await Task.sleep(for: .seconds(2))
-            imageURLs = [
-                .init(string: "https://via.placeholder.com/300x100/FF0000/FFFFFF?text=1")!,
-                .init(string: "https://via.placeholder.com/300x100/00FF00/FFFFFF?text=2")!,
-                .init(string: "https://via.placeholder.com/300x100/0000FF/FFFFFF?text=3")!,
-                .init(string: "https://via.placeholder.com/300x100/FFFF00/FFFFFF?text=4")!,
-                .init(string: "https://via.placeholder.com/300x100/FF00FF/FFFFFF?text=5")!
-            ]
+            objects = colors.enumerated().map {
+                ($0.offset, $0.element)
+            }
             isLoading = false
+        }
+        .onChange(of: selection) {
+            switch selection {
+            case ..<0:
+                selection = objects.endIndex - 1
+            case 0..<objects.endIndex:
+                break
+            default:
+                selection = 0
+            }
         }
     }
 }
