@@ -21,9 +21,9 @@ struct InfiniteCarouselView: View {
                     ZStack {
                         if let object = {
                             switch index {
-                            case ..<0:
+                            case ..<objects.startIndex:
                                 objects.last
-                            case 0..<objects.endIndex: 
+                            case objects.startIndex..<objects.endIndex: 
                                 objects[index]
                             default:
                                 objects.first
@@ -56,12 +56,12 @@ struct InfiniteCarouselView: View {
         }
         .onChange(of: selection) {
             switch selection {
-            case ..<0:
+            case ..<objects.startIndex:
                 selection = objects.endIndex - 1
-            case 0..<objects.endIndex:
+            case objects.startIndex..<objects.endIndex:
                 break
             default:
-                selection = 0
+                selection = objects.startIndex
             }
         }
     }
