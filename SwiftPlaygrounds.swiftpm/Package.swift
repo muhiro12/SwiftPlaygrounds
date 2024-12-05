@@ -39,13 +39,15 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", "4.0.0"..<"5.0.0")
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", "4.0.0"..<"5.0.0"),
+        .package(url: "https://github.com/muhiro12/SwiftUtilities", "1.9.0"..<"2.0.0")
     ],
     targets: [
         .executableTarget(
             name: "AppModule",
             dependencies: [
-                .product(name: "KeychainAccess", package: "keychainaccess")
+                .product(name: "KeychainAccess", package: "keychainaccess"),
+                .product(name: "SwiftUtilities", package: "SwiftUtilities")
             ],
             path: "."
         )

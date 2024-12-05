@@ -8,6 +8,15 @@
         "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
         "version" : "4.2.2"
       }
+    },
+    {
+      "identity" : "swiftutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/muhiro12/SwiftUtilities",
+      "state" : {
+        "revision" : "d1d3caf666487fdc96dc0961128b3892f86425fd",
+        "version" : "1.9.0"
+      }
     }
   ],
   "version" : 2
