@@ -4,6 +4,7 @@ enum SwiftUISection: String, ContentSection {
     case modifier
     case sample
     case transition
+    case layout
     
     var contents: [Route] {
         switch self {
@@ -13,6 +14,8 @@ enum SwiftUISection: String, ContentSection {
             [.sampleContent]
         case .transition:
             [.transition]
+        case .layout:
+            [.infiniteCarousel]
         }
     }
 }
