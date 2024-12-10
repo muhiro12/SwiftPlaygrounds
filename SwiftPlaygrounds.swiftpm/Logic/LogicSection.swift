@@ -26,7 +26,8 @@ enum LogicSection: String, ContentSection {
             [.student]
         case .user:
             [.userList,
-             .user]
+             .user,
+             .groupingUserList]
         }
     }
 }

@@ -27,6 +27,7 @@ enum Route: String, CaseIterable {
     case webView
     case toolbarWebView
     case infiniteCarousel
+    case groupingUserList
 
     var title: String {
         rawValue.camelCased()
@@ -87,6 +88,8 @@ enum Route: String, CaseIterable {
             ToolbarWebView()
         case .infiniteCarousel:
             InfiniteCarouselView()
+        case .groupingUserList:
+            GroupingUserListView()
         }
     }
 }
