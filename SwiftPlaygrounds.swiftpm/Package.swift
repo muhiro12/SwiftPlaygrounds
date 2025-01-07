@@ -34,7 +34,8 @@ let package = Package(
             ],
             capabilities: [
                 .photoLibrary(purposeString: "Photo Library"),
-                .camera(purposeString: "Camera")
+                .camera(purposeString: "Camera"),
+                .faceID(purposeString: "Face ID")
             ]
         )
     ],

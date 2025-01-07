@@ -29,6 +29,7 @@ enum Route: String, CaseIterable {
     case infiniteCarousel
     case groupingUserList
     case secure
+    case authentication
 
     var title: String {
         rawValue.camelCased()
@@ -93,6 +94,8 @@ enum Route: String, CaseIterable {
             GroupingUserListView()
         case .secure:
             SecureView()
+        case .authentication:
+            AuthenticationView()
         }
     }
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 enum LogicSection: String, ContentSection {
     case combine
+    case common
     case concurrency
     case observation
     case swiftData
@@ -12,6 +13,8 @@ enum LogicSection: String, ContentSection {
         case .combine:
             [.combine,
              .combineDetail]
+        case .common:
+            [.authentication]
         case .concurrency:
             [.asyncStream,
              .actor]
