@@ -6,7 +6,9 @@ enum AllSection: String, ContentSection {
     var contents: [Route] {
         switch self {
         case .all:
-            Route.allCases
+            Route.preferRoutes + Route.allCases.filter {
+                !Route.preferRoutes.contains($0)
+            }
         }
     }
 }

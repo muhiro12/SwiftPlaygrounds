@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Text {
-    init(optional: Optional<String>) {
+    init(optional: String?) {
         self.init(optional ?? "")
     }
 }

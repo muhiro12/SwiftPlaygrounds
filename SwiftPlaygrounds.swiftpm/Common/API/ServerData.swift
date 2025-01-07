@@ -9,8 +9,8 @@ import Foundation
 
 enum ServerData {
     static var userList = (maleNameList.map { User(name: $0, gender: .male) }
-                           + femaleNameList.map { User(name: $0, gender: .female) }
-                           + otherNameList.map { User(name: $0, gender: .other) }).shuffled()
+                            + femaleNameList.map { User(name: $0, gender: .female) }
+                            + otherNameList.map { User(name: $0, gender: .other) }).shuffled()
 
     private static let maleNameList = [
         "Michael",

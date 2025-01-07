@@ -14,10 +14,10 @@ final class TableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(tableView)
         tableView.frame = view.frame
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")

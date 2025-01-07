@@ -9,8 +9,14 @@ extension ContentSection {
     var id: String {
         title
     }
-    
+
     var title: String {
         rawValue.camelCased()
+    }
+
+    var contents: [Route] {
+        Route.allCases.filter {
+            $0.section.id == id
+        }
     }
 }

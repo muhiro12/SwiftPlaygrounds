@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var sidebar: Sidebar? = .all
-    @State private var content: Route? = .allCases.last
-    
+    @State private var content: Route? = .preferRoutes.first
+
     @State private var isAscending = false
 
     var body: some View {
@@ -29,7 +29,7 @@ struct ContentView: View {
                     Section(section.title) {
                         ForEach(isAscending ? section.contents : section.contents.reversed(),
                                 id: \.self) { content in
-                            Text(content.title)   
+                            Text(content.title)
                         }
                     }
                 }

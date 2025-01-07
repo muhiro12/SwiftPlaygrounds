@@ -6,7 +6,7 @@ enum Sidebar: String, CaseIterable {
     case package
     case swiftUI
     case uiKit
-    
+
     var title: String {
         rawValue.camelCased()
     }

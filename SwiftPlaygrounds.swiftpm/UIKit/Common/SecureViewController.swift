@@ -69,7 +69,7 @@ private extension UIView {
             topAnchor.constraint(equalTo: canvas.topAnchor),
             leadingAnchor.constraint(equalTo: canvas.leadingAnchor),
             bottomAnchor.constraint(equalTo: canvas.bottomAnchor),
-            trailingAnchor.constraint(equalTo: canvas.trailingAnchor),
+            trailingAnchor.constraint(equalTo: canvas.trailingAnchor)
         ].forEach { $0.isActive = true }
         layer.superlayer?.addSublayer(canvas.layer)
         canvas.layer.addSublayer(layer)
@@ -87,4 +87,3 @@ struct SecureView: View {
 #Preview {
     SecureView()
 }
-

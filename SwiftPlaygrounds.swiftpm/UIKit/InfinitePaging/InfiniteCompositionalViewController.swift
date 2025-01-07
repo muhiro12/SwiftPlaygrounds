@@ -5,7 +5,7 @@ final class InfiniteCompositionalViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
-    
+
     private let count = 3
     private lazy var colors = [(0..<count).map { _ in
         UIColor(red: .random(in: 0...1),
@@ -14,52 +14,51 @@ final class InfiniteCompositionalViewController: UIViewController {
                 alpha: 1)
     }].flatMap { $0 + $0 + $0 }
     private lazy var texts = [(0..<count).map { $0.description }].flatMap { $0 + $0 + $0 }
-    
-    
+
     private var dataSource: UICollectionViewDiffableDataSource<Int, Int>?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(collectionView)
-        
+
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        dataSource = .init(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
+
+        dataSource = .init(collectionView: collectionView) { [weak self] collectionView, indexPath, _ in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
             cell.backgroundColor = self?.colors[indexPath.item]
             cell.layer.cornerRadius = 4
-            
+
             let label = (cell.subviews.first as? UILabel) ?? .init()
             label.text = self?.texts[indexPath.item]
             label.translatesAutoresizingMaskIntoConstraints = false
-            
-            cell.addSubview(label)        
-            
+
+            cell.addSubview(label)
+
             NSLayoutConstraint.activate([
                 cell.centerXAnchor.constraint(equalTo: label.centerXAnchor),
-                cell.centerYAnchor.constraint(equalTo: label.centerYAnchor),
+                cell.centerYAnchor.constraint(equalTo: label.centerYAnchor)
             ])
-            
+
             return cell
         }
-        
+
         var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
         snapshot.appendSections([.zero])
         snapshot.appendItems(colors.indices.map { $0 }, toSection: .zero)
         dataSource?.apply(snapshot)
-        
-        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout { index, _ in
+
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout { _, _ in
             let widthFactor = 0.8
             let margin = 8.0
-            
+
             let item = NSCollectionLayoutItem(
                 layoutSize: .init(
                     widthDimension: .fractionalWidth(1),
@@ -67,7 +66,7 @@ final class InfiniteCompositionalViewController: UIViewController {
                 )
             )
             item.contentInsets = .init(top: margin, leading: margin, bottom: margin, trailing: margin)
-            
+
             let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: .init(
                     widthDimension: .fractionalWidth(widthFactor),
@@ -75,11 +74,11 @@ final class InfiniteCompositionalViewController: UIViewController {
                 ),
                 subitems: [item]
             )
-            
+
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .groupPagingCentered
-            
-            section.visibleItemsInvalidationHandler = { [weak self] _, point, environment in
+
+            section.visibleItemsInvalidationHandler = { [weak self] _, point, _ in
                 guard let self else {
                     return
                 }
@@ -99,10 +98,10 @@ final class InfiniteCompositionalViewController: UIViewController {
                     )
                 }
             }
-            
+
             return section
         }
-        
+
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 

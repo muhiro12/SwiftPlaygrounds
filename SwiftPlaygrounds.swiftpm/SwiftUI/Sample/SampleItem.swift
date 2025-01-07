@@ -11,7 +11,7 @@ import SwiftData
 @Model
 final class SampleItem {
     var timestamp: Date
-    
+
     init(timestamp: Date) {
         self.timestamp = timestamp
     }

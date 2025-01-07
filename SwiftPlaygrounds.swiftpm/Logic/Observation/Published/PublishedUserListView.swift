@@ -5,7 +5,6 @@
 //  Created by Hiromu Nakano on 2024/02/26.
 //
 
-
 import SwiftUI
 
 struct PublishedUserListView: View {
@@ -83,4 +82,3 @@ struct PublishedUserListView: View {
         PublishedUserListView()
     }
 }
-

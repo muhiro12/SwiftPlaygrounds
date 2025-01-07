@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ViewControllerRepresentable: UIViewControllerRepresentable {
     private let viewController: () -> UIViewController
-    
+
     init(_ viewController: @escaping () -> UIViewController) {
         self.viewController = viewController
     }
-    
+
     func makeUIViewController(context: Context) -> UIViewController {
         viewController()
     }

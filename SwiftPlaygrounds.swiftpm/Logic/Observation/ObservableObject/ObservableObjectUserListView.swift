@@ -5,7 +5,6 @@
 //  Created by Hiromu Nakano on 2024/02/26.
 //
 
-
 import SwiftUI
 
 struct ObservableObjectUserListView: View {
@@ -83,5 +82,3 @@ struct ObservableObjectUserListView: View {
         ObservableObjectUserListView()
     }
 }
-
-

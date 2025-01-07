@@ -2,14 +2,14 @@ import SwiftUI
 
 struct TransitionView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var isNavigationPresented = false
     @State private var isSheetPresented = false
     @State private var isPopoverPresented = false
     @State private var isFullScreenCoverPresented = false
     @State private var isFullScreenCoverWithOpacityPresented = false
     @State private var isFullScreenCoverWithUIKitPresented = false
-    
+
     var body: some View {
         VStack(spacing: 40) {
             Button("Navigation") {
@@ -52,7 +52,7 @@ struct TransitionView: View {
                 TransitionView()
             }
         }
-        .fullScreenCover(isPresented: $isFullScreenCoverWithOpacityPresented) {        
+        .fullScreenCover(isPresented: $isFullScreenCoverWithOpacityPresented) {
             NavigationStack {
                 TransitionView()
             }

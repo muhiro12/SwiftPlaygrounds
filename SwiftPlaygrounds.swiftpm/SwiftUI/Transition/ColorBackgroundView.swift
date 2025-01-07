@@ -2,7 +2,7 @@ import SwiftUI
 
 private struct ColorBackgroundView: UIViewRepresentable {
     let color: Color
-    
+
     func makeUIView(context: Context) -> UIView {
         let view = UIView()
         Task { @MainActor in
@@ -10,7 +10,7 @@ private struct ColorBackgroundView: UIViewRepresentable {
         }
         return view
     }
-    
+
     func updateUIView(_ uiView: UIView, context: Context) {}
 }
 

@@ -13,7 +13,7 @@ struct UserRequest: APIRequest {
     let id: String
 
     let apiClient = APIClient()
-    
+
     var expected: Response {
         ServerData.userList.first { $0.id == id }
     }

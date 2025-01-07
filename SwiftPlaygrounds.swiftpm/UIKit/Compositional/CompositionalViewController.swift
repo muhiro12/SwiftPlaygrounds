@@ -17,11 +17,11 @@ final class CompositionalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(collectionView)
         collectionView.frame = view.frame
 
-        dataSource = .init(collectionView: collectionView) { collectionView, indexPath, item in
+        dataSource = .init(collectionView: collectionView) { collectionView, indexPath, _ in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
             cell.backgroundColor = .init(red: .random(in: 0...1),
                                          green: .random(in: 0...1),
@@ -64,7 +64,7 @@ final class CompositionalViewController: UIViewController {
 
             return section
         }
-        
+
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
 }

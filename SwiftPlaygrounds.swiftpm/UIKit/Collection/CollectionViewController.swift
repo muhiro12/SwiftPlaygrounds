@@ -53,7 +53,7 @@ extension CollectionViewController: UICollectionViewDataSource {
             return .zero
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = Section(rawValue: indexPath.section)
 

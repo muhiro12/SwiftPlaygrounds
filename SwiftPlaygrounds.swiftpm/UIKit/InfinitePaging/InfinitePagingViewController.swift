@@ -10,7 +10,7 @@ final class InfinitePagingViewController: UIViewController {
         buildViewController($0)
     }
 
-    private var index = 0    
+    private var index = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +32,17 @@ final class InfinitePagingViewController: UIViewController {
                 scrollView.clipsToBounds = false
             }
         }
-        
+
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             pageViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             pageViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
             pageViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            pageViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            pageViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
         ])
     }
-    
+
     func buildViewController(_ number: Int) -> UIViewController {
         let vc = UIViewController()
         let label = UILabel()
@@ -52,18 +52,18 @@ final class InfinitePagingViewController: UIViewController {
                                       green: .random(in: 0...1),
                                       blue: .random(in: 0...1),
                                       alpha: 1)
-        
+
         vc.view.addSubview(label)
-        
+
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             label.widthAnchor.constraint(equalToConstant: 300),
             label.heightAnchor.constraint(equalToConstant: 200),
             label.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor)
         ])
-        
+
         return vc
     }
 }
@@ -76,7 +76,7 @@ extension InfinitePagingViewController: UIPageViewControllerDataSource {
         }
         return viewControllers[index]
     }
-    
+
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         index += 1
         if index > viewControllers.endIndex - 1 {

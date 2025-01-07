@@ -25,7 +25,7 @@ struct InfiniteCarouselView: View {
                                 switch index {
                                 case ..<objects.startIndex:
                                     objects.last
-                                case objects.startIndex..<objects.endIndex: 
+                                case objects.startIndex..<objects.endIndex:
                                     objects[index]
                                 default:
                                     objects.first

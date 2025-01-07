@@ -36,11 +36,11 @@ struct StudentView: View {
                         NavigationLink(student.grade?.value.description ?? "", value: student.grade)
                     }
                     if student.clubs?.isEmpty == true {
-                            HStack {
-                                Text("Clubs")
-                                    .font(.headline)
-                                    .frame(width: 80)
-                            }
+                        HStack {
+                            Text("Clubs")
+                                .font(.headline)
+                                .frame(width: 80)
+                        }
                     } else {
                         ForEach(student.clubs ?? []) { club in
                             HStack {
@@ -55,7 +55,7 @@ struct StudentView: View {
                         Text("Created at")
                             .font(.headline)
                             .frame(width: 80)
-                       Text(student.createdAt.description)
+                        Text(student.createdAt.description)
                     }
                 } footer: {
                     Button("Delete") {

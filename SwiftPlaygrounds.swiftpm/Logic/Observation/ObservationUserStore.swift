@@ -51,4 +51,3 @@ import Foundation
         userList = userList.replacing([old], with: [new])
     }
 }
-

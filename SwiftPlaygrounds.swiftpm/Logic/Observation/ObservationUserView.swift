@@ -79,4 +79,3 @@ struct ObservationUserView: View {
         ObservationUserView()
     }
 }
-

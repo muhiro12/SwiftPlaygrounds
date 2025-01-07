@@ -12,13 +12,13 @@ struct WebView: View {
 
 final class WebViewController: UIViewController {
     private let webView = WKWebView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        webView.translatesAutoresizingMaskIntoConstraints = false        
-        view.addSubview(webView)        
-        
+
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(webView)
+
         NSLayoutConstraint.activate([
             view.leadingAnchor.constraint(equalTo: webView.leadingAnchor),
             view.topAnchor.constraint(equalTo: webView.topAnchor),
