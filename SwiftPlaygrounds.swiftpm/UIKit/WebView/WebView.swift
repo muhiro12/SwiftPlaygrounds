@@ -2,16 +2,63 @@ import SwiftUI
 import WebKit
 
 struct WebView: View {
+    private let webView = WKWebView()
+    private let documentController = UIDocumentInteractionController()
+
     var body: some View {
-        ViewControllerRepresentable {
-            WebViewController()
+        VStack {
+            ViewControllerRepresentable {
+                WebViewController(webView: webView)
+            }
+            HStack {
+                Button("Back", systemImage: "arrowtriangle.backward") {
+                    webView.goBack()
+                }
+                .frame(maxWidth: .infinity)
+                Button("Go", systemImage: "arrowtriangle.forward") {
+                    webView.goForward()
+                }
+                .frame(maxWidth: .infinity)
+                Button("Reload", systemImage: "arrow.trianglehead.clockwise") {
+                    webView.reload()
+                }
+                .frame(maxWidth: .infinity)
+                Button("Print", systemImage: "printer") {
+                    let controller = UIPrintInteractionController()
+                    controller.printFormatter = webView.viewPrintFormatter()
+                    controller.present(animated: true)
+                }
+                .frame(maxWidth: .infinity)
+                Button("PDF", systemImage: "document.badge.ellipsis") {
+                    Task {
+                        do {
+                            let title = webView.title ?? "temp"
+                            let filePath = URL(filePath: NSTemporaryDirectory() + title + ".pdf")
+                            let pdf = try await webView.pdf()
+                            try pdf.write(to: filePath)
+                            documentController.url = filePath
+                            documentController.presentOptionsMenu(from: webView.frame, in: webView, animated: true)
+                        } catch {}
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .labelStyle(.iconOnly)
         }
-        .ignoresSafeArea()
     }
 }
 
 final class WebViewController: UIViewController {
-    private let webView = WKWebView()
+    private let webView: WKWebView
+
+    init(webView: WKWebView) {
+        self.webView = webView
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

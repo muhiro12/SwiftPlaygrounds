@@ -28,11 +28,10 @@ enum Route: String, CaseIterable {
     case infinitePaging
     case storyboard
     case table
-    case toolbarWebView
     case webView
 
     static var preferRoutes: [Route] {
-        [.authentication]
+        [.webView]
     }
 
     var title: String {
@@ -85,8 +84,7 @@ enum Route: String, CaseIterable {
             UIKitSection.storyboard
         case .table:
             UIKitSection.table
-        case .toolbarWebView,
-             .webView:
+        case .webView:
             UIKitSection.webView
         }
     }
@@ -148,8 +146,6 @@ enum Route: String, CaseIterable {
             StoryboardView()
         case .table:
             TableView()
-        case .toolbarWebView:
-            ToolbarWebView()
         case .webView:
             WebView()
         }
