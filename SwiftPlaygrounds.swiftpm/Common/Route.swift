@@ -29,9 +29,10 @@ enum Route: String, CaseIterable {
     case storyboard
     case table
     case webView
+    case random
 
     static var preferRoutes: [Route] {
-        [.webView]
+        [.random]
     }
 
     var title: String {
@@ -86,6 +87,8 @@ enum Route: String, CaseIterable {
             UIKitSection.table
         case .webView:
             UIKitSection.webView
+        case .random:
+            LogicSection.common
         }
     }
 
@@ -148,6 +151,8 @@ enum Route: String, CaseIterable {
             TableView()
         case .webView:
             WebView()
+        case .random:
+            RandomView()
         }
     }
 }
