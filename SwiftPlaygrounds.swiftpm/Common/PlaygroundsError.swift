@@ -8,17 +8,17 @@
 import Foundation
 
 struct PlaygroundsError: LocalizedError {
-    init() {
-        self.error = NSError(domain: "", code: -1)
+    let errorDescription: String?
+    
+    init(with description: String) {
+        errorDescription = description
     }
 
     init(from error: Error) {
-        self.error = error
+        self.init(with: String(describing: error))
     }
 
-    private let error: Error
-
-    var errorDescription: String? {
-        String(describing: error)
+    init() {
+        self.init(from: NSError(domain: "", code: -1))
     }
 }
