@@ -8,6 +8,8 @@ struct RandomView: View {
     @State private var random3: String?
     @State private var random4: String?
     @State private var random5: String?
+    @State private var random6: String?
+    @State private var random7: String?
     
     var body: some View {
         VStack(spacing: 32) {
@@ -26,40 +28,45 @@ struct RandomView: View {
                 .fontDesign(.monospaced)
             Text(random5 ?? "nil")
                 .fontDesign(.monospaced)
+            Text(random6 ?? "nil")
+                .fontDesign(.monospaced)
+            Text(random7 ?? "nil")
+                .fontDesign(.monospaced)
             Button("Generate") {
                 let length = Int.random(in: 10...20)
                 randomLength = length.description
-                random0 = try? generateRandomString(length: length, options: .lowercase, .uppercase, .numbers, .custom(.init("+-=.")))
-                random1 = try? generateRandomString(length: length, options: .lowercase, .uppercase, .numbers)
-                random2 = try? generateRandomString(length: length, options: .lowercase, .uppercase)
-                random3 = try? generateRandomString(length: length, options: .lowercase)
-                do {
-                    random4 = try generateRandomString(length: length)
-                } catch {
-                    random4 = error.localizedDescription
-                }
-                do {
-                    random5 = try generateRandomString(length: 0, options: .lowercase, .uppercase, .numbers)
-                } catch {
-                    random5 = error.localizedDescription
-                }
+                random0 = try? generateRandomString(length: length, options: [.lowercase, .uppercase, .numbers, .custom(.init("+-=."))])
+                random1 = try? generateRandomString(length: length, options: [.lowercase, .uppercase, .numbers])
+                random2 = try? generateRandomString(length: length, options: [.lowercase, .uppercase])
+                random3 = try? generateRandomString(length: length, options: [.lowercase])
+                random4 = generateRandomString(length: length, options: [])
+                random5 = generateRandomString(length: 0, options: [.lowercase, .uppercase, .numbers])
+                random6 = generateRandomString(range: 1..<2, options: [.lowercase, .uppercase, .numbers])
+                random7 = generateRandomString(range: 1...2, options: [.lowercase, .uppercase, .numbers])
             }
         }
     }
     
-    func generateRandomString(length: Int, options: CharacterSetOption...) throws -> String {
-        guard length > .zero else {
-            throw PlaygroundsError(with: "length is \(length)")
+    func generateRandomString(range: Range<Int>, options: [CharacterSetOption]) -> String? {
+        generateRandomString(length: .random(in: range), options: options)
+    }
+    
+    func generateRandomString(range: ClosedRange<Int>, options: [CharacterSetOption]) -> String? {
+        generateRandomString(length: .random(in: range), options: options)
+    }
+    
+    func generateRandomString(length: Int, options: [CharacterSetOption]) -> String? {
+        guard options.isNotEmpty else {
+            return nil
         }
         let characters = options.reduce(Set<Character>()) {
             $0.union($1.characters)
         }
-        return try (0..<length).reduce("") { current, _ in
-            guard let character = characters.randomElement() else {
-                throw PlaygroundsError(with: "options is empty")
+        return String(
+            (0..<length).compactMap { _ in
+                characters.randomElement()                
             }
-            return current + character.description
-        }
+        )
     }
     
     enum CharacterSetOption {
