@@ -26,7 +26,7 @@ struct SwiftPlaygroundsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationBugView()
+            ContentView()
         }
         .modelContainer(sharedModelContainer)
     }
