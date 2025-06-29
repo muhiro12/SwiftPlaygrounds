@@ -33,7 +33,7 @@ enum Route: String, CaseIterable {
     case random
 
     static var preferRoutes: [Route] {
-        [.random]
+        [.navigationBug]
     }
 
     var title: String {
