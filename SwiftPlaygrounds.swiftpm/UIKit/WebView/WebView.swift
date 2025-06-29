@@ -18,36 +18,40 @@ struct WebView: View {
                         controller.present(animated: true)
                     }
                     .frame(maxWidth: .infinity)
-                    Button("PDF", systemImage: "document.badge.ellipsis") {
-                        Task {
-                            do {
-                                let title = webView.title ?? "temp"
-                                let filePath = URL(filePath: NSTemporaryDirectory() + title + ".pdf")
-                                let pdf = try await webView.pdf()
-                                try pdf.write(to: filePath)
-                                documentController.url = filePath
-                                documentController.presentOptionsMenu(from: webView.frame, in: webView, animated: true)
-                            } catch {}
+                    if false {
+                        Button("PDF", systemImage: "document.badge.ellipsis") {
+                            Task {
+                                do {
+                                    let title = webView.title ?? "temp"
+                                    let filePath = URL(filePath: NSTemporaryDirectory() + title + ".pdf")
+                                    let pdf = try await webView.pdf()
+                                    try pdf.write(to: filePath)
+                                    documentController.url = filePath
+                                    documentController.presentOptionsMenu(from: webView.frame, in: webView, animated: true)
+                                } catch {}
+                            }
                         }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
-                    Button("Scraping", systemImage: "applescript") {
-                        Task {
-                            let js = """
+                    if false {
+                        Button("Scraping", systemImage: "applescript") {
+                            Task {
+                                let js = """
                                      const response = await fetch('https://www.google.com', {
                                         method: 'GET'
                                      })
                                      location.href = response.url
                                      """
-                            do {
-                                let result = try await webView.callAsyncJavaScript(js, contentWorld: .defaultClient)
-                                print(result ?? "nil")
-                            } catch {
-                                print(error)
+                                do {
+                                    let result = try await webView.callAsyncJavaScript(js, contentWorld: .defaultClient)
+                                    print(result ?? "nil")
+                                } catch {
+                                    print(error)
+                                }
                             }
                         }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
                 }
                 HStack {
                     Button("Back", systemImage: "arrowtriangle.backward") {
