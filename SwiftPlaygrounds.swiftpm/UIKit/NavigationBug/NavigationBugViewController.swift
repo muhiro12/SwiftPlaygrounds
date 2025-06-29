@@ -4,6 +4,7 @@ import WebKit
 final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Home"
         view.backgroundColor = .systemBackground
         let label = UILabel()
         label.text = "Home"
@@ -14,18 +15,19 @@ final class HomeViewController: UIViewController {
 }
 
 final class OtherRootViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Other"
+        view.backgroundColor = .systemBackground
+        navigationItem.rightBarButtonItem = .init(title: "Next", style: .plain, target: self, action: #selector(goSettings))
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("OtherRootVC viewWillAppear")
+        print("debug: OtherRootVC viewWillAppear")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("OtherRootVC viewDidAppear")
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItem = .init(title: "Next", style: .plain, target: self, action: #selector(goSettings))
+        print("debug: OtherRootVC viewDidAppear")
     }
     @objc private func goSettings() {
         navigationController?.pushViewController(SettingsViewController(), animated: true)
@@ -35,51 +37,57 @@ final class OtherRootViewController: UIViewController {
 final class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Settings"
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = .init(title: "Web", style: .plain, target: self, action: #selector(goWeb))
     }
     @objc private func goWeb() {
-        navigationController?.pushViewController(BugWebViewController(useNewImplementation: false), animated: true)
+        navigationController?.pushViewController(BugWebViewController(), animated: true)
     }
 }
 
 final class BugWebViewController: UIViewController, WKNavigationDelegate {
     private let webView = WKWebView()
-    private let useNewImplementation: Bool
-    init(useNewImplementation: Bool) {
-        self.useNewImplementation = useNewImplementation
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "BugWeb"
         webView.navigationDelegate = self
-        webView.loadHTMLString("<a href='myapp://home'>Go Home</a>", baseURL: nil)
+        webView.loadHTMLString("""
+        <html>
+          <body>
+            <a href='myapp://home_old'>Go Home (Old)</a><br>
+            <a href='myapp://home_new'>Go Home (New)</a>
+          </body>
+        </html>
+        """, baseURL: nil)
         view.addSubview(webView)
         webView.frame = view.bounds
     }
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if navigationAction.request.url?.scheme == "myapp" {
-            navigateHome()
+        if navigationAction.request.url?.absoluteString.hasPrefix("myapp://home_old") == true {
+            navigateHomeByOldImplements()
+            decisionHandler(.cancel)
+        } else if navigationAction.request.url?.absoluteString.hasPrefix("myapp://home_new") == true {
+            navigateHomeByNewImplements()
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
         }
     }
-    private func navigateHome() {
-        guard let tab = tabBarController, let nav = tab.viewControllers?[4] as? UINavigationController else { return }
-        if useNewImplementation {
-            tab.selectedIndex = 0
-            if let tc = tab.transitionCoordinator {
-                tc.animate(alongsideTransition: nil) { _ in
-                    nav.popToRootViewController(animated: false)
-                }
-            } else {
+    private func navigateHomeByOldImplements() {
+        guard let tab = tabBarController, let nav = tab.viewControllers?[1] as? UINavigationController else { return }
+        nav.popToRootViewController(animated: false)
+        tab.selectedIndex = 0
+    }
+    private func navigateHomeByNewImplements() {
+        guard let tab = tabBarController, let nav = tab.viewControllers?[1] as? UINavigationController else { return }
+        tab.selectedIndex = 0
+        if let tc = tab.transitionCoordinator {
+            tc.animate(alongsideTransition: nil) { _ in
                 nav.popToRootViewController(animated: false)
             }
         } else {
             nav.popToRootViewController(animated: false)
-            tab.selectedIndex = 0
         }
     }
 }
@@ -88,10 +96,10 @@ final class NavigationBugTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let homeNav = UINavigationController(rootViewController: HomeViewController())
-        homeNav.tabBarItem.title = "Home"
+        homeNav.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: nil)
         let othersNav = UINavigationController(rootViewController: OtherRootViewController())
-        othersNav.tabBarItem.title = "Other"
-        viewControllers = [homeNav, UIViewController(), UIViewController(), UIViewController(), othersNav]
+        othersNav.tabBarItem = UITabBarItem(title: "Other", image: UIImage(systemName: "ellipsis.circle"), selectedImage: nil)
+        viewControllers = [homeNav, othersNav]
     }
 }
 
