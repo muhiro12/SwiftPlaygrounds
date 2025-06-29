@@ -5,6 +5,7 @@ enum UIKitSection: String, ContentSection {
     case collection
     case compositional
     case infinitePaging
+    case navigation
     case storyboard
     case table
     case webView
