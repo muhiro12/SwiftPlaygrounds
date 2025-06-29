@@ -56,7 +56,8 @@ final class BugWebViewController: UIViewController, WKNavigationDelegate {
         <html>
           <body>
             <a href='myapp://home_old'>Go Home (Old)</a><br>
-            <a href='myapp://home_new'>Go Home (New)</a>
+            <a href='myapp://home_new1'>Go Home (New1)</a><br>
+            <a href='myapp://home_new2'>Go Home (New2)</a>
           </body>
         </html>
         """, baseURL: nil)
@@ -67,27 +68,32 @@ final class BugWebViewController: UIViewController, WKNavigationDelegate {
         if navigationAction.request.url?.absoluteString.hasPrefix("myapp://home_old") == true {
             navigateHomeByOldImplements()
             decisionHandler(.cancel)
-        } else if navigationAction.request.url?.absoluteString.hasPrefix("myapp://home_new") == true {
+        } else if navigationAction.request.url?.absoluteString.hasPrefix("myapp://home_new1") == true {
             navigateHomeByNewImplements()
+            decisionHandler(.cancel)
+        } else if navigationAction.request.url?.absoluteString.hasPrefix("myapp://home_new2") == true {
+            navigateHomeByNewImplements2()
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
         }
     }
     private func navigateHomeByOldImplements() {
-        guard let tab = tabBarController, let nav = tab.viewControllers?[1] as? UINavigationController else { return }
-        nav.popToRootViewController(animated: false)
-        tab.selectedIndex = 0
+        navigationController?.popToRootViewController(animated: false)
+        tabBarController?.selectedIndex = 0
     }
     private func navigateHomeByNewImplements() {
-        guard let tab = tabBarController, let nav = tab.viewControllers?[1] as? UINavigationController else { return }
-        tab.selectedIndex = 0
-        if let tc = tab.transitionCoordinator {
-            tc.animate(alongsideTransition: nil) { _ in
-                nav.popToRootViewController(animated: false)
+        tabBarController?.selectedIndex = 0
+        navigationController?.popToRootViewController(animated: false)
+    }
+    private func navigateHomeByNewImplements2() {
+        tabBarController?.selectedIndex = 0
+        if let tc = tabBarController?.transitionCoordinator {
+            tc.animate(alongsideTransition: nil) { [weak self] _ in
+                self?.navigationController?.popToRootViewController(animated: false)
             }
         } else {
-            nav.popToRootViewController(animated: false)
+            navigationController?.popToRootViewController(animated: false)
         }
     }
 }
