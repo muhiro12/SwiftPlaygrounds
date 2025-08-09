@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUtilities
 
 struct RandomView: View {
     @State private var randomLength: String?
@@ -11,7 +10,7 @@ struct RandomView: View {
     @State private var random5: String?
     @State private var random6: String?
     @State private var random7: String?
-
+    
     var body: some View {
         VStack(spacing: 32) {
             Text(randomLength ?? "nil")
@@ -47,15 +46,15 @@ struct RandomView: View {
             }
         }
     }
-
+    
     func generateRandomString(range: Range<Int>, options: [CharacterSetOption]) -> String? {
         generateRandomString(length: .random(in: range), options: options)
     }
-
+    
     func generateRandomString(range: ClosedRange<Int>, options: [CharacterSetOption]) -> String? {
         generateRandomString(length: .random(in: range), options: options)
     }
-
+    
     func generateRandomString(length: Int, options: [CharacterSetOption]) -> String? {
         guard options.isNotEmpty else {
             return nil
@@ -65,17 +64,17 @@ struct RandomView: View {
         }
         return String(
             (0..<length).compactMap { _ in
-                characters.randomElement()
+                characters.randomElement()                
             }
         )
     }
-
+    
     enum CharacterSetOption {
         case lowercase
         case uppercase
         case numbers
         case custom(Set<Character>)
-
+        
         var characters: Set<Character> {
             switch self {
             case .lowercase:

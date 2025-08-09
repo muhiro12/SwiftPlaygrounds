@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
+      "state" : {
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "swiftutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/muhiro12/SwiftUtilities",
+      "state" : {
+        "revision" : "ee509f9115c832fb5296fb963c7d9f50a316f32d",
+        "version" : "1.14.0"
+      }
+    }
+  ],
+  "version" : 2
+}

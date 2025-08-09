@@ -9,7 +9,7 @@ import Foundation
 
 struct PlaygroundsError: LocalizedError {
     let errorDescription: String?
-
+    
     init(with description: String) {
         errorDescription = description
     }

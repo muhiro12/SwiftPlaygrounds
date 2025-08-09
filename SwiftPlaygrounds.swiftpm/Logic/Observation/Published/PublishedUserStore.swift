@@ -1,15 +1,14 @@
 //
-//  ObservableObjectUserStore.swift
+//  PublishedUserStore.swift
 //  SwiftPlaygrounds
 //
 //  Created by Hiromu Nakano on 2024/02/26.
 //
 
 import Foundation
-import Combine
 
-final class ObservableObjectUserStore: ObservableObject {
-    static let shared = ObservableObjectUserStore()
+final class PublishedUserStore {
+    static let shared = PublishedUserStore()
 
     private init() {}
 
