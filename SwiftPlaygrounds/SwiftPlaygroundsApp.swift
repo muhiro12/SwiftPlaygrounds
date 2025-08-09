@@ -2,7 +2,7 @@
 //  SwiftPlaygroundsApp.swift
 //  SwiftPlaygrounds
 //
-//  Created by Hiromu Nakano on 2024/02/23.
+//  Created by Hiromu Nakano on 2025/08/09.
 //
 
 import SwiftUI
@@ -15,7 +15,7 @@ struct SwiftPlaygroundsApp: App {
             SampleItem.self,
             Student.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
