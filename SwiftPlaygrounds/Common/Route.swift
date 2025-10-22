@@ -20,6 +20,7 @@ enum Route: String, CaseIterable {
     case infiniteCarousel
     case modifier
     case sampleContent
+    case hybridTextField
     case transition
     case collection
     case secure
@@ -33,7 +34,7 @@ enum Route: String, CaseIterable {
     case random
 
     static var preferRoutes: [Route] {
-        [.navigationBug]
+        [.hybridTextField, .navigationBug]
     }
 
     var title: String {
@@ -71,6 +72,8 @@ enum Route: String, CaseIterable {
             SwiftUISection.modifier
         case .sampleContent:
             SwiftUISection.sample
+        case .hybridTextField:
+            SwiftUISection.hybrid
         case .transition:
             SwiftUISection.transition
         case .collection:
@@ -136,6 +139,8 @@ enum Route: String, CaseIterable {
             ModifierView()
         case .sampleContent:
             SampleContentView()
+        case .hybridTextField:
+            HybridTextFieldView()
         case .transition:
             TransitionView()
         case .collection:
