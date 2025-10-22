@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUtilities
 
 struct InfiniteCarouselView: View {
     @State private var objects = [(index: Int, color: Color)]()
