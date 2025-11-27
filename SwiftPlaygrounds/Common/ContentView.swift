@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var sidebar: Sidebar? = .all
-    @State private var content: Route? = .preferRoutes.first
+    @State private var content: Route? = .keychainAccess
 
     @State private var isAscending = false
 
