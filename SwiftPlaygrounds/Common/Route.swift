@@ -41,64 +41,64 @@ enum Route: String, CaseIterable {
         rawValue.camelCased()
     }
 
-    var tags: [Tag] {
+    var tags: [any Tag] {
         switch self {
         case .combineDetail,
              .combine:
-            [.logic, .combine]
+            [CategoryTag.logic, FeatureTag.combine]
         case .authentication:
-            [.logic, .common]
+            [CategoryTag.logic, FeatureTag.common]
         case .actor,
              .asyncStream:
-            [.logic, .concurrency]
+            [CategoryTag.logic, FeatureTag.concurrency]
         case .observationUserList,
              .observationUser,
              .observableObjectUserList,
              .observableObjectUser,
              .publishedUserList,
              .publishedUser:
-            [.logic, .observation]
+            [CategoryTag.logic, FeatureTag.observation]
         case .student:
-            [.logic, .swiftData]
+            [CategoryTag.logic, FeatureTag.swiftData]
         case .groupingUserList,
              .userList,
              .user:
-            [.logic, .user]
+            [CategoryTag.logic, FeatureTag.user]
         case .keychainAccess:
-            [.package, .keychain]
+            [CategoryTag.package, FeatureTag.keychain]
         case .infiniteCarousel:
-            [.swiftUI, .layout]
+            [CategoryTag.swiftUI, FeatureTag.layout]
         case .modifier:
-            [.swiftUI, .modifier]
+            [CategoryTag.swiftUI, FeatureTag.modifier]
         case .sampleContent:
-            [.swiftUI, .sample]
+            [CategoryTag.swiftUI, FeatureTag.sample]
         case .hybridTextField:
-            [.swiftUI, .hybrid]
+            [CategoryTag.swiftUI, FeatureTag.hybrid]
         case .transition:
-            [.swiftUI, .transition]
+            [CategoryTag.swiftUI, FeatureTag.transition]
         case .collection:
-            [.uiKit, .collection]
+            [CategoryTag.uiKit, FeatureTag.collection]
         case .secure:
-            [.uiKit, .common, .secure]
+            [CategoryTag.uiKit, FeatureTag.common, FeatureTag.secure]
         case .compositional:
-            [.uiKit, .compositional]
+            [CategoryTag.uiKit, FeatureTag.compositional]
         case .infiniteCompositional,
              .infinitePaging:
-            [.uiKit, .infinitePaging]
+            [CategoryTag.uiKit, FeatureTag.infinitePaging]
         case .storyboard:
-            [.uiKit, .storyboard]
+            [CategoryTag.uiKit, FeatureTag.storyboard]
         case .table:
-            [.uiKit, .table]
+            [CategoryTag.uiKit, FeatureTag.table]
         case .webView:
-            [.uiKit, .webView]
+            [CategoryTag.uiKit, FeatureTag.webView]
         case .navigationBug:
-            [.uiKit, .navigation]
+            [CategoryTag.uiKit, FeatureTag.navigation]
         case .random:
-            [.logic, .common]
+            [CategoryTag.logic, FeatureTag.common]
         }
     }
 
-    var primaryTag: Tag? {
+    var primaryTag: (any Tag)? {
         tags.first
     }
 

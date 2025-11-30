@@ -1,20 +1,38 @@
-enum Tag: String, CaseIterable, Identifiable {
+protocol Tag: Identifiable {
+    var title: String { get }
+    var id: String { get }
+}
+
+extension Tag where Self: RawRepresentable, RawValue == String {
+    var id: String {
+        rawValue
+    }
+
+    var title: String {
+        rawValue
+    }
+}
+
+enum CategoryTag: String, CaseIterable, Identifiable, Tag {
     case logic = "Logic"
+    case package = "Package"
+    case swiftUI = "SwiftUI"
+    case uiKit = "UIKit"
+}
+
+enum FeatureTag: String, CaseIterable, Identifiable, Tag {
     case combine = "Combine"
     case common = "Common"
     case concurrency = "Concurrency"
     case observation = "Observation"
     case swiftData = "SwiftData"
     case user = "User"
-    case package = "Package"
     case keychain = "Keychain"
-    case swiftUI = "SwiftUI"
     case layout = "Layout"
     case modifier = "Modifier"
     case sample = "Sample"
     case hybrid = "Hybrid"
     case transition = "Transition"
-    case uiKit = "UIKit"
     case collection = "Collection"
     case compositional = "Compositional"
     case infinitePaging = "Infinite Paging"
@@ -23,12 +41,4 @@ enum Tag: String, CaseIterable, Identifiable {
     case table = "Table"
     case webView = "WebView"
     case secure = "Secure"
-
-    var id: String {
-        rawValue
-    }
-
-    var title: String {
-        rawValue
-    }
 }
