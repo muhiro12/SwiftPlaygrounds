@@ -18,8 +18,10 @@ struct KeychainAccessView: View {
     @State private var error: PlaygroundsError?
 
     private let keychain = Keychain()
+    private let newKeychain = Keychain()
     private let identifierKey = "Identifier"
     private let passwordKey = "Password"
+    private let newPasswordKey = "NewPassword"
 
     var body: some View {
         List {
@@ -62,7 +64,54 @@ struct KeychainAccessView: View {
                     passwordInput = ""
                 }
                 Button("Delete") {
-                    keychain[passwordKey] = nil
+                    try! keychain.remove(passwordKey)
+                    passwordInput = ""
+                }
+            }
+            Section(newPasswordKey) {
+                TextField(newPasswordKey, text: $passwordInput)
+                Button("Add") {
+                    do {
+                        try newKeychain
+                            .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .biometryAny)
+                            .set(passwordInput, key: newPasswordKey)
+                    } catch {
+                        self.error = .init(from: error)
+                    }
+                    passwordInput = ""
+                }
+                Button("Fetch") {
+                    do {
+                        passwordOutput = try newKeychain.get(newPasswordKey) ?? "nil"
+                        isPasswordPresented = true
+                    } catch KeychainAccess.Status.userCanceled {
+                    } catch {
+                        self.error = .init(from: error)
+                    }
+                    passwordInput = ""
+                }
+                Button("Delete") {
+                    try! newKeychain.remove(newPasswordKey)
+                    passwordInput = ""
+                }
+            }
+            Section("Old + New") {
+                Button("Fetch") {
+                    do {
+                        if let output = try keychain.getData(passwordKey)?.description {
+                            passwordOutput = "Old + " + output
+                            isPasswordPresented = true
+                        } else if let output = try newKeychain.getData(newPasswordKey)?.description {
+                            passwordOutput = "New + " + output
+                            isPasswordPresented = true
+                        } else {
+                            passwordOutput = "Else"
+                            isPasswordPresented = true
+                        }
+                    } catch KeychainAccess.Status.userCanceled {
+                    } catch {
+                        self.error = .init(from: error)
+                    }
                     passwordInput = ""
                 }
             }
