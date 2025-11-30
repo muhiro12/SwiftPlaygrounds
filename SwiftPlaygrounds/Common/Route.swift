@@ -45,56 +45,56 @@ enum Route: String, CaseIterable {
         switch self {
         case .combineDetail,
              .combine:
-            [.logicCombine]
+            [.logic, .combine]
         case .authentication:
-            [.logicCommon]
+            [.logic, .common]
         case .actor,
              .asyncStream:
-            [.logicConcurrency]
+            [.logic, .concurrency]
         case .observationUserList,
              .observationUser,
              .observableObjectUserList,
              .observableObjectUser,
              .publishedUserList,
              .publishedUser:
-            [.logicObservation]
+            [.logic, .observation]
         case .student:
-            [.logicSwiftData]
+            [.logic, .swiftData]
         case .groupingUserList,
              .userList,
              .user:
-            [.logicUser]
+            [.logic, .user]
         case .keychainAccess:
-            [.packageKeychain]
+            [.package, .keychain]
         case .infiniteCarousel:
-            [.swiftUILayout]
+            [.swiftUI, .layout]
         case .modifier:
-            [.swiftUIModifier]
+            [.swiftUI, .modifier]
         case .sampleContent:
-            [.swiftUISample]
+            [.swiftUI, .sample]
         case .hybridTextField:
-            [.swiftUIHybrid]
+            [.swiftUI, .hybrid]
         case .transition:
-            [.swiftUITransition]
+            [.swiftUI, .transition]
         case .collection:
-            [.uiKitCollection]
+            [.uiKit, .collection]
         case .secure:
-            [.uiKitCommon]
+            [.uiKit, .common, .secure]
         case .compositional:
-            [.uiKitCompositional]
+            [.uiKit, .compositional]
         case .infiniteCompositional,
              .infinitePaging:
-            [.uiKitInfinitePaging]
+            [.uiKit, .infinitePaging]
         case .storyboard:
-            [.uiKitStoryboard]
+            [.uiKit, .storyboard]
         case .table:
-            [.uiKitTable]
+            [.uiKit, .table]
         case .webView:
-            [.uiKitWebView]
+            [.uiKit, .webView]
         case .navigationBug:
-            [.uiKitNavigation]
+            [.uiKit, .navigation]
         case .random:
-            [.logicCommon]
+            [.logic, .common]
         }
     }
 

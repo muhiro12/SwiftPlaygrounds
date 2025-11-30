@@ -1,30 +1,34 @@
 enum Tag: String, CaseIterable, Identifiable {
-    case logicCombine
-    case logicCommon
-    case logicConcurrency
-    case logicObservation
-    case logicSwiftData
-    case logicUser
-    case packageKeychain
-    case swiftUILayout
-    case swiftUIModifier
-    case swiftUISample
-    case swiftUIHybrid
-    case swiftUITransition
-    case uiKitCollection
-    case uiKitCommon
-    case uiKitCompositional
-    case uiKitInfinitePaging
-    case uiKitNavigation
-    case uiKitStoryboard
-    case uiKitTable
-    case uiKitWebView
+    case logic = "Logic"
+    case combine = "Combine"
+    case common = "Common"
+    case concurrency = "Concurrency"
+    case observation = "Observation"
+    case swiftData = "SwiftData"
+    case user = "User"
+    case package = "Package"
+    case keychain = "Keychain"
+    case swiftUI = "SwiftUI"
+    case layout = "Layout"
+    case modifier = "Modifier"
+    case sample = "Sample"
+    case hybrid = "Hybrid"
+    case transition = "Transition"
+    case uiKit = "UIKit"
+    case collection = "Collection"
+    case compositional = "Compositional"
+    case infinitePaging = "Infinite Paging"
+    case navigation = "Navigation"
+    case storyboard = "Storyboard"
+    case table = "Table"
+    case webView = "WebView"
+    case secure = "Secure"
 
     var id: String {
         rawValue
     }
 
     var title: String {
-        rawValue.camelCased()
+        rawValue
     }
 }
