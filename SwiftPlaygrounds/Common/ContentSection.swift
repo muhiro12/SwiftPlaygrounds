@@ -1,22 +1,30 @@
-import SwiftUI
+enum Tag: String, CaseIterable, Identifiable {
+    case logicCombine
+    case logicCommon
+    case logicConcurrency
+    case logicObservation
+    case logicSwiftData
+    case logicUser
+    case packageKeychain
+    case swiftUILayout
+    case swiftUIModifier
+    case swiftUISample
+    case swiftUIHybrid
+    case swiftUITransition
+    case uiKitCollection
+    case uiKitCommon
+    case uiKitCompositional
+    case uiKitInfinitePaging
+    case uiKitNavigation
+    case uiKitStoryboard
+    case uiKitTable
+    case uiKitWebView
 
-protocol ContentSection: RawRepresentable, CaseIterable, Identifiable where RawValue == String {
-    var title: String { get }
-    var contents: [Route] { get }
-}
-
-extension ContentSection {
     var id: String {
-        title
+        rawValue
     }
 
     var title: String {
         rawValue.camelCased()
-    }
-
-    var contents: [Route] {
-        Route.allCases.filter {
-            $0.section.id == id
-        }
     }
 }

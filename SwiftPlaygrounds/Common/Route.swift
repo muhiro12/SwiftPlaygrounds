@@ -41,61 +41,65 @@ enum Route: String, CaseIterable {
         rawValue.camelCased()
     }
 
-    var section: any ContentSection {
+    var tags: [Tag] {
         switch self {
         case .combineDetail,
              .combine:
-            LogicSection.combine
+            [.logicCombine]
         case .authentication:
-            LogicSection.common
+            [.logicCommon]
         case .actor,
              .asyncStream:
-            LogicSection.concurrency
+            [.logicConcurrency]
         case .observationUserList,
              .observationUser,
              .observableObjectUserList,
              .observableObjectUser,
              .publishedUserList,
              .publishedUser:
-            LogicSection.observation
+            [.logicObservation]
         case .student:
-            LogicSection.swiftData
+            [.logicSwiftData]
         case .groupingUserList,
              .userList,
              .user:
-            LogicSection.user
+            [.logicUser]
         case .keychainAccess:
-            PackageSection.keychainAccess
+            [.packageKeychain]
         case .infiniteCarousel:
-            SwiftUISection.layout
+            [.swiftUILayout]
         case .modifier:
-            SwiftUISection.modifier
+            [.swiftUIModifier]
         case .sampleContent:
-            SwiftUISection.sample
+            [.swiftUISample]
         case .hybridTextField:
-            SwiftUISection.hybrid
+            [.swiftUIHybrid]
         case .transition:
-            SwiftUISection.transition
+            [.swiftUITransition]
         case .collection:
-            UIKitSection.collection
+            [.uiKitCollection]
         case .secure:
-            UIKitSection.common
+            [.uiKitCommon]
         case .compositional:
-            UIKitSection.compositional
+            [.uiKitCompositional]
         case .infiniteCompositional,
              .infinitePaging:
-            UIKitSection.infinitePaging
+            [.uiKitInfinitePaging]
         case .storyboard:
-            UIKitSection.storyboard
+            [.uiKitStoryboard]
         case .table:
-            UIKitSection.table
+            [.uiKitTable]
         case .webView:
-            UIKitSection.webView
+            [.uiKitWebView]
         case .navigationBug:
-            UIKitSection.navigation
+            [.uiKitNavigation]
         case .random:
-            LogicSection.common
+            [.logicCommon]
         }
+    }
+
+    var primaryTag: Tag? {
+        tags.first
     }
 
     @ViewBuilder

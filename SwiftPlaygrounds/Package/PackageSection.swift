@@ -1,5 +1,1 @@
-import SwiftUI
-
-enum PackageSection: String, ContentSection {
-    case keychainAccess
-}
+// Legacy section definition removed in favor of Tag-based classification.
