@@ -23,9 +23,9 @@ struct HybridTextFieldView: View {
                         text: $toggleableText,
                         placeholder: "Toggleable Field"
                     )
-                    .error(toggleableText.count > 6)
-                    .secure(isSecureEntry)
                     .allowsCopyCut(allowsCopyCut)
+                    .secure(isSecureEntry)
+                    .error(toggleableText.count > 6)
                     .frame(height: 44)
 
                     HStack {

@@ -15,9 +15,9 @@ struct ToggleableHybridTextField {
         self.placeholder = placeholder
     }
 
-    func error(_ isError: Bool) -> Self {
+    func allowsCopyCut(_ allowsCopyCut: Bool) -> Self {
         var copy = self
-        copy.isError = isError
+        copy.allowsCopyCut = allowsCopyCut
         return copy
     }
 
@@ -27,9 +27,9 @@ struct ToggleableHybridTextField {
         return copy
     }
 
-    func allowsCopyCut(_ allowsCopyCut: Bool) -> Self {
+    func error(_ isError: Bool) -> Self {
         var copy = self
-        copy.allowsCopyCut = allowsCopyCut
+        copy.isError = isError
         return copy
     }
 }
@@ -50,29 +50,32 @@ extension ToggleableHybridTextField: UIViewRepresentable {
 
     func makeUIView(context: Context) -> ToggleableTextField {
         let textField = ToggleableTextField()
-        textField.text = text
-        textField.placeholder = placeholder
-        textField.updateConfiguration(
-            isError: isError,
+
+        textField.update(
+            text: text,
+            placeholder: placeholder,
+            allowsCopyCut: allowsCopyCut,
             isSecure: isSecure,
-            allowsCopyCut: allowsCopyCut
+            isError: isError
         )
+
         textField.delegate = context.coordinator
         textField.addTarget(
             context.coordinator,
             action: #selector(context.coordinator.textChanged),
             for: .editingChanged
         )
+
         return textField
     }
 
     func updateUIView(_ uiView: ToggleableTextField, context: Context) {
-        uiView.text = text
-        uiView.placeholder = placeholder
-        uiView.updateConfiguration(
-            isError: isError,
+        uiView.update(
+            text: text,
+            placeholder: placeholder,
+            allowsCopyCut: allowsCopyCut,
             isSecure: isSecure,
-            allowsCopyCut: allowsCopyCut
+            isError: isError
         )
     }
 
@@ -86,9 +89,17 @@ final class ToggleableTextField: UITextField {
 
     private var allowsCopyCut = true
 
-    func updateConfiguration(isError: Bool, isSecure: Bool, allowsCopyCut: Bool) {
-        self.isSecureTextEntry = isSecure
+    func update(
+        text: String,
+        placeholder: String,
+        allowsCopyCut: Bool,
+        isSecure: Bool,
+        isError: Bool
+    ) {
+        self.text = text
+        self.placeholder = placeholder
         self.allowsCopyCut = allowsCopyCut
+        self.isSecureTextEntry = isSecure
 
         font = .systemFont(ofSize: 24)
         backgroundColor = !isError ? .systemGreen.withAlphaComponent(0.3) : .systemRed.withAlphaComponent(0.3)
