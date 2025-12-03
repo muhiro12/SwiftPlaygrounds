@@ -2,6 +2,10 @@ import SwiftUI
 import UIKit
 
 struct HybridTextFieldView: View {
+    @State private var toggleableText = ""
+    @State private var isSecureEntry = false
+    @State private var allowsCopyCut = true
+
     @State private var swiftUIText1 = ""
     @State private var swiftUIText2 = ""
 
@@ -14,6 +18,35 @@ struct HybridTextFieldView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Toggleable Secure / Copy-Cut Field")
+                    ToggleableHybridTextField(text: $toggleableText,
+                                              placeholder: "Toggleable Field",
+                                              isSecure: isSecureEntry,
+                                              allowsCopyCut: allowsCopyCut)
+                        .frame(height: 44)
+
+                    HStack {
+                        Button(isSecureEntry ? "Disable Secure" : "Enable Secure",
+                               systemImage: isSecureEntry ? "eye" : "eye.slash") {
+                            isSecureEntry.toggle()
+                        }
+                        .buttonStyle(.bordered)
+
+                        Button(allowsCopyCut ? "Disable Copy/Cut" : "Enable Copy/Cut",
+                               systemImage: "doc.on.doc") {
+                            allowsCopyCut.toggle()
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .font(.footnote)
+                    .tint(.blue)
+
+                    Text("Secure: \(isSecureEntry ? "On" : "Off"), Copy/Cut: \(allowsCopyCut ? "Enabled" : "Disabled")")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
                 VStack(alignment: .leading, spacing: 8) {
                     Text("SwiftUI Field 1")
                     TextField("SwiftUI Field 1", text: $swiftUIText1)
@@ -201,6 +234,37 @@ private struct CustomUIKitNoCopyCutTextField: UIViewRepresentable {
     }
 }
 
+private struct ToggleableHybridTextField: UIViewRepresentable {
+    @Binding var text: String
+    let placeholder: String
+    var isSecure: Bool
+    var allowsCopyCut: Bool
+
+    func makeUIView(context: Context) -> ToggleableTextField {
+        let textField = ToggleableTextField()
+        textField.placeholder = placeholder
+        textField.text = text
+        textField.updateConfiguration(isSecure: isSecure, allowsCopyCut: allowsCopyCut)
+        textField.delegate = context.coordinator
+        textField.addTarget(context.coordinator, action: #selector(TextFieldCoordinator.textChanged(_:)), for: .editingChanged)
+        return textField
+    }
+
+    func updateUIView(_ uiView: ToggleableTextField, context: Context) {
+        if uiView.text != text {
+            uiView.text = text
+        }
+        if uiView.placeholder != placeholder {
+            uiView.placeholder = placeholder
+        }
+        uiView.updateConfiguration(isSecure: isSecure, allowsCopyCut: allowsCopyCut)
+    }
+
+    func makeCoordinator() -> TextFieldCoordinator {
+        TextFieldCoordinator(text: $text)
+    }
+}
+
 private final class TextFieldCoordinator: NSObject, UITextFieldDelegate {
     private var text: Binding<String>
 
@@ -262,9 +326,37 @@ private final class RoundedNoCopyCutTextField: RoundedTextField {
     }
 }
 
+private final class ToggleableTextField: UITextField {
+    private var allowsCopyCut = true
+
+    func updateConfiguration(isSecure: Bool, allowsCopyCut: Bool) {
+        self.allowsCopyCut = allowsCopyCut
+        if isSecureTextEntry != isSecure {
+            let currentText = text
+            isSecureTextEntry = isSecure
+            text = currentText
+        }
+        applyInputConfiguration(isSecure: isSecure)
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if (action == #selector(copy(_:)) || action == #selector(cut(_:))) && !allowsCopyCut {
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+}
+
 private extension UITextField {
     func applyUsernameConfiguration() {
         textContentType = .username
+        autocorrectionType = .no
+        autocapitalizationType = .none
+        spellCheckingType = .no
+    }
+
+    func applyInputConfiguration(isSecure: Bool) {
+        textContentType = isSecure ? .password : .username
         autocorrectionType = .no
         autocapitalizationType = .none
         spellCheckingType = .no
