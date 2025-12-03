@@ -19,11 +19,13 @@ struct HybridTextFieldView: View {
             VStack(spacing: 24) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Toggleable Secure / Copy-Cut Field")
-                    ToggleableHybridTextField(text: $toggleableText,
-                                              placeholder: "Toggleable Field")
-                        .secure(isSecureEntry)
-                        .allowsCopyCut(allowsCopyCut)
-                        .frame(height: 44)
+                    ToggleableHybridTextField(
+                        text: $toggleableText,
+                        placeholder: "Toggleable Field"
+                    )
+                    .secure(isSecureEntry)
+                    .allowsCopyCut(allowsCopyCut)
+                    .frame(height: 44)
 
                     HStack {
                         Button(isSecureEntry ? "Disable Secure" : "Enable Secure",

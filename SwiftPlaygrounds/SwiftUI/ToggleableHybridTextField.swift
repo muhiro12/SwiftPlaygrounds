@@ -1,51 +1,71 @@
 import SwiftUI
 import UIKit
 
-struct ToggleableHybridTextField: UIViewRepresentable {
+struct ToggleableHybridTextField {
     @Binding private var text: String
+
     private let placeholder: String
+
     private var isSecure = false
     private var allowsCopyCut = true
 
     init(text: Binding<String>, placeholder: String) {
-        _text = text
+        self._text = text
         self.placeholder = placeholder
     }
 
-    func makeUIView(context: Context) -> ToggleableTextField {
-        let textField = ToggleableTextField()
-        textField.placeholder = placeholder
-        textField.text = text
-        textField.updateConfiguration(isSecure: isSecure, allowsCopyCut: allowsCopyCut)
-        textField.delegate = context.coordinator
-        textField.addTarget(context.coordinator, action: #selector(TextFieldCoordinator.textChanged(_:)), for: .editingChanged)
-        return textField
-    }
-
-    func updateUIView(_ uiView: ToggleableTextField, context: Context) {
-        if uiView.text != text {
-            uiView.text = text
-        }
-        if uiView.placeholder != placeholder {
-            uiView.placeholder = placeholder
-        }
-        uiView.updateConfiguration(isSecure: isSecure, allowsCopyCut: allowsCopyCut)
-    }
-
-    func makeCoordinator() -> TextFieldCoordinator {
-        TextFieldCoordinator(text: $text)
-    }
-
-    func secure(_ isSecure: Bool) -> ToggleableHybridTextField {
+    func secure(_ isSecure: Bool) -> Self {
         var copy = self
         copy.isSecure = isSecure
         return copy
     }
 
-    func allowsCopyCut(_ allowsCopyCut: Bool) -> ToggleableHybridTextField {
+    func allowsCopyCut(_ allowsCopyCut: Bool) -> Self {
         var copy = self
         copy.allowsCopyCut = allowsCopyCut
         return copy
+    }
+}
+
+extension ToggleableHybridTextField: UIViewRepresentable {
+    final class Coordinator: NSObject, UITextFieldDelegate {
+        private let text: Binding<String>
+
+        init(text: Binding<String>) {
+            self.text = text
+        }
+
+        @objc
+        func textChanged(_ sender: UITextField) {
+            text.wrappedValue = sender.text ?? ""
+        }
+    }
+
+    func makeUIView(context: Context) -> ToggleableTextField {
+        let textField = ToggleableTextField()
+
+        textField.text = text
+        textField.placeholder = placeholder
+        textField.updateConfiguration(isSecure: isSecure, allowsCopyCut: allowsCopyCut)
+
+        textField.delegate = context.coordinator
+        textField.addTarget(
+            context.coordinator,
+            action: #selector(context.coordinator.textChanged),
+            for: .editingChanged
+        )
+
+        return textField
+    }
+
+    func updateUIView(_ uiView: ToggleableTextField, context: Context) {
+        uiView.text = text
+        uiView.placeholder = placeholder
+        uiView.updateConfiguration(isSecure: isSecure, allowsCopyCut: allowsCopyCut)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(text: $text)
     }
 }
 
@@ -53,28 +73,15 @@ final class ToggleableTextField: UITextField {
     private var allowsCopyCut = true
 
     func updateConfiguration(isSecure: Bool, allowsCopyCut: Bool) {
+        self.isSecureTextEntry = isSecure
         self.allowsCopyCut = allowsCopyCut
-        if isSecureTextEntry != isSecure {
-            let currentText = text
-            isSecureTextEntry = isSecure
-            text = currentText
-        }
-        applyInputConfiguration(isSecure: isSecure)
     }
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if (action == #selector(copy(_:)) || action == #selector(cut(_:))) && !allowsCopyCut {
+        if !allowsCopyCut,
+           action == #selector(copy(_:)) || action == #selector(cut(_:)) {
             return false
         }
         return super.canPerformAction(action, withSender: sender)
-    }
-}
-
-extension UITextField {
-    func applyInputConfiguration(isSecure: Bool) {
-        textContentType = isSecure ? .password : .username
-        autocorrectionType = .no
-        autocapitalizationType = .none
-        spellCheckingType = .no
     }
 }
