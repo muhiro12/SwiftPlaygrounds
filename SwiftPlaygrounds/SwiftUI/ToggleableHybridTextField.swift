@@ -51,7 +51,7 @@ extension ToggleableHybridTextField: UIViewRepresentable {
     func makeUIView(context: Context) -> ToggleableTextField {
         let textField = ToggleableTextField()
 
-        textField.update(
+        textField.configure(
             text: text,
             placeholder: placeholder,
             allowsCopyCut: allowsCopyCut,
@@ -70,7 +70,7 @@ extension ToggleableHybridTextField: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: ToggleableTextField, context: Context) {
-        uiView.update(
+        uiView.configure(
             text: text,
             placeholder: placeholder,
             allowsCopyCut: allowsCopyCut,
@@ -85,11 +85,11 @@ extension ToggleableHybridTextField: UIViewRepresentable {
 }
 
 final class ToggleableTextField: UITextField {
-    private let insets = UIEdgeInsets(top: .zero, left: 16, bottom: .zero, right: 16)
+    private let contentInsets = UIEdgeInsets(top: .zero, left: 16, bottom: .zero, right: 16)
 
     private var allowsCopyCut = true
 
-    func update(
+    func configure(
         text: String,
         placeholder: String,
         allowsCopyCut: Bool,
@@ -109,11 +109,11 @@ final class ToggleableTextField: UITextField {
     }
 
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        bounds.inset(by: insets)
+        bounds.inset(by: contentInsets)
     }
 
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        bounds.inset(by: insets)
+        bounds.inset(by: contentInsets)
     }
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
