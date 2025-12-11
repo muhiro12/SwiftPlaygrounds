@@ -62,6 +62,16 @@ struct KeychainBiometryDebugView: View {
                         }
                     }
                 }
+                Button {
+                    runAccessGroupDebug()
+                } label: {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("AccessGroup Debug")
+                        Text("各パターンの agrp を attributes で確認")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
             }
         }
         .navigationTitle("Keychain Biometry")
@@ -71,6 +81,12 @@ struct KeychainBiometryDebugView: View {
         print("========== RUN \(item.id) ==========")
         KeychainBiometryDebugger.runScenario(item.scenario)
         lastRunTitle = item.title
+    }
+
+    private func runAccessGroupDebug() {
+        print("========== RUN AccessGroup Debug ==========")
+        KeychainBiometryDebugger.runAccessGroupAttributesDebug()
+        lastRunTitle = "AccessGroup Debug"
     }
 }
 
