@@ -16,6 +16,7 @@ enum Route: String, CaseIterable {
     case groupingUserList
     case userList
     case user
+    case keychainBiometryDebug
     case keychainAccess
     case infiniteCarousel
     case modifier
@@ -34,7 +35,7 @@ enum Route: String, CaseIterable {
     case random
 
     static var preferRoutes: [Route] {
-        [.hybridTextField, .navigationBug]
+        [.keychainBiometryDebug, .hybridTextField, .navigationBug]
     }
 
     var title: String {
@@ -64,7 +65,8 @@ enum Route: String, CaseIterable {
              .userList,
              .user:
             [CategoryTag.logic, FeatureTag.user]
-        case .keychainAccess:
+        case .keychainBiometryDebug,
+             .keychainAccess:
             [CategoryTag.package, FeatureTag.keychain]
         case .infiniteCarousel:
             [CategoryTag.swiftUI, FeatureTag.layout]
@@ -135,6 +137,8 @@ enum Route: String, CaseIterable {
             UserListView()
         case .user:
             UserView()
+        case .keychainBiometryDebug:
+            KeychainBiometryDebugView()
         case .keychainAccess:
             KeychainAccessView()
         case .infiniteCarousel:

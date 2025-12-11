@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Route? = .hybridTextField
+    @State private var selection: Route? = .keychainBiometryDebug
     @State private var isAscending = false
     @State private var searchText = ""
 
