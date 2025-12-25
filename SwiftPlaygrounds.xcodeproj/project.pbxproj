@@ -15,9 +15,22 @@
 		AD707E452EA8984900CD3D39 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AD8306082EFD65C000D52623 /* Exceptions for "SwiftPlaygrounds" folder in "SwiftPlaygrounds" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AD707E442EA8984900CD3D39 /* SwiftPlaygrounds */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AD707E472EA8984900CD3D39 /* SwiftPlaygrounds */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AD8306082EFD65C000D52623 /* Exceptions for "SwiftPlaygrounds" folder in "SwiftPlaygrounds" target */,
+			);
 			path = SwiftPlaygrounds;
 			sourceTree = "<group>";
 		};
@@ -265,6 +278,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftPlaygrounds/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "A message that tells people why the app is requesting the ability to authenticate with Face ID.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -310,6 +324,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftPlaygrounds/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "A message that tells people why the app is requesting the ability to authenticate with Face ID.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

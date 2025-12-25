@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Route? = .keychainBiometryDebug
+    @EnvironmentObject private var deepLinkNavigator: DeepLinkNavigator
     @State private var isAscending = false
     @State private var searchText = ""
+
+    private var selection: Binding<Route?> {
+        Binding(
+            get: { deepLinkNavigator.selection },
+            set: { deepLinkNavigator.selection = $0 }
+        )
+    }
 
     private var orderedRoutes: [Route] {
         let routes = Route.preferRoutes + Route.allCases.filter {
@@ -43,7 +50,7 @@ struct ContentView: View {
         NavigationSplitView {
             List(filteredRoutes,
                  id: \.self,
-                 selection: $selection) { route in
+                 selection: selection) { route in
                 VStack(alignment: .leading, spacing: 4) {
                     Text(route.title)
                     if let primaryTag = route.primaryTag {
@@ -63,7 +70,7 @@ struct ContentView: View {
             }
             .searchable(text: $searchText, prompt: "Search by title or tag")
         } detail: {
-            if let selection {
+            if let selection = deepLinkNavigator.selection {
                 selection.view
                     .navigationTitle(selection.title)
             } else {
@@ -75,4 +82,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(DeepLinkNavigator())
 }

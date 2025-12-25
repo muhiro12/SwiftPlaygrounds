@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct SwiftPlaygroundsApp: App {
+    @StateObject private var deepLinkNavigator = DeepLinkNavigator()
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             SampleItem.self,
@@ -27,6 +29,10 @@ struct SwiftPlaygroundsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(deepLinkNavigator)
+                .onOpenURL { url in
+                    deepLinkNavigator.handle(url: url)
+                }
         }
         .modelContainer(sharedModelContainer)
     }
