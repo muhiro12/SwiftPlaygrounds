@@ -33,6 +33,7 @@ enum Route: String, CaseIterable {
     case webView
     case navigationBug
     case random
+    case deepLinkDemo
 
     static var preferRoutes: [Route] {
         [.keychainBiometryDebug, .hybridTextField, .navigationBug]
@@ -95,6 +96,8 @@ enum Route: String, CaseIterable {
             [CategoryTag.uiKit, FeatureTag.webView]
         case .navigationBug:
             [CategoryTag.uiKit, FeatureTag.navigation]
+        case .deepLinkDemo:
+            [CategoryTag.swiftUI, FeatureTag.webView]
         case .random:
             [CategoryTag.logic, FeatureTag.common]
         }
@@ -169,6 +172,8 @@ enum Route: String, CaseIterable {
             WebView()
         case .navigationBug:
             NavigationBugView()
+        case .deepLinkDemo:
+            DeepLinkDemoView()
         case .random:
             RandomView()
         }
