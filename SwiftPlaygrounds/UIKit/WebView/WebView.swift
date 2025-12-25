@@ -54,6 +54,12 @@ struct WebView: View {
                     }
                 }
                 HStack {
+                    Button("Deep Link Test", systemImage: "link") {
+                        webView.loadHTMLString(WebViewController.deepLinkHTML, baseURL: nil)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                HStack {
                     Button("Back", systemImage: "arrowtriangle.backward") {
                         webView.goBack()
                     }
@@ -73,7 +79,7 @@ struct WebView: View {
     }
 }
 
-final class WebViewController: UIViewController {
+final class WebViewController: UIViewController, WKNavigationDelegate {
     private let webView: WKWebView
 
     init(webView: WKWebView) {
@@ -89,6 +95,7 @@ final class WebViewController: UIViewController {
         super.viewDidLoad()
 
         webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
         view.addSubview(webView)
 
         NSLayoutConstraint.activate([
@@ -98,11 +105,37 @@ final class WebViewController: UIViewController {
             view.bottomAnchor.constraint(equalTo: webView.bottomAnchor)
         ])
 
-        webView.load(
-            .init(
-                url: .init(string: "https://google.com")!
-            )
-        )
+        loadDeepLinkDemo()
+    }
+
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url,
+           url.scheme == DeepLink.scheme {
+            UIApplication.shared.open(url)
+            decisionHandler(.cancel)
+            return
+        }
+        decisionHandler(.allow)
+    }
+
+    private func loadDeepLinkDemo() {
+        webView.loadHTMLString(Self.deepLinkHTML, baseURL: nil)
+    }
+
+    static var deepLinkHTML: String {
+        """
+        <html><body>
+        <h3>Deep link examples</h3>
+        <ul>
+          <li><a href="\(DeepLink.scheme)://route/keychain-biometry-debug">Host route + hyphen path</a></li>
+          <li><a href="\(DeepLink.scheme)://keychainBiometryDebug">Host omitted + camelCase</a></li>
+          <li><a href="\(DeepLink.scheme)://route/hybrid-text-field">Host route + kebab</a></li>
+          <li><a href="\(DeepLink.scheme)://webView">Host omitted + other screen</a></li>
+        </ul>
+        </body></html>
+        """
     }
 }
 
