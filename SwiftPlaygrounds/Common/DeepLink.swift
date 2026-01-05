@@ -4,6 +4,13 @@ import Combine
 enum DeepLink {
     static let scheme = "playgrounds"
 
+    static func shouldPresentAlert(for url: URL) -> Bool {
+        guard url.scheme?.lowercased() == scheme else {
+            return false
+        }
+        return url.host?.lowercased() == "alert"
+    }
+
     static func route(from url: URL) -> Route? {
         guard url.scheme?.lowercased() == scheme else {
             return nil

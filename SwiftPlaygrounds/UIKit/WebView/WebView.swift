@@ -111,13 +111,20 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let url = navigationAction.request.url,
-           url.scheme == DeepLink.scheme {
-            UIApplication.shared.open(url)
+        guard let url = navigationAction.request.url,
+              url.scheme == DeepLink.scheme else {
+            decisionHandler(.allow)
+            return
+        }
+
+        if DeepLink.shouldPresentAlert(for: url) {
+            presentAlert(for: url)
             decisionHandler(.cancel)
             return
         }
-        decisionHandler(.allow)
+
+        UIApplication.shared.open(url)
+        decisionHandler(.cancel)
     }
 
     private func loadDeepLinkDemo() {
@@ -133,9 +140,20 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
           <li><a href="\(DeepLink.scheme)://keychainBiometryDebug">Host omitted + camelCase</a></li>
           <li><a href="\(DeepLink.scheme)://route/hybrid-text-field">Host route + kebab</a></li>
           <li><a href="\(DeepLink.scheme)://webView">Host omitted + other screen</a></li>
+          <li><a href="\(DeepLink.scheme)://alert">Show alert instead of deep link</a></li>
         </ul>
         </body></html>
         """
+    }
+
+    private func presentAlert(for url: URL) {
+        let alert = UIAlertController(
+            title: "ディープリンクを抑制しました",
+            message: "\(url.absoluteString) はページ内アラートの対象です。",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }
 

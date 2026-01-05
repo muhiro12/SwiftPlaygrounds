@@ -74,6 +74,7 @@ private struct DeepLinkWKWebView: UIViewControllerRepresentable {
         webView.navigationDelegate = context.coordinator
         let vc = UIViewController()
         vc.view = webView
+        context.coordinator.presentingViewController = vc
         webView.load(URLRequest(url: url))
         return vc
     }
@@ -85,16 +86,35 @@ private struct DeepLinkWKWebView: UIViewControllerRepresentable {
     }
 
     final class Coordinator: NSObject, WKNavigationDelegate {
+        weak var presentingViewController: UIViewController?
+
         func webView(_ webView: WKWebView,
                      decidePolicyFor navigationAction: WKNavigationAction,
                      decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            if let url = navigationAction.request.url,
-               url.scheme == DeepLink.scheme {
-                UIApplication.shared.open(url)
+            guard let url = navigationAction.request.url,
+                  url.scheme == DeepLink.scheme else {
+                decisionHandler(.allow)
+                return
+            }
+
+            if DeepLink.shouldPresentAlert(for: url) {
+                presentAlert(for: url)
                 decisionHandler(.cancel)
                 return
             }
-            decisionHandler(.allow)
+
+            UIApplication.shared.open(url)
+            decisionHandler(.cancel)
+        }
+
+        private func presentAlert(for url: URL) {
+            let alert = UIAlertController(
+                title: "ディープリンクを抑制しました",
+                message: "\(url.absoluteString) はページ内アラートの対象です。",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            presentingViewController?.present(alert, animated: true)
         }
     }
 }

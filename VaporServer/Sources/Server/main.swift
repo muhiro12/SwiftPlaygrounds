@@ -10,6 +10,7 @@ func routes(_ app: Application) throws {
           <li><a href="playgrounds://keychainBiometryDebug">playgrounds://keychainBiometryDebug</a></li>
           <li><a href="playgrounds://route/hybrid-text-field">playgrounds://route/hybrid-text-field</a></li>
           <li><a href="playgrounds://webView">playgrounds://webView</a></li>
+          <li><a href="playgrounds://alert">playgrounds://alert (show alert)</a></li>
         </ul>
         </body></html>
         """
