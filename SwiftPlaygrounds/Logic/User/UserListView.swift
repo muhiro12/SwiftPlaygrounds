@@ -17,6 +17,13 @@ struct UserListView: View {
     @State private var isLoading = false
     @State private var error: PlaygroundsError?
 
+    private var isSelectedUserPresented: Binding<Bool> {
+        Binding(
+            get: { selectedUserID != nil },
+            set: { if !$0 { selectedUserID = nil } }
+        )
+    }
+
     var body: some View {
         List(userList, selection: $selectedUserID) { user in
             HStack {
@@ -54,9 +61,11 @@ struct UserListView: View {
                 UserView(userID: currentUser?.id)
             }
         }
-        .sheet(item: $selectedUserID) { userID in
+        .sheet(isPresented: isSelectedUserPresented) {
             NavigationStack {
-                UserView(userID: userID)
+                if let userID = selectedUserID {
+                    UserView(userID: userID)
+                }
             }
         }
         .task {

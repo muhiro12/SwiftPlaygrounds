@@ -12,9 +12,3 @@ extension String {
         (first?.uppercased() ?? "") + dropFirst()
     }
 }
-
-extension String: Identifiable {
-    public var id: Self {
-        self
-    }
-}

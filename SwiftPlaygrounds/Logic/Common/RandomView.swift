@@ -35,10 +35,10 @@ struct RandomView: View {
             Button("Generate") {
                 let length = Int.random(in: 10...20)
                 randomLength = length.description
-                random0 = try? generateRandomString(length: length, options: [.lowercase, .uppercase, .numbers, .custom(.init("+-=."))])
-                random1 = try? generateRandomString(length: length, options: [.lowercase, .uppercase, .numbers])
-                random2 = try? generateRandomString(length: length, options: [.lowercase, .uppercase])
-                random3 = try? generateRandomString(length: length, options: [.lowercase])
+                random0 = generateRandomString(length: length, options: [.lowercase, .uppercase, .numbers, .custom(.init("+-=."))])
+                random1 = generateRandomString(length: length, options: [.lowercase, .uppercase, .numbers])
+                random2 = generateRandomString(length: length, options: [.lowercase, .uppercase])
+                random3 = generateRandomString(length: length, options: [.lowercase])
                 random4 = generateRandomString(length: length, options: [])
                 random5 = generateRandomString(length: 0, options: [.lowercase, .uppercase, .numbers])
                 random6 = generateRandomString(range: 1..<2, options: [.lowercase, .uppercase, .numbers])
