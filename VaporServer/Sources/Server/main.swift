@@ -23,11 +23,11 @@ func routes(_ app: Application) throws {
 
 var env = try Environment.detect()
 try LoggingSystem.bootstrap(from: &env)
-let app = Application(env)
-defer { app.shutdown() }
+let app = try await Application.make(env)
+defer { Task { try? await app.asyncShutdown() } }
 
 app.http.server.configuration.port = Environment.get("PORT").flatMap(Int.init) ?? 8080
 app.http.server.configuration.hostname = Environment.get("HOST") ?? "127.0.0.1"
 
 try routes(app)
-try app.run()
+try await app.execute()
