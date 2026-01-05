@@ -25,7 +25,17 @@ struct DeepLinkDemoView: View {
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)
             .sheet(isPresented: $showWebView) {
-                DeepLinkWKWebView(url: serverURL)
+                NavigationStack {
+                    DeepLinkWKWebView(url: serverURL)
+                        .navigationTitle("WKWebView")
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button("Close") {
+                                    showWebView = false
+                                }
+                            }
+                        }
+                }
             }
 
             Button("SFSafariViewControllerで開く", systemImage: "safari") {
