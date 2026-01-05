@@ -141,6 +141,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
           <li><a href="\(DeepLink.scheme)://route/hybrid-text-field">Host route + kebab</a></li>
           <li><a href="\(DeepLink.scheme)://webView">Host omitted + other screen</a></li>
           <li><a href="\(DeepLink.scheme)://alert">Show alert instead of deep link</a></li>
+          <li><a href="maps://?q=Tokyo+Station">maps://?q=Tokyo+Station</a></li>
         </ul>
         </body></html>
         """

@@ -36,7 +36,7 @@ enum Route: String, CaseIterable {
     case deepLinkDemo
 
     static var preferRoutes: [Route] {
-        [.keychainBiometryDebug, .hybridTextField, .navigationBug]
+        [.deepLinkDemo, .keychainBiometryDebug, .hybridTextField, .navigationBug]
     }
 
     var title: String {

@@ -7,7 +7,6 @@ import AuthenticationServices
 struct DeepLinkDemoView: View {
     private let serverURL = URL(string: "http://127.0.0.1:8080")!
 
-    @Environment(\.openURL) private var openURL
     @State private var showSafari = false
     @State private var showWebView = false
     @State private var webAuthSession: ASWebAuthenticationSession?
@@ -15,18 +14,21 @@ struct DeepLinkDemoView: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            Text("ローカルのVaporサーバーで配信しているディープリンクページを3パターンで開きます。先に `VaporServer` で `swift run` しておいてください。")
+            Text("同一ページを3種類のWeb表示で開き、playgrounds:// と maps:// の挙動差を確認します。先に `VaporServer` で `swift run` しておいてください。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.leading)
 
-            Button("Safariで開く", systemImage: "safari") {
-                openURL(serverURL)
+            Button("WKWebViewで開く", systemImage: "chevron.left.forwardslash.chevron.right") {
+                showWebView = true
             }
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)
+            .sheet(isPresented: $showWebView) {
+                DeepLinkWKWebView(url: serverURL)
+            }
 
-            Button("SFSafariViewControllerで開く", systemImage: "rectangle.portrait") {
+            Button("SFSafariViewControllerで開く", systemImage: "safari") {
                 showSafari = true
             }
             .buttonStyle(.bordered)
@@ -35,24 +37,16 @@ struct DeepLinkDemoView: View {
                 SafariView(url: serverURL)
             }
 
-            Button("WKWebViewで開く", systemImage: "chevron.left.forwardslash.chevron.right") {
-                showWebView = true
+            Button("ASWebAuthenticationSessionで開く", systemImage: "lock.shield") {
+                startWebAuthSession()
             }
             .buttonStyle(.bordered)
             .frame(maxWidth: .infinity)
-            .sheet(isPresented: $showWebView) {
-                DeepLinkWKWebView(url: serverURL)
-        }
-        Button("ASWebAuthenticationSessionで開く", systemImage: "lock.shield") {
-            startWebAuthSession()
-        }
-        .buttonStyle(.bordered)
-        .frame(maxWidth: .infinity)
 
-        Spacer()
-    }
-    .padding()
-    .navigationTitle("Deep Link Demo")
+            Spacer()
+        }
+        .padding()
+        .navigationTitle("Deep Link Demo")
     }
 }
 
