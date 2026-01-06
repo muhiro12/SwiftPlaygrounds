@@ -31,6 +31,11 @@ enum SwiftUIRouteDefinitions {
             route: .deepLinkDemo,
             tags: [CategoryTag.swiftUI, FeatureTag.webView],
             viewBuilder: { AnyView(DeepLinkDemoView()) }
+        ),
+        RouteDefinition(
+            route: .webAuthenticationSession,
+            tags: [CategoryTag.swiftUI, FeatureTag.common],
+            viewBuilder: { AnyView(WebAuthenticationSessionView()) }
         )
     ]
 }

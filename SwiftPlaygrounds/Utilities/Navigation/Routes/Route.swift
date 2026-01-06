@@ -32,6 +32,7 @@ enum Route: String, CaseIterable {
     case navigationBug
     case random
     case deepLinkDemo
+    case webAuthenticationSession
 
     static var preferRoutes: [Route] {
         [.deepLinkDemo, .keychainBiometryDebug, .hybridTextField, .navigationBug]
