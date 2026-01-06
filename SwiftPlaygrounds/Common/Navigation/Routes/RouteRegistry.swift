@@ -1,13 +1,24 @@
 enum RouteRegistry {
     private static let definitionsByRoute: [Route: RouteDefinition] = {
         var definitions: [Route: RouteDefinition] = [:]
+        var duplicates: [Route] = []
         let allDefinitions = LogicRouteDefinitions.all
             + SwiftUIRouteDefinitions.all
             + UIKitRouteDefinitions.all
             + PackageRouteDefinitions.all
 
         for definition in allDefinitions {
+            if definitions[definition.route] != nil {
+                duplicates.append(definition.route)
+            }
             definitions[definition.route] = definition
+        }
+        if !duplicates.isEmpty {
+            assertionFailure("Duplicate route definitions found: \(duplicates)")
+        }
+        let missing = Set(Route.allCases).subtracting(definitions.keys)
+        if !missing.isEmpty {
+            assertionFailure("Missing route definitions: \(missing)")
         }
         return definitions
     }()
