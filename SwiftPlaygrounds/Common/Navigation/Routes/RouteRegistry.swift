@@ -23,6 +23,10 @@ enum RouteRegistry {
         return definitions
     }()
 
+    static var orderedRoutes: [Route] {
+        Route.allCases
+    }
+
     static func definition(for route: Route) -> RouteDefinition {
         guard let definition = definitionsByRoute[route] else {
             preconditionFailure("Missing route definition for \(route)")

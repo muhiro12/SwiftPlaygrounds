@@ -20,7 +20,7 @@ struct ContentView: View {
     }
 
     private var orderedRoutes: [Route] {
-        let routes = Route.preferRoutes + Route.allCases.filter {
+        let routes = Route.preferRoutes + RouteRegistry.orderedRoutes.filter {
             !Route.preferRoutes.contains($0)
         }
         guard isAscending else {
