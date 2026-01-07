@@ -5,9 +5,11 @@ struct WebAuthenticationSessionView: View {
     private let defaultURLString = "http://127.0.0.1:8080/auth"
     private let defaultCallbackScheme = DeepLink.scheme
 
+    @EnvironmentObject private var deepLinkNavigator: DeepLinkNavigator
     @State private var urlString = "http://127.0.0.1:8080/auth"
     @State private var callbackScheme = DeepLink.scheme
     @State private var prefersEphemeral = false
+    @State private var forwardCallbackToDeepLink = false
     @State private var statusMessage = "Not started"
     @State private var webAuthSession: ASWebAuthenticationSession?
     @State private var presentationContextProvider = PresentationContextProvider()
@@ -27,6 +29,7 @@ struct WebAuthenticationSessionView: View {
                 TextField("Callback Scheme", text: $callbackScheme, prompt: Text(defaultCallbackScheme))
                     .textInputAutocapitalization(.never)
                 Toggle("Ephemeral Session", isOn: $prefersEphemeral)
+                Toggle("Forward callback to deep link", isOn: $forwardCallbackToDeepLink)
             }
 
             Section("一般的なパターン") {
@@ -92,6 +95,11 @@ private extension WebAuthenticationSessionView {
         let session = ASWebAuthenticationSession(url: url, callbackURLScheme: scheme) { callbackURL, error in
             if let callbackURL {
                 statusMessage = "Callback: \(callbackURL.absoluteString)"
+                if forwardCallbackToDeepLink {
+                    DispatchQueue.main.async {
+                        _ = deepLinkNavigator.handle(url: callbackURL)
+                    }
+                }
                 return
             }
             if let error {
