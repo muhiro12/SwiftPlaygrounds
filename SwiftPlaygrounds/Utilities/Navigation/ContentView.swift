@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var deepLinkNavigator: DeepLinkNavigator
-    @State private var isAscending = false
+    @State private var sortOrder: SortOrder = .addedOrder
     @State private var searchText = ""
 
     private var selection: Binding<Route?> {
@@ -20,14 +20,16 @@ struct ContentView: View {
     }
 
     private var orderedRoutes: [Route] {
-        let routes = Route.preferRoutes + RouteRegistry.orderedRoutes.filter {
-            !Route.preferRoutes.contains($0)
-        }
-        guard isAscending else {
-            return routes
-        }
-        return routes.sorted {
-            $0.title < $1.title
+        let routes = RouteRegistry.orderedRoutes
+        switch sortOrder {
+        case .addedOrder:
+            return Route.preferRoutes + routes.filter { !Route.preferRoutes.contains($0) }
+        case .addedOrderReversed:
+            return routes.reversed()
+        case .alphabetical:
+            return routes.sorted { $0.title < $1.title }
+        case .alphabeticalReversed:
+            return routes.sorted { $0.title > $1.title }
         }
     }
 
@@ -63,8 +65,14 @@ struct ContentView: View {
             .navigationTitle("Contents")
             .toolbar {
                 ToolbarItem {
-                    Button("Sort", systemImage: "arrow.up.and.down.text.horizontal") {
-                        isAscending.toggle()
+                    Menu {
+                        ForEach(SortOrder.allCases, id: \.self) { order in
+                            Button(order.title) {
+                                sortOrder = order
+                            }
+                        }
+                    } label: {
+                        Label("Sort", systemImage: "arrow.up.and.down.text.horizontal")
                     }
                 }
             }
@@ -77,6 +85,17 @@ struct ContentView: View {
                 Text("Select a destination")
             }
         }
+    }
+}
+
+private enum SortOrder: String, CaseIterable {
+    case addedOrder = "Added order"
+    case addedOrderReversed = "Added order (reversed)"
+    case alphabetical = "Alphabetical"
+    case alphabeticalReversed = "Alphabetical (reversed)"
+
+    var title: String {
+        rawValue
     }
 }
 
