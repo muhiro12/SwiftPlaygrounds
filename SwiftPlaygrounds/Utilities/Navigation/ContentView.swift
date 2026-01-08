@@ -54,8 +54,7 @@ struct ContentView: View {
     }
 
     private var otherFilteredRoutes: [Route] {
-        let preferred = Set(Route.preferRoutes)
-        return filteredRoutes.filter { !preferred.contains($0) }
+        filteredRoutes
     }
 
     var body: some View {
@@ -72,6 +71,7 @@ struct ContentView: View {
                                         .foregroundStyle(.secondary)
                                 }
                             }
+                            .tag(route)
                         }
                     }
                 }
@@ -87,6 +87,7 @@ struct ContentView: View {
                                         .foregroundStyle(.secondary)
                                 }
                             }
+                            .tag(route)
                         }
                     }
                 }
