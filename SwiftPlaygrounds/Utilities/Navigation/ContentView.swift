@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var deepLinkNavigator: DeepLinkNavigator
-    @State private var sortOrder: SortOrder = .addedOrder
+    @State private var sortOrder: SortOrder = .addedOrderReversed
     @State private var searchText = ""
 
     private var selection: Binding<Route?> {
