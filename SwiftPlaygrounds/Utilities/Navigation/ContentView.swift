@@ -48,17 +48,46 @@ struct ContentView: View {
         }
     }
 
+    private var preferredFilteredRoutes: [Route] {
+        let preferred = Set(Route.preferRoutes)
+        return filteredRoutes.filter { preferred.contains($0) }
+    }
+
+    private var otherFilteredRoutes: [Route] {
+        let preferred = Set(Route.preferRoutes)
+        return filteredRoutes.filter { !preferred.contains($0) }
+    }
+
     var body: some View {
         NavigationSplitView {
-            List(filteredRoutes,
-                 id: \.self,
-                 selection: selection) { route in
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(route.title)
-                    if let primaryTag = route.primaryTag {
-                        Text(primaryTag.title)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+            List(selection: selection) {
+                if !preferredFilteredRoutes.isEmpty {
+                    Section("Pinned") {
+                        ForEach(preferredFilteredRoutes, id: \.self) { route in
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(route.title)
+                                if let primaryTag = route.primaryTag {
+                                    Text(primaryTag.title)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if !otherFilteredRoutes.isEmpty {
+                    Section("Others") {
+                        ForEach(otherFilteredRoutes, id: \.self) { route in
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(route.title)
+                                if let primaryTag = route.primaryTag {
+                                    Text(primaryTag.title)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                        }
                     }
                 }
             }
