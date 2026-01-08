@@ -108,9 +108,10 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem {
                     Menu {
-                        ForEach(SortOrder.allCases, id: \.self) { order in
-                            Button(order.title) {
-                                sortOrder = order
+                        Picker("Sort", selection: $sortOrder) {
+                            ForEach(SortOrder.allCases, id: \.self) { order in
+                                Text(order.title)
+                                    .tag(order)
                             }
                         }
                     } label: {
