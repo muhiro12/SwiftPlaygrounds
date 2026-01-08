@@ -50,7 +50,19 @@ struct ContentView: View {
 
     private var preferredFilteredRoutes: [Route] {
         let preferred = Set(Route.preferRoutes)
-        return filteredRoutes.filter { preferred.contains($0) }
+        let routes = filteredRoutes.filter { preferred.contains($0) }
+        switch sortOrder {
+        case .addedOrder:
+            let orderIndex = Dictionary(uniqueKeysWithValues: Route.preferRoutes.enumerated().map { ($1, $0) })
+            return routes.sorted { (orderIndex[$0] ?? Int.max) < (orderIndex[$1] ?? Int.max) }
+        case .addedOrderReversed:
+            let orderIndex = Dictionary(uniqueKeysWithValues: Route.preferRoutes.enumerated().map { ($1, $0) })
+            return routes.sorted { (orderIndex[$0] ?? Int.max) > (orderIndex[$1] ?? Int.max) }
+        case .alphabetical:
+            return routes.sorted { $0.title < $1.title }
+        case .alphabeticalReversed:
+            return routes.sorted { $0.title > $1.title }
+        }
     }
 
     private var otherFilteredRoutes: [Route] {
