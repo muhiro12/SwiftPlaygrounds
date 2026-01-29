@@ -43,6 +43,11 @@ enum UIKitRouteDefinitions {
             viewBuilder: { AnyView(WebView()) }
         ),
         RouteDefinition(
+            route: .realmSettings,
+            tags: [CategoryTag.uiKit, FeatureTag.common],
+            viewBuilder: { AnyView(RealmSettingsView()) }
+        ),
+        RouteDefinition(
             route: .navigationBug,
             tags: [CategoryTag.uiKit, FeatureTag.navigation],
             viewBuilder: { AnyView(NavigationBugView()) }

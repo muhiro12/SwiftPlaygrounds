@@ -29,12 +29,13 @@ enum Route: String, CaseIterable {
     case storyboard
     case table
     case webView
+    case realmSettings
     case navigationBug
     case random
     case deepLinkDemo
     case webAuthenticationSession
 
     static var preferRoutes: [Route] {
-        [.deepLinkDemo, .keychainBiometryDebug, .hybridTextField, .navigationBug]
+        [.realmSettings, .deepLinkDemo, .keychainBiometryDebug, .hybridTextField, .navigationBug]
     }
 }
