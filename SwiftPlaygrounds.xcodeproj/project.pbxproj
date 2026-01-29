@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AD707EFB2EA898F300CD3D39 /* SwiftUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = AD707EFA2EA898F300CD3D39 /* SwiftUtilities */; };
 		AD707EFE2EA8991C00CD3D39 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD707EFD2EA8991C00CD3D39 /* KeychainAccess */; };
+		ADE381A72F2B26E30090E6C4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ADE381A62F2B26E30090E6C4 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADE381A72F2B26E30090E6C4 /* RealmSwift in Frameworks */,
 				AD707EFE2EA8991C00CD3D39 /* KeychainAccess in Frameworks */,
 				AD707EFB2EA898F300CD3D39 /* SwiftUtilities in Frameworks */,
 			);
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				AD707EFA2EA898F300CD3D39 /* SwiftUtilities */,
 				AD707EFD2EA8991C00CD3D39 /* KeychainAccess */,
+				ADE381A62F2B26E30090E6C4 /* RealmSwift */,
 			);
 			productName = SwiftPlaygrounds;
 			productReference = AD707E452EA8984900CD3D39 /* SwiftPlaygrounds.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				AD707EF92EA898F300CD3D39 /* XCRemoteSwiftPackageReference "SwiftUtilities" */,
 				AD707EFC2EA8991C00CD3D39 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				ADE381A52F2B26E30090E6C4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD707E462EA8984900CD3D39 /* Products */;
@@ -403,6 +407,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		ADE381A52F2B26E30090E6C4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -415,6 +427,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD707EFC2EA8991C00CD3D39 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		ADE381A62F2B26E30090E6C4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADE381A52F2B26E30090E6C4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
