@@ -43,6 +43,11 @@ enum UIKitRouteDefinitions {
             viewBuilder: { AnyView(WebView()) }
         ),
         RouteDefinition(
+            route: .flashTest,
+            tags: [CategoryTag.uiKit, FeatureTag.webView],
+            viewBuilder: { AnyView(FlashTestView()) }
+        ),
+        RouteDefinition(
             route: .realmSettings,
             tags: [CategoryTag.uiKit, FeatureTag.common],
             viewBuilder: { AnyView(RealmSettingsView()) }

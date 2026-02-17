@@ -29,6 +29,7 @@ enum Route: String, CaseIterable {
     case storyboard
     case table
     case webView
+    case flashTest
     case realmSettings
     case navigationBug
     case random
@@ -36,6 +37,6 @@ enum Route: String, CaseIterable {
     case webAuthenticationSession
 
     static var preferRoutes: [Route] {
-        [.realmSettings, .deepLinkDemo, .keychainBiometryDebug, .hybridTextField, .navigationBug]
+        [.flashTest]
     }
 }

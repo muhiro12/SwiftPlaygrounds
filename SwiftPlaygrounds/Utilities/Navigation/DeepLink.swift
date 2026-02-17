@@ -38,7 +38,7 @@ enum DeepLink {
 }
 
 final class DeepLinkNavigator: ObservableObject {
-    @Published var selection: Route? = .realmSettings
+    @Published var selection: Route? = .flashTest
 
     @discardableResult
     func handle(url: URL) -> Bool {
