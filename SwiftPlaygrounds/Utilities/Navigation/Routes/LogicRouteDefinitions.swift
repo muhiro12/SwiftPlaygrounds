@@ -63,6 +63,11 @@ enum LogicRouteDefinitions {
             viewBuilder: { AnyView(StudentView()) }
         ),
         RouteDefinition(
+            route: .photoRef,
+            tags: [CategoryTag.logic, FeatureTag.swiftData],
+            viewBuilder: { AnyView(PhotoRefListView()) }
+        ),
+        RouteDefinition(
             route: .groupingUserList,
             tags: [CategoryTag.logic, FeatureTag.user],
             viewBuilder: { AnyView(GroupingUserListView()) }

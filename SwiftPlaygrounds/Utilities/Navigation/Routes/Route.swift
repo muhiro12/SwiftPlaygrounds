@@ -11,6 +11,7 @@ enum Route: String, CaseIterable {
     case publishedUserList
     case publishedUser
     case student
+    case photoRef
     case groupingUserList
     case userList
     case user

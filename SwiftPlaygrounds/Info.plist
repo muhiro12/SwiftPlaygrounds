@@ -13,5 +13,9 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app needs access to save references to photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to display referenced photos without copying them.</string>
 </dict>
 </plist>
