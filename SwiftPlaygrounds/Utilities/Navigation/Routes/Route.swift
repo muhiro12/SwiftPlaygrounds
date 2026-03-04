@@ -36,8 +36,9 @@ enum Route: String, CaseIterable {
     case random
     case deepLinkDemo
     case webAuthenticationSession
+    case pdfPoC
 
     static var preferRoutes: [Route] {
-        [.flashTest]
+        [.pdfPoC]
     }
 }

@@ -36,6 +36,11 @@ enum SwiftUIRouteDefinitions {
             route: .webAuthenticationSession,
             tags: [CategoryTag.swiftUI, FeatureTag.common],
             viewBuilder: { AnyView(WebAuthenticationSessionView()) }
+        ),
+        RouteDefinition(
+            route: .pdfPoC,
+            tags: [CategoryTag.swiftUI, FeatureTag.webView],
+            viewBuilder: { AnyView(PDFPoCView()) }
         )
     ]
 }
