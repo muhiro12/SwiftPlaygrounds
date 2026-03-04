@@ -23,7 +23,7 @@ struct ContentView: View {
         let routes = RouteRegistry.orderedRoutes
         switch sortOrder {
         case .addedOrder:
-            return Route.preferRoutes + routes.filter { !Route.preferRoutes.contains($0) }
+            return routes
         case .addedOrderReversed:
             return routes.reversed()
         case .alphabetical:
