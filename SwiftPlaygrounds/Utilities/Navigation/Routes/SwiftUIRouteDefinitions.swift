@@ -41,6 +41,11 @@ enum SwiftUIRouteDefinitions {
             route: .pdfPoC,
             tags: [CategoryTag.swiftUI, FeatureTag.webView],
             viewBuilder: { AnyView(PDFPoCView()) }
+        ),
+        RouteDefinition(
+            route: .typographyLab,
+            tags: [CategoryTag.swiftUI, FeatureTag.common],
+            viewBuilder: { AnyView(TypographyLabView()) }
         )
     ]
 }

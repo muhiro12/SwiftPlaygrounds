@@ -2,7 +2,12 @@ import SwiftUI
 
 extension Route {
     var title: String {
-        rawValue.camelCased()
+        switch self {
+        case .typographyLab:
+            return "Typography Lab"
+        default:
+            return rawValue.camelCased()
+        }
     }
 
     var tags: [any Tag] {
