@@ -38,7 +38,7 @@ enum DeepLink {
 }
 
 final class DeepLinkNavigator: ObservableObject {
-    @Published var selection: Route? = .photoRef
+    @Published var selection = Route.preferRoutes.first
 
     @discardableResult
     func handle(url: URL) -> Bool {
