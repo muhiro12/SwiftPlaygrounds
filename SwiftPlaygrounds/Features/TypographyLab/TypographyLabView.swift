@@ -90,6 +90,36 @@ struct TypographyLabDebugSnapshot: Equatable {
     }
 }
 
+private enum LocalizationInterpretationVariant: String, CaseIterable, Identifiable {
+    case textLocalizedLiteral
+    case textVerbatimLiteral
+    case textLocalizedStringKey
+    case textDynamicString
+
+    var id: String {
+        rawValue
+    }
+
+    var label: String {
+        switch self {
+        case .textLocalizedLiteral:
+            return "L1 Text(\"BANK口座\")"
+        case .textVerbatimLiteral:
+            return "L2 Text(verbatim: \"BANK口座\")"
+        case .textLocalizedStringKey:
+            return "L3 Text(LocalizedStringKey(\"BANK口座\"))"
+        case .textDynamicString:
+            return "L4 Text(String(\"BANK口座\"))"
+        }
+    }
+}
+
+private struct LocalizationDebugRow: Identifiable {
+    let id: String
+    let title: String
+    let value: String
+}
+
 struct TypographyLabView: View {
     private let sampleText = "BANK口座"
     private let requestedFontName = "HiraginoSans-W3"
@@ -172,12 +202,28 @@ struct TypographyLabView: View {
         max(56, CGFloat(fontSize) * 1.9)
     }
 
+    private var localizationDebugRows: [LocalizationDebugRow] {
+        [
+            .init(
+                id: "literal-bank",
+                title: "Literal \"BANK口座\"",
+                value: sampleText
+            ),
+            .init(
+                id: "localized-bank",
+                title: "Localized \"BANK口座\"",
+                value: localizedValue(for: sampleText)
+            )
+        ]
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 headerSection
                 controlsSection
                 comparisonSection
+                localizationInterpretationSection
                 debugSection
             }
             .padding()
@@ -376,6 +422,50 @@ struct TypographyLabView: View {
         }
     }
 
+    private var localizationInterpretationSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Localization Interpretation Lab")
+                .font(.headline)
+            Text("Compare localized-key and verbatim SwiftUI Text initializers with identical font and container styles.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            ForEach(LocalizationInterpretationVariant.allCases) { variant in
+                typographySampleRow(title: variant.label) {
+                    localizationInterpretationText(for: variant)
+                }
+            }
+
+            localizationDiagnosticsPanel
+        }
+    }
+
+    private var localizationDiagnosticsPanel: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Localization Unicode Diagnostics")
+                .font(.subheadline.weight(.semibold))
+
+            ForEach(localizationDebugRows) { row in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(row.title)
+                        .font(.caption.weight(.semibold))
+                    Text("Visible: \(visibleWhitespaceTokens(row.value))")
+                        .font(.system(.caption, design: .monospaced))
+                    Text("Scalars: \(unicodeScalarsDump(row.value))")
+                        .font(.system(.caption, design: .monospaced))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .padding(12)
+        .background(cardBackgroundColor)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(Color.gray.opacity(0.25), lineWidth: 1)
+        }
+    }
+
     private func typographySampleRow<Content: View>(
         title: String,
         @ViewBuilder content: () -> Content
@@ -427,6 +517,27 @@ struct TypographyLabView: View {
     }
 
     @ViewBuilder
+    private func localizationInterpretationText(
+        for variant: LocalizationInterpretationVariant
+    ) -> some View {
+        switch variant {
+        case .textLocalizedLiteral:
+            localizationLabText(Text(sampleText))
+        case .textVerbatimLiteral:
+            localizationLabText(Text(verbatim: sampleText))
+        case .textLocalizedStringKey:
+            localizationLabText(Text(LocalizedStringKey(sampleText)))
+        case .textDynamicString:
+            localizationLabText(Text(String(sampleText)))
+        }
+    }
+
+    private func localizationLabText(_ text: Text) -> some View {
+        text
+            .font(.init(baseFontResolution.uiFont))
+    }
+
+    @ViewBuilder
     private func textWithOptionalDrawingGroup<Content: View>(_ content: Content) -> some View {
         if isDrawingGroupEnabled {
             content
@@ -434,6 +545,43 @@ struct TypographyLabView: View {
         } else {
             content
         }
+    }
+
+    private func localizedValue(for key: String) -> String {
+        switch key {
+        case "BANK口座":
+            return String(localized: "BANK口座")
+        default:
+            return NSLocalizedString(key, comment: "")
+        }
+    }
+
+    private func unicodeScalarsDump(_ value: String) -> String {
+        value.unicodeScalars.map { scalar in
+            String(format: "U+%04X", scalar.value)
+        }
+        .joined(separator: " ")
+    }
+
+    private func visibleWhitespaceTokens(_ value: String) -> String {
+        var output = ""
+
+        for scalar in value.unicodeScalars {
+            switch scalar.value {
+            case 0x20:
+                output.append("[SPACE]")
+            case 0x00A0:
+                output.append("[NBSP]")
+            case 0x2009:
+                output.append("[THIN]")
+            case 0x200B:
+                output.append("[ZWSP]")
+            default:
+                output.append(String(scalar))
+            }
+        }
+
+        return output
     }
 
     private func updateUIKitDiagnostics(_ diagnostics: TypographyUILabelDiagnostics) {
