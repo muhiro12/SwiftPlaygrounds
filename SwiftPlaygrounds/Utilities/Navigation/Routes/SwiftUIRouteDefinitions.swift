@@ -3,6 +3,11 @@ import SwiftUI
 enum SwiftUIRouteDefinitions {
     static let all: [RouteDefinition] = [
         RouteDefinition(
+            route: .infiniteCarousel,
+            tags: [CategoryTag.swiftUI, FeatureTag.layout],
+            viewBuilder: { AnyView(InfiniteCarouselView()) }
+        ),
+        RouteDefinition(
             route: .hybridTextField,
             tags: [CategoryTag.swiftUI, FeatureTag.hybrid],
             viewBuilder: { AnyView(HybridTextFieldView()) }
