@@ -21,24 +21,12 @@ enum CategoryTag: String, CaseIterable, Identifiable, Tag {
 }
 
 enum FeatureTag: String, CaseIterable, Identifiable, Tag {
-    case combine = "Combine"
     case common = "Common"
-    case concurrency = "Concurrency"
-    case observation = "Observation"
+    case stateManagement = "State Management"
     case swiftData = "SwiftData"
-    case user = "User"
     case keychain = "Keychain"
-    case layout = "Layout"
-    case modifier = "Modifier"
-    case sample = "Sample"
     case hybrid = "Hybrid"
-    case transition = "Transition"
-    case collection = "Collection"
-    case compositional = "Compositional"
-    case infinitePaging = "Infinite Paging"
     case navigation = "Navigation"
-    case storyboard = "Storyboard"
-    case table = "Table"
     case webView = "WebView"
     case secure = "Secure"
 }

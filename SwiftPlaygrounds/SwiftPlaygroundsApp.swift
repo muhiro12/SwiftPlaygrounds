@@ -13,17 +13,22 @@ struct SwiftPlaygroundsApp: App {
     @StateObject private var deepLinkNavigator = DeepLinkNavigator()
 
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            SampleItem.self,
-            Student.self,
-            PhotoRef.self
-        ])
+        let schema = Schema([PhotoRef.self])
         let modelConfiguration = ModelConfiguration(schema: schema)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            let inMemoryConfiguration = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: true
+            )
+
+            do {
+                return try ModelContainer(for: schema, configurations: [inMemoryConfiguration])
+            } catch {
+                fatalError("Could not create ModelContainer: \(error)")
+            }
         }
     }()
 

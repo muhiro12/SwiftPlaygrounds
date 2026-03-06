@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD707EFB2EA898F300CD3D39 /* SwiftUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = AD707EFA2EA898F300CD3D39 /* SwiftUtilities */; };
 		AD707EFE2EA8991C00CD3D39 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD707EFD2EA8991C00CD3D39 /* KeychainAccess */; };
 		ADE381A72F2B26E30090E6C4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ADE381A62F2B26E30090E6C4 /* RealmSwift */; };
 /* End PBXBuildFile section */
@@ -44,7 +43,6 @@
 			files = (
 				ADE381A72F2B26E30090E6C4 /* RealmSwift in Frameworks */,
 				AD707EFE2EA8991C00CD3D39 /* KeychainAccess in Frameworks */,
-				AD707EFB2EA898F300CD3D39 /* SwiftUtilities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +85,6 @@
 			);
 			name = SwiftPlaygrounds;
 			packageProductDependencies = (
-				AD707EFA2EA898F300CD3D39 /* SwiftUtilities */,
 				AD707EFD2EA8991C00CD3D39 /* KeychainAccess */,
 				ADE381A62F2B26E30090E6C4 /* RealmSwift */,
 			);
@@ -120,7 +117,6 @@
 			mainGroup = AD707E3C2EA8984900CD3D39;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				AD707EF92EA898F300CD3D39 /* XCRemoteSwiftPackageReference "SwiftUtilities" */,
 				AD707EFC2EA8991C00CD3D39 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				ADE381A52F2B26E30090E6C4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
@@ -391,14 +387,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AD707EF92EA898F300CD3D39 /* XCRemoteSwiftPackageReference "SwiftUtilities" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/muhiro12/SwiftUtilities.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		AD707EFC2EA8991C00CD3D39 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -418,11 +406,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AD707EFA2EA898F300CD3D39 /* SwiftUtilities */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AD707EF92EA898F300CD3D39 /* XCRemoteSwiftPackageReference "SwiftUtilities" */;
-			productName = SwiftUtilities;
-		};
 		AD707EFD2EA8991C00CD3D39 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD707EFC2EA8991C00CD3D39 /* XCRemoteSwiftPackageReference "KeychainAccess" */;

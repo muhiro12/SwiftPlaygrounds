@@ -3,14 +3,9 @@ import SwiftUI
 enum PackageRouteDefinitions {
     static let all: [RouteDefinition] = [
         RouteDefinition(
-            route: .keychainBiometryDebug,
+            route: .keychainLab,
             tags: [CategoryTag.package, FeatureTag.keychain],
-            viewBuilder: { AnyView(KeychainBiometryDebugView()) }
-        ),
-        RouteDefinition(
-            route: .keychainAccess,
-            tags: [CategoryTag.package, FeatureTag.keychain],
-            viewBuilder: { AnyView(KeychainAccessView()) }
+            viewBuilder: { AnyView(KeychainLabView()) }
         )
     ]
 }

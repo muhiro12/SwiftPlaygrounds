@@ -1,5 +1,5 @@
 {
-  "originHash" : "27d23d334a3169094cacac19f6d3c8b6eb51cdf100ef015786baa2907a1c3b01",
+  "originHash" : "7ab220e5d04f039d27007381e834a5486732f9f07a498d9de2436bf68615a25c",
   "pins" : [
     {
       "identity" : "keychainaccess",
@@ -26,15 +26,6 @@
       "state" : {
         "revision" : "1c105d34f25af7851c5a3ff146be006de247a6b4",
         "version" : "10.54.6"
-      }
-    },
-    {
-      "identity" : "swiftutilities",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/muhiro12/SwiftUtilities.git",
-      "state" : {
-        "revision" : "1e7e633caa979d8dafea34701dd48c8aa1b5e0ac",
-        "version" : "1.31.0"
       }
     }
   ],
