@@ -8,6 +8,11 @@ enum SwiftUIRouteDefinitions {
             viewBuilder: { AnyView(HybridTextFieldView()) }
         ),
         RouteDefinition(
+            route: .textFieldSizingLab,
+            tags: [CategoryTag.swiftUI, FeatureTag.hybrid, FeatureTag.layout],
+            viewBuilder: { AnyView(TextFieldSizingLabView()) }
+        ),
+        RouteDefinition(
             route: .webIntegration,
             tags: [CategoryTag.swiftUI, FeatureTag.webView],
             viewBuilder: { AnyView(WebIntegrationView()) }

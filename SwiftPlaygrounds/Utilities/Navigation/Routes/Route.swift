@@ -5,6 +5,7 @@ enum Route: String, CaseIterable {
     case keychainLab
     case collectionCompositionalLab
     case hybridTextField
+    case textFieldSizingLab
     case secure
     case infiniteScrollingLab
     case storyboard
@@ -17,6 +18,6 @@ enum Route: String, CaseIterable {
     case typographyLab
 
     static var preferRoutes: [Route] {
-        [.typographyLab]
+        [.textFieldSizingLab, .typographyLab]
     }
 }

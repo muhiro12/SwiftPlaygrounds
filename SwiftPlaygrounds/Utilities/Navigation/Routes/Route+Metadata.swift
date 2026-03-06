@@ -15,6 +15,8 @@ extension Route {
             return "Collection / Compositional Lab"
         case .hybridTextField:
             return "Hybrid Text Field"
+        case .textFieldSizingLab:
+            return "Text Field Sizing Lab"
         case .infiniteScrollingLab:
             return "Infinite Scrolling Lab"
         case .flashTest:
