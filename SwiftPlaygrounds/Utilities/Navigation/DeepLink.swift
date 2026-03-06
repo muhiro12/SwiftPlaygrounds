@@ -49,22 +49,3 @@ final class DeepLinkNavigator: ObservableObject {
         return true
     }
 }
-
-private extension Route {
-    init?(deepLinkIdentifier: String) {
-        let normalizedIdentifier = Self.normalize(deepLinkIdentifier)
-        guard let route = Self.allCases.first(where: {
-            Self.normalize($0.rawValue) == normalizedIdentifier
-        }) else {
-            return nil
-        }
-        self = route
-    }
-
-    static func normalize(_ value: String) -> String {
-        value
-            .replacingOccurrences(of: "-", with: "")
-            .replacingOccurrences(of: "_", with: "")
-            .lowercased()
-    }
-}

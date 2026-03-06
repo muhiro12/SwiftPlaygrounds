@@ -3,24 +3,9 @@ import SwiftUI
 enum LogicRouteDefinitions {
     static let all: [RouteDefinition] = [
         RouteDefinition(
-            route: .combineDetail,
-            tags: [CategoryTag.logic, FeatureTag.combine],
-            viewBuilder: { AnyView(CombineDetailView()) }
-        ),
-        RouteDefinition(
-            route: .combine,
-            tags: [CategoryTag.logic, FeatureTag.combine],
-            viewBuilder: { AnyView(CombineView()) }
-        ),
-        RouteDefinition(
-            route: .actor,
-            tags: [CategoryTag.logic, FeatureTag.concurrency],
-            viewBuilder: { AnyView(ActorView()) }
-        ),
-        RouteDefinition(
-            route: .asyncStream,
-            tags: [CategoryTag.logic, FeatureTag.concurrency],
-            viewBuilder: { AnyView(AsyncStreamView()) }
+            route: .combineConcurrencyLab,
+            tags: [CategoryTag.logic, FeatureTag.combine, FeatureTag.concurrency],
+            viewBuilder: { AnyView(CombineConcurrencyLabView()) }
         ),
         RouteDefinition(
             route: .stateComparison,

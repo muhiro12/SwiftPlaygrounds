@@ -3,9 +3,9 @@ import SwiftUI
 enum UIKitRouteDefinitions {
     static let all: [RouteDefinition] = [
         RouteDefinition(
-            route: .collection,
-            tags: [CategoryTag.uiKit, FeatureTag.collection],
-            viewBuilder: { AnyView(CollectionView()) }
+            route: .collectionCompositionalLab,
+            tags: [CategoryTag.uiKit, FeatureTag.collection, FeatureTag.compositional],
+            viewBuilder: { AnyView(CollectionCompositionalLabView()) }
         ),
         RouteDefinition(
             route: .secure,
@@ -13,19 +13,9 @@ enum UIKitRouteDefinitions {
             viewBuilder: { AnyView(SecureView()) }
         ),
         RouteDefinition(
-            route: .compositional,
-            tags: [CategoryTag.uiKit, FeatureTag.compositional],
-            viewBuilder: { AnyView(CompositionalView()) }
-        ),
-        RouteDefinition(
-            route: .infiniteCompositional,
-            tags: [CategoryTag.uiKit, FeatureTag.infinitePaging],
-            viewBuilder: { AnyView(InfiniteCompositionalView()) }
-        ),
-        RouteDefinition(
-            route: .infinitePaging,
-            tags: [CategoryTag.uiKit, FeatureTag.infinitePaging],
-            viewBuilder: { AnyView(InfinitePagingView()) }
+            route: .infiniteScrollingLab,
+            tags: [CategoryTag.uiKit, FeatureTag.layout, FeatureTag.infinitePaging],
+            viewBuilder: { AnyView(InfiniteScrollingLabView()) }
         ),
         RouteDefinition(
             route: .storyboard,

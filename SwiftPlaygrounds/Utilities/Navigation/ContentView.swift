@@ -39,12 +39,7 @@ struct ContentView: View {
             return orderedRoutes
         }
         return orderedRoutes.filter { route in
-            if route.title.localizedCaseInsensitiveContains(query) {
-                return true
-            }
-            return route.tags.contains {
-                $0.title.localizedCaseInsensitiveContains(query)
-            }
+            route.matchesSearch(query)
         }
     }
 
