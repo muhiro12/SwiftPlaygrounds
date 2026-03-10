@@ -1,5 +1,7 @@
 # SwiftPlaygrounds
 
+An iOS sandbox app with multiple UIKit and SwiftUI experiments, backed by a local Vapor server for web and deep-link testing.
+
 ## WKWebView Flash Test (iOS + Vapor)
 
 ### Start Vapor
@@ -9,17 +11,20 @@
 
 ### Start iOS app
 - Open `SwiftPlaygrounds.xcodeproj` in Xcode
-- Run the app and select `flashTest` from the list
-- Compare conditions using the controls at the bottom
+- Run the app and select `Flash Test` from the list
+- Select `Web Integration` to compare deep-link handling in `WKWebView`, Safari, and `ASWebAuthenticationSession`
+- In `Flash Test`, compare conditions using the controls at the bottom
   - Navigation Trigger: `didFinish` / `didCommit` / `DOMContentLoaded`
   - Cache Mode: `max-age` / `no-store`
   - Old Image Delay: old image response delay (0–300ms)
   - DOM Insert Delay: delayed image DOM insert (optional)
   - Hide Mode: `visibility` / `display`
 
-### Added URL
+### Local URLs
+- `http://127.0.0.1:8080/` lists the flash test, auth demo, and sample deep links
 - `http://127.0.0.1:8080/flash-test`
-- Query toggles:
+- `http://127.0.0.1:8080/auth` is the default `Auth URL` for `Web Integration`
+- `Flash Test` query toggles:
   - `cache=nostore` or `cache=maxage`
   - `oldDelayMs=150` (old image response delay)
   - `domDelayMs=150` (image DOM insert delay)
