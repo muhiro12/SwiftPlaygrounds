@@ -8,8 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		AD707EFE2EA8991C00CD3D39 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD707EFD2EA8991C00CD3D39 /* KeychainAccess */; };
+		AD91FA162F72809300204230 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = ADE381A62F2B26E30090E6C4 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		ADE381A72F2B26E30090E6C4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ADE381A62F2B26E30090E6C4 /* RealmSwift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AD91FA172F72809300204230 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AD91FA162F72809300204230 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AD707E452EA8984900CD3D39 /* SwiftPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +90,7 @@
 				AD707E412EA8984900CD3D39 /* Sources */,
 				AD707E422EA8984900CD3D39 /* Frameworks */,
 				AD707E432EA8984900CD3D39 /* Resources */,
+				AD91FA172F72809300204230 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
