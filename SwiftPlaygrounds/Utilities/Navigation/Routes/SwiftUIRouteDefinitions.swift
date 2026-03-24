@@ -26,6 +26,11 @@ enum SwiftUIRouteDefinitions {
             route: .typographyLab,
             tags: [CategoryTag.swiftUI, FeatureTag.common],
             viewBuilder: { AnyView(TypographyLabView()) }
+        ),
+        RouteDefinition(
+            route: .ticketSlideLab,
+            tags: [CategoryTag.swiftUI, FeatureTag.layout],
+            viewBuilder: { AnyView(TicketSlideLabView()) }
         )
     ]
 }

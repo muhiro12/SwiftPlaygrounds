@@ -31,6 +31,8 @@ extension Route {
             return "PDF PoC"
         case .typographyLab:
             return "Typography Lab"
+        case .ticketSlideLab:
+            return "Ticket Slide Lab"
         default:
             return rawValue.camelCased()
         }

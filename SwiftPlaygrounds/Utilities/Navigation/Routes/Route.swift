@@ -16,8 +16,9 @@ enum Route: String, CaseIterable {
     case webIntegration
     case pdfPoC
     case typographyLab
+    case ticketSlideLab
 
     static var preferRoutes: [Route] {
-        [.textFieldSizingLab, .typographyLab]
+        [.ticketSlideLab]
     }
 }
